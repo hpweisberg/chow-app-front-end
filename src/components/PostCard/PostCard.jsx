@@ -5,7 +5,7 @@ import styles from './PostCard.module.css'
 
 const PostCard = ({ post }) => {
   return (
-    <Link to={`/post/${post._id}`}>
+    <Link to={`/posts/${post._id}`}>
       <article className="post-card">
         <header>
           <span>

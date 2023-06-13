@@ -9,6 +9,8 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import NewPost  from './pages/NewPost/NewPost'
+import PostDetails from './pages/PostDetails/PostDetails'
+
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -80,6 +82,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <NewPost />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <PostDetails />
             </ProtectedRoute>
           }
         />
