@@ -1,4 +1,53 @@
-img {
-  height: 50px;
-  width: 50px;
+.postCard{
+  height: 10em;
+  width: 100vw;
+  border: 2px solid red;
+  margin: 1em 0;
+
+  display: flex;
+  align-items: center;
+  color: white;
+  
+}
+
+.link {
+  text-decoration: none;
+
+}
+
+.postCard img {
+  height: 90%;
+  width: 100px;
+  margin-right: .5em;
+}
+
+.postCardContent {
+  margin-left: 1rem;
+}
+
+.postCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postCardTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.postCardInfo {
+  display: flex;
+  flex-direction: column;
+}
+.postCardInfoTop {
+  display: flex;
+  flex-direction: row;
+}
+
+.postCardInfoBottom{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid blue;
+  font-size: .8em;
 }

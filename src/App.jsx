@@ -10,7 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import NewPost  from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
-
+import EditPost from './pages/EditPost/EditPost'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -37,6 +37,17 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddPost = async (postData) => {
+    const newPost = await postService.createPost(postData)
+    setPosts([newPost, ...posts])
+  }
+
+  const handleUpdatePost = async (postData) => {
+    const updatedBlog = await postService.updatePost(postData)
+    setPosts(posts.map((post) => (post._id === updatedBlog._id ? updatedBlog : post)))
+    navigate('/posts/:id')
   }
 
   useEffect(() => {
@@ -81,7 +92,15 @@ function App() {
           path="/posts/new"
           element={
             <ProtectedRoute user={user}>
-              <NewPost />
+              <NewPost handleAddPost={handleAddPost} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditPost handleUpdatePost={handleUpdatePost} />
             </ProtectedRoute>
           }
         />
@@ -89,7 +108,7 @@ function App() {
           path="/posts/:id"
           element={
             <ProtectedRoute user={user}>
-              <PostDetails />
+              <PostDetails user={user}/>
             </ProtectedRoute>
           }
         />

@@ -27,6 +27,9 @@ async function showPost(id) {
 
 async function createPost(postData) {
   try {
+    const photoFormData = new FormData()
+    photoFormData.append('photo', postData.photo)
+    
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
