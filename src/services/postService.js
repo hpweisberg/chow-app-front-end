@@ -14,6 +14,68 @@ async function getAllPosts() {
   }
 }
 
+async function showPost(id) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function createPost(postData) {
+  try {
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function updatePost(postData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function deletePost(id) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+
+
+
+
 async function addPhoto(photoData) {
   try {
     const photoFormData = new FormData()
@@ -32,4 +94,11 @@ async function addPhoto(photoData) {
   }
 }
 
-export { getAllPosts, addPhoto }
+export { 
+  getAllPosts, 
+  addPhoto,
+  createPost,
+  showPost,
+  updatePost,
+  deletePost
+}

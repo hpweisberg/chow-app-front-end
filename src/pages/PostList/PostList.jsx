@@ -1,13 +1,13 @@
 import PostCard from "../../components/PostCard/PostCard";
 
-const PostList = (props) => {
-  console.log('PostList', props)
+const PostList = ({posts}) => {
+  console.log('PostList', posts)
   return (
     <main>
       <h1>Posts</h1>
-      {/* {props.posts.map((post) => (
-        <PostCard key={post._id}></PostCard>
-      ))} */}
+      {posts.map((post) => (
+        <PostCard key={post._id} post={post}></PostCard>
+      ))}
     </main>
   )
 }
