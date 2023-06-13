@@ -17,12 +17,21 @@ const PostDetails = () => {
   }, [id]);
 
   console.log('this is the post', post);
+  console.log('this is my new test author:', post.author.name)
 
 
   return ( 
     <main>
       <article>
-        
+        <img src={post.photo} alt={post.title} />
+        <h3>{post.name}</h3>
+        <h3>{post.meal}</h3>
+        <h3>{post.review}</h3>
+        <h3>{post.title}</h3>
+        <h3>{post.rating}</h3>
+        <h3>{post.description}</h3>
+        <h3>{post.author.name}</h3>
+        <h3>{post.resturant}</h3>
       </article>
     </main>
    );

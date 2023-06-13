@@ -16,6 +16,7 @@ const PostCard = ({ post }) => {
             <h3>{post.meal}</h3>
             <h3>{post.rating}</h3>
             <h3>{post.review}</h3>
+            <h3>{post.author && post.author.name}</h3> {/* Access author's name */}
           </span>
         </header>
       </article>
