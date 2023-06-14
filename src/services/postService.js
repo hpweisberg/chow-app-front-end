@@ -29,7 +29,7 @@ async function createPost(postData) {
   try {
     const photoFormData = new FormData()
     photoFormData.append('photo', postData.photo)
-    
+
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
@@ -44,15 +44,15 @@ async function createPost(postData) {
   }
 }
 
-async function updatePost(postData) {
+async function updatePost(formData) {
   try {
-    const res = await fetch(`${BASE_URL}/${postData._id}`, {
+    const res = await fetch(`${BASE_URL}/${formData._id}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(postData)
+      body: JSON.stringify(formData)
     })
     return res.json()
   } catch (err) {

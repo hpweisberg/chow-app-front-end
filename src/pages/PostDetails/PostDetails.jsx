@@ -35,7 +35,7 @@ const PostDetails = ({ user }) => {
         {post.author && post.author._id === user.profile &&
 
           <>
-            <Link to={`/posts/${post._id}/edit`}>Edit</Link>
+            <Link to={`/posts/${post._id}/edit`} state={post}>Edit</Link>
             <button onClick={() => postService.deletePost(id)}>Delete this post</button>
           </>
         }

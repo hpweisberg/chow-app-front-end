@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import * as postService from '../../services/postService'
 
 
-const NewPost = ({ handleAddPost }) => {
+const NewPost = () => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -29,7 +29,6 @@ const NewPost = ({ handleAddPost }) => {
     e.preventDefault()
     try {
       await postService.createPost(formData, photoData.photo)
-      handleAddPost()
       navigate('/')
     } catch (err) {
       console.log(err)
