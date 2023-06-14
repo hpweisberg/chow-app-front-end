@@ -23,6 +23,7 @@ import * as postService from './services/postService'
 
 // styles
 import './App.css'
+import BottomNavBar from './components/BottomNavBar/BottomNavBar'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
@@ -113,8 +114,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-
       </Routes>
+      <BottomNavBar user={user} />
     </>
   )
 }

@@ -6,8 +6,6 @@ const EditPost = (props) => {
   const [formData, setFormData] = useState(state);
   const navigate = useNavigate();
 
-  console.log('state:', state)
-
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
   };
@@ -21,8 +19,6 @@ const EditPost = (props) => {
   const handleChangePhoto = (evt) => {
     setFormData({ ...formData, photo: evt.target.files[0] });
   };
-
-  console.log('formData:', formData)
 
   return ( 
     <main>

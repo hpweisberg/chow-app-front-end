@@ -1,0 +1,5 @@
+.navList {
+  background-color: red;
+  display: flex;
+  gap: 3em;
+}
