@@ -11,6 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import NewPost  from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
+import TailwindTest from './pages/TailwindTest/TailwindTest'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -22,7 +23,7 @@ import * as postService from './services/postService'
 
 
 // styles
-import './App.css'
+import '../src/styles/index.css'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar'
 
 function App() {
@@ -111,6 +112,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <PostDetails user={user}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/test"
+          element={
+            <ProtectedRoute user={user}>
+              <TailwindTest />
             </ProtectedRoute>
           }
         />
