@@ -6,7 +6,7 @@
 
 @layer base {
   /* html {
-    /* @apply bg-slate-600 text-black text-lg ;
+    /* @apply text-lg text-black bg-slate-600 ;
     font-family: 'Inter', sans-serif ; */
     /* color: red; */
   }
@@ -20,11 +20,11 @@
   }
 
   a {
-    @apply underline text-blue-600 hover:text-purple-500 transition decoration-wavy underline-offset-4;
+    @apply text-blue-600 underline transition hover:text-purple-500 decoration-wavy underline-offset-4;
   }
 
   .btn {
-    @apply cursor-pointer px-4 py-2 rounded-lg text-white hover:transition hover:duration-300 hover:opacity-80 disabled:bg-slate-400/30 hover:disabled:opacity-100 hover:disabled:cursor-default;
+    @apply px-4 py-2 text-white rounded-lg cursor-pointer hover:transition hover:duration-300 hover:opacity-80 disabled:bg-slate-400/30 hover:disabled:opacity-100 hover:disabled:cursor-default;
   }
 
   .btn-primary {
@@ -37,7 +37,7 @@
 
   input,
   select {
-    @apply border border-slate-300 rounded-sm outline-none p-1 mb-1 text-slate-500;
+    @apply p-1 mb-1 border rounded-sm outline-none border-slate-300 text-slate-500;
   }
 
   input[type='text'] {
@@ -45,7 +45,7 @@
   }
 
   input[type='checkbox'] {
-    @apply p-2 accent-purple-500 mr-1 font-medium;
+    @apply p-2 mr-1 font-medium accent-purple-500;
   }
 
   label {
@@ -58,7 +58,7 @@
   } */
 
   .Select {
-    @apply transition inline-block pr-6 cursor-pointer hover:bg-slate-100 border border-slate-300 rounded-sm outline-none p-1 mb-1 w-40;
+    @apply inline-block w-40 p-1 pr-6 mb-1 transition border rounded-sm outline-none cursor-pointer hover:bg-slate-100 border-slate-300;
   }
 
   .Select .child {
@@ -69,3 +69,23 @@
     @apply hover:bg-slate-100;
   }
 
+/* ! This is the PostCard section */
+
+.postCard {
+  @apply flex border border-green-500
+  bg-slate-100
+  rounded-md shadow-inner gap-2
+  
+} 
+
+.post-card-img {
+  @apply w-32 flex-none rounded-lg bg-gray-500 basis-1/4
+}
+
+.postCardInfo {
+  @apply basis-3/4
+}
+
+.postCardInfoTop {
+  @apply flex justify-between
+}

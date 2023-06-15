@@ -7,6 +7,7 @@ export default {
   ],
   theme: {
     screens: {
+      xs: '320px',
       sm: '480px',
       md: '768px',
       lg: '976px',
@@ -22,6 +23,19 @@ export default {
     },
     extend: {
       height: {
+        '16': '4rem',
+        '20': '5rem',
+        '24': '6rem',
+        '32': '8rem',
+        '40': '10rem',
+        '48': '12rem',
+        '56': '14rem',
+        '64': '16rem',
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem',
+      },
+      maxHeight: {
         '16': '4rem',
         '20': '5rem',
         '24': '6rem',
@@ -61,6 +75,9 @@ export default {
       },
       container: {
       center: true,
+      },
+      top: {
+        '0': "0px"
       }
     },
   },

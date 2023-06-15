@@ -5,7 +5,7 @@ import PostList from '../PostList/PostList'
 
 const Landing = ({ user, posts }) => {
   return (
-    <main className={styles.container}>
+    <main className=''>
       <h1>hello, {user ? user.name : 'friend'}</h1>
       {user &&
         <div>

@@ -1,4 +1,4 @@
-.postCard{
+/* .postCard{
   height: 10em;
   width: 100vw;
   border: 2px solid red;
@@ -8,18 +8,18 @@
   align-items: center;
   color: white;
   
-}
+} */
 
 .link {
   text-decoration: none;
 
 }
 
-.postCard img {
+/* .postCard img {
   height: 90%;
   width: 100px;
   margin-right: .5em;
-}
+} */
 
 .postCardContent {
   margin-left: 1rem;
@@ -51,3 +51,4 @@
   border: 1px solid blue;
   font-size: .8em;
 }
+
