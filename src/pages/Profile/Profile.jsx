@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Button from "../../components/Button/Button";
 import { Map, Rows, Meal } from "../../components/Icons/Icons";
+import PostIconNav from '../../components/PostIconNav/PostIconNav';
 
 const Profile = ({ user }) => {
+  const [activeSort, setActiveSort] = useState('rows')
 
   return (
     <main className="container flex flex-col items-center justify-center">
@@ -35,16 +37,8 @@ const Profile = ({ user }) => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between w-64 py-4">
-        <div className='w-10 h-10'>
-          <Rows className='w-full h-full'/>
-        </div>
-        <div className='w-10 h-10'>
-          <Meal className='w-full h-full'/>
-        </div>
-        <div className='w-10 h-10'>
-          <Map className='w-full h-full'/>
-        </div>
+      <div className='flex items-center justify-between w-64 py-4'>
+        <PostIconNav />
       </div>
     </main>
   );
