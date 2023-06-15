@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown } from "../../components/Arrows/ArrowDown";
+import { ArrowDown } from "../../components/Icons/Icons";
 
 const TailwindTest = () => {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,18 +1,30 @@
-// npm modules
 import { NavLink } from 'react-router-dom'
-import styles from './BottomNavBar.module.css'
+import { Home, NewPost, Profile } from "../../components/Icons/Icons";
 
-
-
-const BottomNavBar = ({ user, handleLogout }) => {
+const BottomNavBar = ({ user }) => {
   return (
-    <nav>
+    <nav className='sticky bottom-0 flex w-full h-16 text-white shadow-md justify bg-slate-600'>
       {user ?
-        <ul className={styles.navList}>
-          <li><NavLink to="/">Feed</NavLink></li>
-          <li><NavLink to="/posts/new" onClick={handleLogout}>New Post</NavLink></li>
+        <ul className='flex items-center justify-around w-full'>
+          <li className=''>
+            <NavLink to="/">
+              <div className='h-16 w-14'>
+                <Home className='w-full h-full' />
+              </div>
+            </NavLink>
+          </li>
+          <li><NavLink to="/posts/new">
+            <div className='h-16 w-14'>
+              <NewPost className='w-full h-full' />
+            </div>
+          </NavLink></li>
+          <li><NavLink to="/profile/">
+            <div className='h-16 w-14'>
+              <Profile className='w-full h-full' />
+            </div>
+          </NavLink></li>
         </ul>
-      :
+        :
         <ul>
           <li><NavLink to="/auth/login">Log In</NavLink></li>
           <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
