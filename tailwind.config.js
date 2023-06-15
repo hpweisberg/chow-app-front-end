@@ -78,6 +78,9 @@ export default {
       },
       top: {
         '0': "0px"
+      },
+      bottom: {
+        '0': "0px"
       }
     },
   },

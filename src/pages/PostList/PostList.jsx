@@ -21,6 +21,9 @@ const PostList = ({posts}) => {
   <PostCardNew />
   <PostCardNew />
   <PostCardNew />
+  <PostCardNew />
+  <PostCardNew />
+  <PostCardNew />
     </main>
   )
 }

@@ -3,7 +3,7 @@ import { Home, NewPost, Profile } from "../../components/Icons/Icons";
 
 const BottomNavBar = ({ user }) => {
   return (
-    <nav className='sticky bottom-0 flex w-full h-16 text-white shadow-md justify bg-slate-600'>
+    <nav className='fixed flex w-full h-16 text-white shadow-md bottom-1 bg-slate-600'>
       {user ?
         <ul className='flex items-center justify-around w-full'>
           <li className=''>
@@ -18,9 +18,9 @@ const BottomNavBar = ({ user }) => {
               <NewPost className='w-full h-full' />
             </div>
           </NavLink></li>
-          <li><NavLink to="/profile/">
+          <li><NavLink to={`/profile/${user._id}`}>
             <div className='h-16 w-14'>
-              <Profile className='w-full h-full' />
+              <Profile className='w-full h-full' user={user} />
             </div>
           </NavLink></li>
         </ul>

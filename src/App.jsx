@@ -12,6 +12,7 @@ import NewPost  from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import TailwindTest from './pages/TailwindTest/TailwindTest'
+import Profile from './pages/Profile/Profile'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -63,8 +64,9 @@ function App() {
   }, [user])
 
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
       <NavBar user={user} handleLogout={handleLogout} />
+      <div className='flex-grow overflow-y-auto'>
       <Routes>
         <Route path="/" element={<Landing user={user} posts={posts} />} />
         <Route
@@ -123,9 +125,18 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/profile/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <Profile user={user} />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+      </div>
       <BottomNavBar user={user} />
-    </>
+    </div>
   )
 }
 
