@@ -23,6 +23,9 @@ export default {
     },
     extend: {
       height: {
+        '10': '2.5rem',
+        '12': '3rem',
+        '14': '3.5rem',
         '16': '4rem',
         '20': '5rem',
         '24': '6rem',
@@ -36,6 +39,9 @@ export default {
         '96': '24rem',
       },
       maxHeight: {
+        '10': '2.5rem',
+        '12': '3rem',
+        '14': '3.5rem',
         '16': '4rem',
         '20': '5rem',
         '24': '6rem',
@@ -49,6 +55,9 @@ export default {
         '96': '24rem',
       },
       width: {
+        '10': '2.5rem',
+        '12': '3rem',
+        '14': '3.5rem',
         '16': '4rem',
         '20': '5rem',
         '24': '6rem',

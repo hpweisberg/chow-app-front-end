@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import Button from "../../components/Button/Button";
+import { Map, Rows, Meal } from "../../components/Icons/Icons";
 
-const profile = ({ user }) => {
-  
+const Profile = ({ user }) => {
+
   return (
     <main className="container flex flex-col items-center justify-center">
       <div className="flex justify-center gap-3 flex-nowrap">
@@ -28,13 +30,24 @@ const profile = ({ user }) => {
             </div>
           </div>
           <div className="flex flex-row justify-center gap-3">
-          <Button btnText={'Edit profile'}/>
-          <Button btnText={'Share profile'}/>
+            <Button btnText={'Edit profile'} />
+            <Button btnText={'Share profile'} />
           </div>
+        </div>
+      </div>
+      <div className="flex items-center justify-between w-64 py-4">
+        <div className='w-10 h-10'>
+          <Rows className='w-full h-full'/>
+        </div>
+        <div className='w-10 h-10'>
+          <Meal className='w-full h-full'/>
+        </div>
+        <div className='w-10 h-10'>
+          <Map className='w-full h-full'/>
         </div>
       </div>
     </main>
   );
 }
 
-export default profile;
+export default Profile;
