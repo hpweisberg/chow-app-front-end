@@ -6,6 +6,7 @@ import MealCard from '../../components/MealCard/MealCard'
 
 
 const Landing = ({ user, posts, handleSort, activeSort }) => {
+  console.log('landing posts:', posts)
   return (
     <main className=''>
       {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
