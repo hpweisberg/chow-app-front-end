@@ -90,6 +90,11 @@ export default {
       },
       bottom: {
         '0': "0px"
+      },
+      padding: {
+        '10': '2.5rem',
+        '12': '3rem',
+        '14': '3.5rem',
       }
     },
   },

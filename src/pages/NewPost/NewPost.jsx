@@ -35,6 +35,8 @@ const NewPost = () => {
     e.preventDefault();
     try {
       await postService.createPost(formData, photoData.photo);
+      console.log('form data:', formData)
+      console.log('photo data:', photoData)
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -86,7 +88,7 @@ const NewPost = () => {
             <option value="Brunch">Brunch</option>
             <option value="Other">Other</option>
           </select> */}
-          <label htmlFor="review-input">Review</label>
+          <label htmlFor="raiting-input">Rating</label>
           <Rating rating={formData.rating} handleNumClick={handleNumClick} />
 
           {/* <div>
@@ -124,9 +126,10 @@ const NewPost = () => {
             value={formData.description}
             onChange={handleChange}
           />
-          <button type="submit">Submit</button>
+          <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+            type="submit">Submit</button>
         </form>
-        <h3>Add Restaurant picker</h3>
+        <h3 className='text-center text-white bg-red-500 p-14'>Add Restaurant picker</h3>
       </article>
     </main>
   );
