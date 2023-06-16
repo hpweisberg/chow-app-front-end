@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import * as postService from "../../services/postService";
+import { Back } from "../../components/Icons/Icons";
 
 const PostDetails = ({ user }) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -25,21 +27,26 @@ const PostDetails = ({ user }) => {
     // Handle the deletion (e.g., navigate to a different page)
   };
 
+  const handleBack = () => {
+    navigate(-1); // Go back to the previous page
+  };
+
   return (
     <main>
-      <article className="max-w-lg p-6 mx-auto bg-white rounded-lg shadow-lg">
-        <h2 className="mb-4 text-2xl font-bold">{post.title}</h2>
-        <div className="flex items-center mb-4">
-          <img src={post.photo} alt={post.title} className="w-12 h-12 rounded-full" />
-          <h3 className="ml-2 text-lg font-medium">{post.author.name}</h3>
-        </div>
+      <div className="flex items-center mb-4">
+        <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
+        <img src={post.photo} alt={post.title} className="w-12 h-12 rounded-full" />
+        <h3 className="ml-2 text-lg font-medium text-center">{post.author.name}</h3>
+      </div>
+      <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
+        <h2 className="mb-1 text-2xl font-bold">{post.title}</h2>
+        <h4 className="mb-4 text-gray-600">Restaurant: {post.restaurant}</h4>
         <p className="mb-4 text-gray-700">{post.description}</p>
         <div className="flex items-center mb-4">
           <span className="px-2 py-1 mr-2 text-white bg-yellow-500 rounded-md">{post.rating}</span>
           <h4 className="text-gray-600">{post.meal}</h4>
         </div>
-        <h4 className="mb-2 text-gray-600">Restaurant: {post.restaurant}</h4>
         {isAuthor && (
           <div className="flex items-center">
             <Link
@@ -51,10 +58,7 @@ const PostDetails = ({ user }) => {
             >
               Edit
             </Link>
-            <button
-              onClick={handleDelete}
-              className="text-red-500"
-            >
+            <button onClick={handleDelete} className="text-red-500">
               Delete this post
             </button>
           </div>

@@ -93,3 +93,29 @@
 .active {
   @apply transition border-b-2 border-blue-500;
 }
+
+/* ! Raitings */
+
+.numActive {
+  @apply w-14 h-14 cursor-pointer
+}
+
+.num {
+  @apply w-14 h-14 cursor-pointer
+}
+
+
+/* ! Meal Card Selector */
+
+.mealCard {
+  @apply flex flex-col items-center p-6 m-4 border cursor-pointer shadow-lg rounded-md
+}
+
+
+.mealIcon {
+  @apply w-6 h-6 
+}
+
+.selectedMealCard {
+  @apply fill-slate-500
+}
