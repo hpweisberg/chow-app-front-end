@@ -1,13 +1,28 @@
 import breakfastImage from '../../assets/BreakfastPic.jpeg';
 import lunchImage from '../../assets/LunchPic.jpeg';
 import dinnerImage from '../../assets/DinnerPic.jpeg';
+import brunchImage from '../../assets/BrunchPic.jpeg';
+import snackImage from '../../assets/SnackPic.jpeg';
+import drinkImage from '../../assets/DrinkPic.jpeg';
+import dessertImage from '../../assets/DessertPic.jpeg';
+import otherImage from '../../assets/OtherPic.jpeg';
+
+
+
+
+
 
 const MealCard = (props) => {
   const getImage = (mealName) => {
     const imageMap = {
       Breakfast: breakfastImage,
       Lunch: lunchImage,
-      Dinner: dinnerImage
+      Dinner: dinnerImage,
+      Brunch: brunchImage,
+      Snack: snackImage,
+      Drink: drinkImage,
+      Dessert: dessertImage,
+      Other: otherImage,
     };
 
     if (mealName in imageMap) {
