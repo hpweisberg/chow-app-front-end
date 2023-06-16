@@ -34,14 +34,15 @@ const NewPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await postService.createPost(formData, photoData.photo);
-      console.log('form data:', formData)
-      console.log('photo data:', photoData)
+      const createdPost = await postService.createPost(formData);
+      await postService.addPhoto(createdPost._id, photoData.photo);
       navigate('/');
     } catch (err) {
       console.log(err);
     }
   };
+  
+  
 
   const handleNumClick = (rating) => {
     setFormData({ ...formData, rating });

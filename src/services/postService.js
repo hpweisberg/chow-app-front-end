@@ -25,11 +25,8 @@ async function showPost(id) {
   }
 }
 
-async function createPost(postData) {
+async function createPost(postData, photoData) {
   try {
-    const photoFormData = new FormData()
-    photoFormData.append('photo', postData.photo)
-
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
@@ -37,12 +34,18 @@ async function createPost(postData) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
-    })
-    return res.json()
+    });
+
+    if (photoData) {
+      await addPhoto(photoData);
+    }
+
+    return await res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
+
 
 async function updatePost(formData) {
   try {
@@ -77,23 +80,23 @@ async function deletePost(id) {
 
 
 
-
-
 async function addPhoto(photoData) {
   try {
-    const photoFormData = new FormData()
-    photoFormData.append('photo', photoData)
-    const profileId = tokenService.getUserFromToken().profile
+    const photoFormData = new FormData();
+    photoFormData.append('photo', photoData);
+
+    const profileId = tokenService.getUserFromToken().profile;
     const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
       body: photoFormData,
-    })
-    return await res.json()
+    });
+
+    return await res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
 

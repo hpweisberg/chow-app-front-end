@@ -47,6 +47,11 @@ const Profile = ({ user, activeSort, handleSort, posts }) => {
           <MealCard mealName='Breakfast' />
           <MealCard mealName='Lunch' />
           <MealCard mealName='Dinner' />
+          <MealCard mealName='Snack' />
+          <MealCard mealName='Dessert' />
+          <MealCard mealName='Drink' />
+          <MealCard mealName='Brunch' />
+          <MealCard mealName='Other' />
         </>
       }
       {activeSort === 'map' && <></>}
