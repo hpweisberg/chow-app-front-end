@@ -20,7 +20,7 @@
   }
 
   a {
-    @apply text-blue-600 underline transition hover:text-purple-500 decoration-wavy underline-offset-4;
+    @apply text-blue-600 transition hover:text-purple-500 underline-offset-4;
   }
 
   .btn {

@@ -33,6 +33,8 @@ function App() {
   const [posts, setPosts] = useState([])
   const navigate = useNavigate()
   const [activeSort, setActiveSort] = useState('rows')
+  const [filteredPosts, setFilteredPosts] = useState(posts);
+
 
   const handleSort = (sort) => {
     setActiveSort(sort)
@@ -60,6 +62,16 @@ function App() {
     navigate('/posts/:id')
   }
 
+  const handleMealCardClick = (mealName) => {
+    setActiveSort(mealName);
+    if (mealName === 'rows') {
+      setFilteredPosts(posts);
+    } else {
+      const filtered = posts.filter(post => post.mealName === mealName);
+      setFilteredPosts(filtered);
+    }
+  };
+  
   useEffect(() => {
     const fetchAllPosts = async () => {
       const data = await postService.getAllPosts()
@@ -76,7 +88,7 @@ function App() {
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
-            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} />} />
+            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} />} />
           <Route
             path="/profiles"
             element={
