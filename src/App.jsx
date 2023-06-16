@@ -8,7 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-import NewPost  from './pages/NewPost/NewPost'
+import NewPost from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import TailwindTest from './pages/TailwindTest/TailwindTest'
@@ -32,6 +32,11 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
   const navigate = useNavigate()
+  const [activeSort, setActiveSort] = useState('rows')
+
+  const handleSort = (sort) => {
+    setActiveSort(sort)
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -46,7 +51,7 @@ function App() {
   const handleAddPost = async (postData) => {
     const newPost = await postService.createPost(postData)
     setPosts([newPost, ...posts])
-    navigate('/') 
+    navigate('/')
   }
 
   const handleUpdatePost = async (postData) => {
@@ -69,73 +74,74 @@ function App() {
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       <HeaderComponent />
       <div className='flex-grow overflow-y-auto'>
-      <Routes>
-        <Route path="/" element={<Landing user={user} posts={posts} />} />
-        <Route
-          path="/profiles"
-          element={
-            <ProtectedRoute user={user}>
-              <Profiles />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/auth/signup"
-          element={<Signup handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
-          path="/auth/login"
-          element={<Login handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
-          path="/auth/change-password"
-          element={
-            <ProtectedRoute user={user}>
-              <ChangePassword handleAuthEvt={handleAuthEvt} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/posts/new"
-          element={
-            <ProtectedRoute user={user}>
-              <NewPost handleAddPost={handleAddPost} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/posts/:id/edit"
-          element={
-            <ProtectedRoute user={user}>
-              <EditPost handleUpdatePost={handleUpdatePost} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/posts/:id"
-          element={
-            <ProtectedRoute user={user}>
-              <PostDetails user={user}/>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/test"
-          element={
-            <ProtectedRoute user={user}>
-              <TailwindTest />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/profile/:id"
-          element={
-            <ProtectedRoute user={user}>
-              <Profile user={user} />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+        <Routes>
+          <Route path="/" element=
+            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} />} />
+          <Route
+            path="/profiles"
+            element={
+              <ProtectedRoute user={user}>
+                <Profiles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/auth/signup"
+            element={<Signup handleAuthEvt={handleAuthEvt} />}
+          />
+          <Route
+            path="/auth/login"
+            element={<Login handleAuthEvt={handleAuthEvt} />}
+          />
+          <Route
+            path="/auth/change-password"
+            element={
+              <ProtectedRoute user={user}>
+                <ChangePassword handleAuthEvt={handleAuthEvt} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/posts/new"
+            element={
+              <ProtectedRoute user={user}>
+                <NewPost handleAddPost={handleAddPost} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/posts/:id/edit"
+            element={
+              <ProtectedRoute user={user}>
+                <EditPost handleUpdatePost={handleUpdatePost} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/posts/:id"
+            element={
+              <ProtectedRoute user={user}>
+                <PostDetails user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/test"
+            element={
+              <ProtectedRoute user={user}>
+                <TailwindTest />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile/:id"
+            element={
+              <ProtectedRoute user={user}>
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
       </div>
       <BottomNavBar user={user} />
     </div>

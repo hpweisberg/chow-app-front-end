@@ -2,15 +2,15 @@ import { useState } from 'react';
 import Button from "../../components/Button/Button";
 import { Map, Rows, Meal } from "../../components/Icons/Icons";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
+import MealCard from '../../components/MealCard/MealCard';
 
-const Profile = ({ user }) => {
-  const [activeSort, setActiveSort] = useState('rows')
+const Profile = ({ user, activeSort, handleSort }) => {
 
   return (
     <main className="container flex flex-col items-center justify-center">
       <div className="flex justify-center gap-3 flex-nowrap">
 
-          <img className="h-40 border-4 border-black rounded-full" src="https://picsum.photos/500" alt="" />
+        <img className="h-40 border-4 border-black rounded-full" src="https://picsum.photos/500" alt="" />
 
         <div>
           <h1 className="text-2xl font-bold" >
@@ -38,8 +38,17 @@ const Profile = ({ user }) => {
         </div>
       </div>
       <div className='flex items-center justify-between w-64 py-4'>
-        <PostIconNav />
+        <PostIconNav handleSort={handleSort} />
       </div>
+      {activeSort === 'rows' && <Rows />}
+      {activeSort === 'meals' &&
+        <>
+          <MealCard mealName='Breakfast' />
+          <MealCard mealName='Lunch' />
+          <MealCard mealName='Dinner' />
+        </>
+      }
+      {activeSort === 'map' && <></>}
     </main>
   );
 }

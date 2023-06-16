@@ -1,23 +1,24 @@
 import { Map, Rows, Meal } from "../../components/Icons/Icons";
 import { useState } from 'react';
 
-const PostIconNav = () => {
+const PostIconNav = ({ handleSort }) => {
   const [activeOption, setActiveOption] = useState('rows');
 
-  const handleOptionClick = (option) => {
-    setActiveOption(option);
+  const handleOptionClick = (sort) => {
+    setActiveOption(sort);
+    handleSort(sort);
   };
 
   return (
     <div className="flex items-center w-full py-4 justify-evenly">
-      <div className='w-10 h-10' onClick={() => handleOptionClick('rows')}>
-        <Rows className={`w-full h-full ${activeOption === 'rows' ? 'active' : ''}`} />
+      <div className={`w-10 h-10 ${activeOption === 'rows' ? 'active' : ''}`} onClick={() => handleOptionClick('rows')}>
+        <Rows className="w-full h-full" />
       </div>
-      <div className='w-10 h-10' onClick={() => handleOptionClick('meal')}>
-        <Meal className={`w-full h-full ${activeOption === 'meal' ? 'active' : ''}`} />
+      <div className={`w-10 h-10 ${activeOption === 'meals' ? 'active' : ''}`} onClick={() => handleOptionClick('meals')}>
+        <Meal className="w-full h-full" />
       </div>
-      <div className='w-10 h-10' onClick={() => handleOptionClick('map')}>
-        <Map className={`w-full h-full ${activeOption === 'map' ? 'active' : ''}`} />
+      <div className={`w-10 h-10 ${activeOption === 'map' ? 'active' : ''}`} onClick={() => handleOptionClick('map')}>
+        <Map className="w-full h-full" />
       </div>
     </div>
   );

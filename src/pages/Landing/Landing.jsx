@@ -1,9 +1,11 @@
 // css
 import PostList from '../PostList/PostList'
 import PostIconNav from '../../components/PostIconNav/PostIconNav'
+import MealCard from '../../components/MealCard/MealCard'
 
 
-const Landing = ({ user, posts }) => {
+
+const Landing = ({ user, posts, handleSort, activeSort }) => {
   return (
     <main className=''>
       {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
@@ -16,9 +18,18 @@ const Landing = ({ user, posts }) => {
     </h1>
             <h2 className='text-primary-932'>Howdy World</h2> */}
           <div className='w-full '>
-            <PostIconNav />
+            <PostIconNav handleSort={handleSort} />
           </div>
-          <PostList posts={posts} />
+          {/* <PostList posts={posts} /> */}
+          {activeSort === 'rows' && <PostList posts={posts}/>}
+      {activeSort === 'meals' &&
+        <>
+          <MealCard mealName='Breakfast' />
+          <MealCard mealName='Lunch' />
+          <MealCard mealName='Dinner' />
+        </>
+      }
+      {activeSort === 'map' && <></>}
         </div>
       }
     </main>
