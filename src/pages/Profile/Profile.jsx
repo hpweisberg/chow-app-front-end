@@ -3,8 +3,9 @@ import Button from "../../components/Button/Button";
 import { Map, Rows, Meal } from "../../components/Icons/Icons";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
+import PostList from '../PostList/PostList';
 
-const Profile = ({ user, activeSort, handleSort }) => {
+const Profile = ({ user, activeSort, handleSort, posts }) => {
 
   return (
     <main className="container flex flex-col items-center justify-center">
@@ -40,7 +41,7 @@ const Profile = ({ user, activeSort, handleSort }) => {
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>
-      {activeSort === 'rows' && <Rows />}
+      {activeSort === 'rows' && <PostList posts={posts} />}
       {activeSort === 'meals' &&
         <>
           <MealCard mealName='Breakfast' />

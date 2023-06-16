@@ -137,7 +137,7 @@ function App() {
             path="/profile/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} />
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} posts={posts}/>
               </ProtectedRoute>
             }
           />
