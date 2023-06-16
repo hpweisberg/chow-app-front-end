@@ -117,5 +117,5 @@
 }
 
 .selectedMealCard {
-  @apply fill-slate-500
+  @apply text-blue-500
 }

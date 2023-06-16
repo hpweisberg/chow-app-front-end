@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import { Breakfast, Lunch, Dinner, Snack, Dessert, Drink, Brunch, Other } from '../Icons/Icons';
+import {
+  Breakfast,
+  Lunch,
+  Dinner,
+  Snack,
+  Dessert,
+  Drink,
+  Brunch,
+  Other,
+} from '../Icons/Icons';
 
 const MealSelector = ({ selectedMeal, onSelectMeal }) => {
   const [meals] = useState([
@@ -15,12 +24,11 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
 
   const handleMealClick = (mealId) => {
     onSelectMeal(mealId);
-    console.log(mealId);
-  
+    console.log(mealId)
   };
 
   return (
-    <div className='grid grid-cols-2'>
+    <div className="grid grid-cols-2">
       {meals.map((meal) => {
         const Icon = meal.icon;
         return (
@@ -29,8 +37,14 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
             className={`mealCard ${selectedMeal === meal.id ? 'selectedMealCard' : ''}`}
             onClick={() => handleMealClick(meal.id)}
           >
-            {meal.label}
-            {Icon && <Icon className="mealIcon" />}
+            {Icon && (
+              <Icon
+                className={`mealIcon ${selectedMeal === meal.id ? 'selectedMealIcon' : ''}`}
+                fill={meal.id === selectedMeal ? 'blue' : '#AAAAAA'}
+
+              />
+            )}
+            <span>{meal.label}</span>
           </div>
         );
       })}
