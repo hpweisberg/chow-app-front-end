@@ -89,3 +89,7 @@
 .postCardInfoTop {
   @apply flex justify-between
 }
+
+.active {
+  @apply transition border-b-2 border-blue-500;
+}

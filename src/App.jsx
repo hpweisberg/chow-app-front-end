@@ -17,6 +17,7 @@ import Profile from './pages/Profile/Profile'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import HeaderComponent from './components/HeaderComponent/HeaderComponent'
 
 // services
 import * as authService from './services/authService'
@@ -65,7 +66,8 @@ function App() {
 
   return (
     <div className='flex flex-col min-h-screen'>
-      <NavBar user={user} handleLogout={handleLogout} />
+      {/* <NavBar user={user} handleLogout={handleLogout} /> */}
+      <HeaderComponent />
       <div className='flex-grow overflow-y-auto'>
       <Routes>
         <Route path="/" element={<Landing user={user} posts={posts} />} />

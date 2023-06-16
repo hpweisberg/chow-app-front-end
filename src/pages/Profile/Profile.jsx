@@ -9,9 +9,9 @@ const Profile = ({ user }) => {
   return (
     <main className="container flex flex-col items-center justify-center">
       <div className="flex justify-center gap-3 flex-nowrap">
-        <div>
+
           <img className="h-40 border-4 border-black rounded-full" src="https://picsum.photos/500" alt="" />
-        </div>
+
         <div>
           <h1 className="text-2xl font-bold" >
             {user.name}

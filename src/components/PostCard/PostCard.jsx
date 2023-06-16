@@ -5,21 +5,21 @@ const PostCard = ({ post }) => {
   return (
     <Link to={`/posts/${post._id}`} className={styles.link}>
       <article>
-          <div className='postCard'>
-            <img className="post-card-img" src={post.photo} alt={post.title} />
-            <div className='postCardInfo'>
-              <div className='postCardInfoTop'>
-                <h3 className='text-green-500'>{post.resturant?.name}</h3>
-                <p className='mr-1 text-green-500'>{post.title}</p>
-                <p className='pr-1 mr-1 text-green-500'>{post.meal}</p>
-              </div>
-              <div className={styles.postCardInfoBottom}>
-                <p>Raiting: {post.rating}</p>
-                <p>{post.review}</p>
-                <p>{post.author && post.author.name}</p> {/* Access author's name */}
-              </div>
+        <div className='postCard'>
+          <img className="post-card-img" src={post.photo} alt={post.title} />
+          <div className='postCardInfo'>
+            <div className='postCardInfoTop'>
+              <h3 className='text-green-500'>{post.resturant?.name}</h3>
+              <p className='mr-1 text-green-500'>{post.title}</p>
+              <p className='pr-1 mr-1 text-green-500'>{post.meal}</p>
+            </div>
+            <div className={styles.postCardInfoBottom}>
+              <p>Raiting: {post.rating}</p>
+              <p>{post.review}</p>
+              <p>{post.author && post.author.name}</p> {/* Access author's name */}
             </div>
           </div>
+        </div>
       </article>
     </Link>
   );
