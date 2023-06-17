@@ -24,6 +24,7 @@ const PostDetails = ({ user }) => {
 
   const handleDelete = async () => {
     await postService.deletePost(id);
+    navigate("/");
     // Handle the deletion (e.g., navigate to a different page)
   };
 

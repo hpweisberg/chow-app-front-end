@@ -79,7 +79,7 @@ function App() {
       setPosts(data)
     }
     if (user) fetchAllPosts()
-  }, [user])
+  }, [user, posts])
 
   return (
     <div className='flex flex-col min-h-screen'>
