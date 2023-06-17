@@ -25,24 +25,30 @@ async function showPost(id) {
   }
 }
 
-async function createPost(postData, photoData) {
+async function createPost(post, photo) {
   try {
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(postData)
-    });
-
-    if (photoData) {
-      await addPhoto(photoData);
+      body: JSON.stringify(post),
+    })
+    if (photo) {
+      const photoFormData = new FormData()
+      photoFormData.append('photo', photo)
+      const postId = await res.json()
+      const postWithPhoto = await addPhoto(
+        postId._id,
+        photoFormData,
+      )
+      return postWithPhoto
+    } else {
+      return await res.json()
     }
-
-    return await res.json();
-  } catch (err) {
-    throw new Error(err);
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -80,28 +86,20 @@ async function deletePost(id) {
 
 
 
-async function addPhoto(photoData) {
-  try {
-    const photoFormData = new FormData();
-    photoFormData.append('photo', photoData);
-
-    const profileId = tokenService.getUserFromToken().profile;
-    const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
-      body: photoFormData,
-    });
-
-    return await res.json();
-  } catch (err) {
-    throw new Error(err);
-  }
+async function addPhoto(postId, photoData) {
+  const res = await fetch(`${BASE_URL}/${postId}/add-photo`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: photoData,
+  })
+  return res.json()
 }
 
-export { 
-  getAllPosts, 
+
+export {
+  getAllPosts,
   addPhoto,
   createPost,
   showPost,

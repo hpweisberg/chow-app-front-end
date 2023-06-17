@@ -34,15 +34,18 @@ const NewPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const createdPost = await postService.createPost(formData);
-      await postService.addPhoto(createdPost._id, photoData.photo);
+      const createdPost = await postService.createPost(formData, photoData.photo);
+    // const addPhoto = await postService.addPhoto(createdPost._id, photoData);
       navigate('/');
+      console.log(createdPost); // You can now use the createdPost object as needed
     } catch (err) {
       console.log(err);
     }
   };
   
-  
+
+
+
 
   const handleNumClick = (rating) => {
     setFormData({ ...formData, rating });
@@ -64,7 +67,7 @@ const NewPost = () => {
         <h1 className="text-2xl font-bold">New Post</h1>
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
           <label htmlFor="name-input">Name</label>
           <input
             required
@@ -78,29 +81,8 @@ const NewPost = () => {
           <input type="file" name="photo" onChange={handleChangePhoto} />
           <label htmlFor="meal-input">Meal</label>
           <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
-          {/* <select required name="meal" value={formData.meal} onChange={handleChange}>
-            <option value="">Select a meal</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Snack">Snack</option>
-            <option value="Dessert">Dessert</option>
-            <option value="Drink">Drink</option>
-            <option value="Brunch">Brunch</option>
-            <option value="Other">Other</option>
-          </select> */}
           <label htmlFor="raiting-input">Rating</label>
           <Rating rating={formData.rating} handleNumClick={handleNumClick} />
-
-          {/* <div>
-            {[1, 2, 3, 4, 5].map((num) => (
-              <span
-                key={num}
-                className={num <= formData.rating ? 'num-active' : 'num'}
-                onClick={() => handleNumClick(num)}
-              ></span>
-            ))}
-          </div> */}
           <label htmlFor="title-input">Title</label>
           <input
             required
