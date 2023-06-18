@@ -37,8 +37,6 @@ function App() {
   const [activeSort, setActiveSort] = useState('rows')
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
-
-
   const fetchAllPosts = async () => {
     const data = await postService.getAllPosts()
     // console.log(data)
@@ -85,16 +83,17 @@ function App() {
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
-      console.log('profile:: ',profile)
+      // console.log('profile:: ',profile)
       setProfile(profile)
-  }
-  if (user) fetchProfile()
-}, [user])
-
+    }
+    if (user) fetchProfile()
+  }, [user])
+  
   useEffect(() => {
     if (user) fetchAllPosts()
   }, [user, setPosts])
-
+  
+  console.log('profileefwefwe:: ',profile)
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -103,7 +102,7 @@ function App() {
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
-            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} />} />
+            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile} />} />
           <Route
             path="/profiles"
             element={
@@ -164,7 +163,7 @@ function App() {
             path="/profile/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} posts={posts} profile={profile} handleLogout={handleLogout}/>
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout}/>
               </ProtectedRoute>
             }
           />

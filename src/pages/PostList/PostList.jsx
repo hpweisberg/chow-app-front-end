@@ -3,16 +3,20 @@ import PostCardNew from "../../components/PostCardNew";
 import Loading from "../Loading/Loading";
 
 
-const PostList = ({posts}) => {
+const PostList = ({posts, profile}) => {
   console.log('PostList posts:', posts)
+  console.log('Profile PostList posts:', profile)
+  // const myPosts = posts.filter(post => post.user. === profile._id)
+
+  // console.log('MyPosts:', myPosts)
 
 
-  if (!posts) {
+  if (!posts && profile) {
     return <Loading />
   }
   return (
     <main className="w-screen border-x-0 ">
-      {/* <h1>Posts</h1> */}
+      
       {posts.map((post) => (
         <PostCardNew key={post._id} post={post} />
       ))}

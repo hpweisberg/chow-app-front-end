@@ -7,11 +7,9 @@ import MealCard from '../../components/MealCard/MealCard'
 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick }) => {
-  console.log('landing posts:', posts)
+const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, profile }) => {
+  console.log('second time:: ',profile)
 
-  console.log('tasdfasdf')
-  console.log(user)
 
   return (
     <main className=''>
@@ -28,7 +26,7 @@ const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick }) =
             <PostIconNav handleSort={handleSort} />
           </div>
           {/* <PostList posts={posts} /> */}
-          {activeSort === 'rows' && <PostList posts={posts}/>}
+          {activeSort === 'rows' && <PostList profile={profile} posts={posts}/>}
       {activeSort === 'meals' &&
         <>
           <MealCard mealName='Breakfast' onClick={handleMealCardClick} />
@@ -42,6 +40,7 @@ const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick }) =
         </>
       }
       {activeSort === 'map' && <></>}
+      {/* <PostList posts={profile} /> */}
         </div>
       }
     </main>

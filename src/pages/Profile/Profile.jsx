@@ -5,10 +5,10 @@ import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
 
-const Profile = ({ user, activeSort, handleSort, posts, profile, handleLogout}) => {
-  console.log('profileasdfgasrf', profile)
-  console.log('postsss', posts)
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout}) => {
 
+  console.log('profile page profile data 1: ', profile)
+  console.log('profile page profile data 2: ', profile.posts)
   return (
     <main className="container flex flex-col items-center justify-center">
       <div className="flex justify-center gap-3 flex-nowrap">
@@ -44,7 +44,7 @@ const Profile = ({ user, activeSort, handleSort, posts, profile, handleLogout}) 
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>
-      {activeSort === 'rows' && <PostList posts={posts} />}
+      {activeSort === 'rows' && <PostList posts={profile.posts} />}
       {activeSort === 'meals' &&
         <>
           <MealCard mealName='Breakfast' />
