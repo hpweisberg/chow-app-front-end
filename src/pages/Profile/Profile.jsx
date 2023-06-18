@@ -3,10 +3,15 @@ import Button from "../../components/Button/Button";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import * as profileService from '../../services/profileService';
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout }) => {
+  // ! Prof = user card. 
+  //! Profile = profile card.
+  // ? Need to fix this. When on a user profile and select own profile from nav bar, no change.
+
+  
   const params = useParams();
   const id = params.id;
 
@@ -30,24 +35,28 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout }) => {
     }
   };
 
+  const displayedProfile = displayProfile();
+
+  console.log('displayProfile: ',displayProfile());
+
   const friendRequestsCount = displayProfile().friendRequests.length;
 
   return (
     <main className="container flex flex-col items-center justify-center">
       <div className="flex justify-center gap-3 flex-nowrap">
         {/* Profile image */}
-        <img className="h-40 border-4 border-black rounded-full" src={displayProfile().photo} alt="" />
+        <img className="h-40 border-4 border-black rounded-full" src={displayedProfile.photo} alt="" />
 
         <div>
           {/* Profile information */}
-          <h1 className="text-2xl font-bold">{displayProfile().name}</h1>
+          <h1 className="text-2xl font-bold">{displayedProfile.name}</h1>
           <div className="flex flex-row justify-center gap-3">
             <div className="flex flex-col items-center justify-center">
-              <p>99</p>
+              <p>{displayedProfile.posts.length}</p>
               <p>Posts</p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <p>393</p>
+              <p>{displayedProfile.friends.length}</p>
               <p>Followers</p>
             </div>
             <div className="flex flex-col items-center justify-center">
