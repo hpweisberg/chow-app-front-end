@@ -14,8 +14,8 @@ const FriendRequests = ({ user, profile }) => {
     fetchRequests()
   }, [])
 
-  console.log('friendRequests:', requests)
-  // console.log('friendRequests:', profile.friendRequests)
+  // console.log('friendRequests:', requests)
+
   return (
     <main>
       <h1>Friend Requests</h1>

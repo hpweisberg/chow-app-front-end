@@ -32,12 +32,39 @@ import '../src/styles/index.css'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar'
 
 function App() {
+  const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
   const [profile, setProfile] = useState('')
-  const navigate = useNavigate()
   const [activeSort, setActiveSort] = useState('rows')
   const [filteredPosts, setFilteredPosts] = useState(posts);
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      try {
+        if (search.length === 0) return setSearchResults([]);
+        const profiles = await profileService.getAllProfiles();
+        const filteredResults = profiles.filter((profile) => {
+          // console.log('profile4: ',profile)
+          // console.log('user4: ',user)
+          const name = profile.name.toLowerCase();
+          const searchQuery = search.toLowerCase();
+          return name.startsWith(searchQuery) && profile.name !== user.name;
+        });
+        setSearchResults(filteredResults);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchSearchResults();
+  }, [search, user]);
 
   const fetchAllPosts = async () => {
     const data = await postService.getAllPosts()
@@ -181,7 +208,7 @@ function App() {
             path="/search"
             element={
               <ProtectedRoute user={user}>
-                <Search user={user}/>
+                <Search search={search} searchResults={searchResults} handleSearch={handleSearch}/>
               </ProtectedRoute>
             }
           />

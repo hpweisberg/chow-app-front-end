@@ -8,7 +8,7 @@ import MealCard from '../../components/MealCard/MealCard'
 
 
 const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, profile }) => {
-  console.log('second time:: ',profile)
+  // console.log('second time:: ',profile)
 
 
   return (

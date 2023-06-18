@@ -1,5 +1,5 @@
 const FriendListCard = ({ requests }) => {
-  console.log('FLC: ', requests)
+  // console.log('FLC: ', requests)
   return (
     <div>
       {requests.map(request => (

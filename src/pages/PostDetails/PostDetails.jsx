@@ -8,7 +8,7 @@ const PostDetails = ({ user }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  console.log('asdfasdf:', post)
+  // console.log('asdfasdf:', post)
 
   useEffect(() => {
     const fetchPost = async () => {

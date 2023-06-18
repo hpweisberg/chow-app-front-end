@@ -4,8 +4,8 @@ import Loading from "../Loading/Loading";
 
 
 const PostList = ({posts, profile}) => {
-  console.log('PostList posts:', posts)
-  console.log('Profile PostList posts:', profile)
+  // console.log('PostList posts:', posts)
+  // console.log('Profile PostList posts:', profile)
   // const myPosts = posts.filter(post => post.user. === profile._id)
 
   // console.log('MyPosts:', myPosts)
