@@ -1,5 +1,3 @@
-import PostCard from "../../components/PostCard/PostCard";
-import styles from "./PostList.module.css";
 import PostCardNew from "../../components/PostCardNew";
 
 import Loading from "../Loading/Loading";

@@ -1,11 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import Button from "../../components/Button/Button";
-import { Map, Rows, Meal } from "../../components/Icons/Icons";
+// import { Map, Rows, Meal } from "../../components/Icons/Icons";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
 
-const Profile = ({ user, activeSort, handleSort, posts, profile }) => {
+const Profile = ({ user, activeSort, handleSort, posts, profile, handleLogout}) => {
   console.log('profileasdfgasrf', profile)
   console.log('postsss', posts)
 
@@ -38,6 +38,7 @@ const Profile = ({ user, activeSort, handleSort, posts, profile }) => {
             <Button btnText={'Edit profile'} />
             <Button btnText={'Share profile'} />
           </div>
+            <Button btnText={'Logout'} onClick={handleLogout} />
         </div>
       </div>
       <div className='flex items-center justify-between w-64 py-4'>

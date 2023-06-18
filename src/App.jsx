@@ -15,7 +15,7 @@ import TailwindTest from './pages/TailwindTest/TailwindTest'
 import Profile from './pages/Profile/Profile'
 
 // components
-import NavBar from './components/NavBar/NavBar'
+// import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import HeaderComponent from './components/HeaderComponent/HeaderComponent'
 
@@ -164,7 +164,7 @@ function App() {
             path="/profile/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} posts={posts} profile={profile}/>
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} posts={posts} profile={profile} handleLogout={handleLogout}/>
               </ProtectedRoute>
             }
           />

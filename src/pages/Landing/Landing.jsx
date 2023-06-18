@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
 // css
 import PostList from '../PostList/PostList'
@@ -7,7 +7,7 @@ import MealCard from '../../components/MealCard/MealCard'
 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, filteredPosts, handleMealCardClick }) => {
+const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick }) => {
   console.log('landing posts:', posts)
 
   console.log('tasdfasdf')

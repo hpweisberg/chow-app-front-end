@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as postService from '../../services/postService';
-import { Back, PlateRating } from '../../components/Icons/Icons';
+import { Back } from '../../components/Icons/Icons';
 
 import Rating from '../../components/Rating/Rating';
 import MealSelector from '../../components/MealSelector/MealSelector';
