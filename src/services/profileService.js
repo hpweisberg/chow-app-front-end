@@ -43,7 +43,72 @@ async function addPhoto(photoData) {
   }
 }
 
-export { 
-  getAllProfiles, 
+const friendRequests = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/requests`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const sendFriendRequest = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/send-friend-request`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const acceptFriendRequest = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/accept-friend-request`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const rejectFriendRequest = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/reject-friend-request`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const unfriend = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/unfriend`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+export {
+  getAllProfiles,
   addPhoto,
-  getProfile }
+  getProfile,
+  friendRequests,
+  sendFriendRequest,
+  acceptFriendRequest,
+  rejectFriendRequest,
+  unfriend,
+}

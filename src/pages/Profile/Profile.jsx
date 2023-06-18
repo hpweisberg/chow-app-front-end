@@ -4,11 +4,15 @@ import Button from "../../components/Button/Button";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
+import { Link, useNavigate } from "react-router-dom";
 
-const Profile = ({ user, activeSort, handleSort, profile, handleLogout}) => {
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout }) => {
 
   console.log('profile page profile data 1: ', profile)
   console.log('profile page profile data 2: ', profile.posts)
+
+  const friendRequestsCount = profile.friendRequests.length;
+
   return (
     <main className="container flex flex-col items-center justify-center">
       <div className="flex justify-center gap-3 flex-nowrap">
@@ -38,9 +42,13 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout}) => {
             <Button btnText={'Edit profile'} />
             <Button btnText={'Share profile'} />
           </div>
-            <Button btnText={'Logout'} onClick={handleLogout} />
+          <Button btnText={'Logout'} onClick={handleLogout} />
         </div>
       </div>
+      <p>friend request: </p>
+      <Link to='/friend-requests'>
+        {friendRequestsCount}
+      </Link>
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>

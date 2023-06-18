@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Bell, BellNew } from "../../components/Icons/Icons";
+import { Bell, BellNew, Search } from "../../components/Icons/Icons";
 
 const HeaderComponent = () => {
   return (
@@ -8,7 +8,12 @@ const HeaderComponent = () => {
       <Link to={'/'}>
         <h1 className="text-black no-underline decoration-none">Chow</h1>
       </Link>
-      <Bell className="w-4 h-4 " />
+      <div className="flex items-center space-x-2">
+        <Link to={'/search'}>
+          <Search className="w-4 h-4 text-black" />
+        </Link>
+        <Bell className="w-4 h-4 " />
+      </div>
     </div>
   );
 }

@@ -119,3 +119,15 @@
 .selectedMealCard {
   @apply text-blue-500
 }
+
+
+/* ! Friend Request Card */
+
+.friendListCard {
+  @apply flex justify-center items-center gap-2 shadow-lg
+  w-full h-32
+}
+
+.friendRequestBtn {
+  @apply m-2 p-1 rounded-md text-white
+}

@@ -13,6 +13,8 @@ import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import TailwindTest from './pages/TailwindTest/TailwindTest'
 import Profile from './pages/Profile/Profile'
+import FriendRequests from './pages/FriendRequests/FriendRequests'
+import Search from './pages/Search/Search'
 
 // components
 // import NavBar from './components/NavBar/NavBar'
@@ -88,12 +90,12 @@ function App() {
     }
     if (user) fetchProfile()
   }, [user])
-  
+
   useEffect(() => {
     if (user) fetchAllPosts()
   }, [user, setPosts])
-  
-  console.log('profileefwefwe:: ',profile)
+
+  console.log('profileefwefwe:: ', profile)
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -163,13 +165,30 @@ function App() {
             path="/profile/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout}/>
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout} />
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/friend-requests"
+            element={
+              <ProtectedRoute user={user}>
+                <FriendRequests user={user} profile={profile} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <ProtectedRoute user={user}>
+                <Search user={user}/>
+              </ProtectedRoute>
+            }
+          />
+
         </Routes>
       </div>
-      <BottomNavBar user={user} profile={profile}/>
+      <BottomNavBar user={user} profile={profile} />
     </div>
   )
 }
