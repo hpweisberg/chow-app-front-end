@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { Home, NewPost, Profile } from "../../components/Icons/Icons";
 
-const BottomNavBar = ({ user }) => {
+const BottomNavBar = ({ user, profile }) => {
   return (
     <div className='flex justify-center'>
       <nav className='container fixed flex w-11/12 h-16 text-white border-4 rounded-full shadow-lg white border- bottom-1 bg-slate-300'>
@@ -20,8 +20,9 @@ const BottomNavBar = ({ user }) => {
               </div>
             </NavLink></li>
             <li><NavLink to={`/profile/${user._id}`}>
-              <div className='h-16 w-14'>
-                <Profile className='w-full h-full' user={user} />
+              <div className='h-14 w-14'>
+                {/* <Profile className='w-full h-full' user={user} /> */}
+                <img src={profile.photo} alt="profile" className='w-full h-full border-2 border-white rounded-full' />
               </div>
             </NavLink></li>
           </ul>

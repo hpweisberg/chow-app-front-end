@@ -22,6 +22,7 @@ import HeaderComponent from './components/HeaderComponent/HeaderComponent'
 // services
 import * as authService from './services/authService'
 import * as postService from './services/postService'
+import * as profileService from './services/profileService'
 
 
 // styles
@@ -31,9 +32,18 @@ import BottomNavBar from './components/BottomNavBar/BottomNavBar'
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
+  const [profile, setProfile] = useState('')
   const navigate = useNavigate()
   const [activeSort, setActiveSort] = useState('rows')
   const [filteredPosts, setFilteredPosts] = useState(posts);
+
+
+
+  const fetchAllPosts = async () => {
+    const data = await postService.getAllPosts()
+    // console.log(data)
+    setPosts(data)
+  }
 
 
   const handleSort = (sort) => {
@@ -71,15 +81,20 @@ function App() {
       setFilteredPosts(filtered);
     }
   };
-  
+
   useEffect(() => {
-    const fetchAllPosts = async () => {
-      const data = await postService.getAllPosts()
-      console.log(data)
-      setPosts(data)
-    }
+    const fetchProfile = async () => {
+      const profile = await profileService.getProfile(user.profile)
+      console.log('profile:: ',profile)
+      setProfile(profile)
+  }
+  if (user) fetchProfile()
+}, [user])
+
+  useEffect(() => {
     if (user) fetchAllPosts()
-  }, [user, posts])
+  }, [user, setPosts])
+
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -149,13 +164,13 @@ function App() {
             path="/profile/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} posts={posts}/>
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} posts={posts} profile={profile}/>
               </ProtectedRoute>
             }
           />
         </Routes>
       </div>
-      <BottomNavBar user={user} />
+      <BottomNavBar user={user} profile={profile}/>
     </div>
   )
 }

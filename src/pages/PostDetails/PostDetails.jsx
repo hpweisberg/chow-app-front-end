@@ -8,6 +8,8 @@ const PostDetails = ({ user }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  console.log('asdfasdf:', post)
+
   useEffect(() => {
     const fetchPost = async () => {
       const data = await postService.showPost(id);
@@ -36,7 +38,7 @@ const PostDetails = ({ user }) => {
     <main>
       <div className="flex items-center mb-4">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
-        <img src={post.photo} alt={post.title} className="w-12 h-12 rounded-full" />
+        <img src={post.author.photo} alt={post.title} className="w-12 h-12 rounded-full" />
         <h3 className="ml-2 text-lg font-medium text-center">{post.author.name}</h3>
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">

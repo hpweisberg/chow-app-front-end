@@ -10,7 +10,9 @@ import MealCard from '../../components/MealCard/MealCard'
 const Landing = ({ user, posts, handleSort, activeSort, filteredPosts, handleMealCardClick }) => {
   console.log('landing posts:', posts)
 
-  
+  console.log('tasdfasdf')
+  console.log(user)
+
   return (
     <main className=''>
       {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}

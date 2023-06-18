@@ -8,7 +8,7 @@ const PostCardNew = ({ post }) => {
     <div className="mb-1 overflow-hidden bg-white border rounded-lg shadow-lg max-h-48">
       <div className="flex">
         <div className="w-1/4">
-          <img src='https://picsum.photos/500' alt="Restaurant" className="object-cover h-full " />
+          <img src={post.photo} alt="Restaurant" className="object-cover h-full " />
         </div>
         <div className="w-3/4 p-4">
           <div className="flex justify-between">
