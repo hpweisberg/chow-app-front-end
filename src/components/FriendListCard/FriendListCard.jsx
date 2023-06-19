@@ -1,3 +1,5 @@
+import AcceptRequest from "../FriendRequests/AcceptRequest";
+
 const FriendListCard = ({ requests }) => {
   // console.log('FLC: ', requests)
   return (
@@ -11,6 +13,7 @@ const FriendListCard = ({ requests }) => {
               <h4 className="opacity-75">@HoldForUserName</h4>
               <div>
                 <button className="ml-0 bg-green-700 friendRequestBtn">Accecpt</button>
+                <AcceptRequest request={request._id} />
                 <button className="bg-red-700 friendRequestBtn">Decline</button>
               </div>
             </div>

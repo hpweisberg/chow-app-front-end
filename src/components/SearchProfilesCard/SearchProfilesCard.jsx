@@ -10,14 +10,14 @@ const SearchProfilesCard = ({ profile }) => {
 
   console.log(id)
 
-  // const handleClick = (id) => {
-  //   profileService.getProfile(id)
-  //   // navigate(`/profile/${id}`);
-  // }
+  const handleClick = (id) => {
+    profileService.getProfile(id)
+    // navigate(`/profile/${id}`);
+  }
 
   return (
-    <Link to={`/profile/${id}`}>
-      <div className="friendListCard">
+    <Link to={`/profile/${profile._id}`}>
+      <div onClick={handleClick} className="friendListCard">
         <img className="w-20 h-20 rounded-full" src={profile.photo} alt={profile.name} />
         <div>
           <h1>{profile.name}</h1>

@@ -40,6 +40,7 @@ function App() {
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  console.log(posts)
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -66,11 +67,17 @@ function App() {
     fetchSearchResults();
   }, [search, user]);
 
-  const fetchAllPosts = async () => {
-    const data = await postService.getAllPosts()
-    // console.log(data)
-    setPosts(data)
+  // const fetchAllPosts = async () => {
+  //   const allPosts = await postService.getAllPosts()
+    
+  //   setPosts(allPosts)
+  // }
+
+  const fetchFriendPosts = async () => {
+    const friendPosts = await postService.getFriendPosts()
+    setPosts(friendPosts)
   }
+  
 
 
   const handleSort = (sort) => {
@@ -119,10 +126,10 @@ function App() {
   }, [user])
 
   useEffect(() => {
-    if (user) fetchAllPosts()
+    if (user) fetchFriendPosts()
   }, [user, setPosts])
 
-  console.log('profileefwefwe:: ', profile)
+  // console.log('profileefwefwe:: ', profile)
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -208,7 +215,7 @@ function App() {
             path="/search"
             element={
               <ProtectedRoute user={user}>
-                <Search search={search} searchResults={searchResults} handleSearch={handleSearch}/>
+                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} />
               </ProtectedRoute>
             }
           />

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import * as profileService from '../../services/profileService'
+// import { useEffect, useState } from 'react'
+// import * as profileService from '../../services/profileService'
 
 import SearchProfilesCard from '../../components/SearchProfilesCard/SearchProfilesCard';
 

@@ -14,6 +14,19 @@ async function getAllPosts() {
   }
 }
 
+async function getFriendPosts() {
+  try {
+    const res = await fetch(`${BASE_URL}/friends`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+
+
 async function showPost(id) {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
@@ -104,5 +117,6 @@ export {
   createPost,
   showPost,
   updatePost,
-  deletePost
+  deletePost,
+  getFriendPosts
 }
