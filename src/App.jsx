@@ -121,9 +121,9 @@ function App() {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const logedInUser = await authService.getProfile(user.profile)
+      const profile = await profileService.getProfile(user.profile)
       // console.log('profile:: ',profile)
-      setLogedInUser(logedInUser)
+      setProfile(profile)
     }
     if (user) fetchProfile()
   }, [user])
@@ -141,7 +141,7 @@ function App() {
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
-            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile}  />} />
+            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile} />} />
           <Route
             path="/profiles"
             element={
