@@ -45,7 +45,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout }) => {
 
   return (
     <main className="container flex flex-col items-center justify-center">
-      <ProfilePageTopCard displayedProfile={displayedProfile} handleLogout={handleLogout} handleSort={handleSort} friendRequestsCount={friendRequestsCount}/>
+      <ProfilePageTopCard profile={profile} displayedProfile={displayedProfile} handleLogout={handleLogout} handleSort={handleSort} friendRequestsCount={friendRequestsCount}/>
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>

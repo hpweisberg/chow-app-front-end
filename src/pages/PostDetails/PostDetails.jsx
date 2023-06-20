@@ -38,8 +38,10 @@ const PostDetails = ({ user }) => {
     <main>
       <div className="flex items-center mb-4">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
-        <img src={post.author.photo} alt={post.title} className="w-12 h-12 rounded-full" />
-        <h3 className="ml-2 text-lg font-medium text-center">{post.author.name}</h3>
+        <Link to={`/profile/${post.author._id}`}>
+          <img src={post.author.photo} alt={post.title} className="w-12 h-12 rounded-full" />
+          <h3 className="ml-2 text-lg font-medium text-center">{post.author.name}</h3>
+        </Link>
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />

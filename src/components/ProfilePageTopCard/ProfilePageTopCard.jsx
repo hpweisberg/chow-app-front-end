@@ -4,9 +4,11 @@ import Button from "../Button/Button";
 import AcceptRequest from "../FriendRequests/AcceptRequest";
 
 
-const ProfilePageTopCard = ({ displayedProfile, handleLogout, handleSort, friendRequestsCount}) => {
+const ProfilePageTopCard = ({ profile, displayedProfile, handleLogout, handleSort, friendRequestsCount }) => {
+  const isOwnProfile = profile._id === displayedProfile._id; // Check if the displayed profile is the same as the signed-in user's profile
 
-  
+
+
   return (
     <>
       <div className="flex justify-center gap-3 flex-nowrap">
@@ -22,7 +24,9 @@ const ProfilePageTopCard = ({ displayedProfile, handleLogout, handleSort, friend
               <p>Posts</p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <p>{displayedProfile.friends.length}</p>
+              <Link to={`/${profile._id}/friendsList`}>
+                <p>{displayedProfile.friends.length}</p>
+              </Link>
               <p>Friends</p>
             </div>
             <div className="flex flex-col items-center justify-center">
@@ -34,9 +38,9 @@ const ProfilePageTopCard = ({ displayedProfile, handleLogout, handleSort, friend
             <Button btnText={'Edit profile'} />
             <Button btnText={'Share profile'} />
           </div>
-            <AcceptRequest />
-            <Button btnText={'Remove Friend'} />
-          <Button btnText={'Logout'} onClick={handleLogout} />
+          {!isOwnProfile && <AcceptRequest />}
+          {!isOwnProfile && <Button btnText={'Remove Friend'} />}
+          {isOwnProfile && <Button btnText={'Logout'} onClick={handleLogout} />}
         </div>
       </div>
       <p>friend request: </p>

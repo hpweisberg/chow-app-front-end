@@ -12,7 +12,9 @@ const HeaderComponent = () => {
         <Link to={'/search'}>
           <Search className="w-4 h-4 text-black" />
         </Link>
-        <Bell className="w-4 h-4 " />
+        <Link to={'/notifications'}>
+          <Bell className="w-4 h-4 " />
+        </Link>
       </div>
     </div>
   );

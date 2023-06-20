@@ -16,8 +16,6 @@ const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, pro
       {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
       {user &&
         <div className='flex flex-col justify-center border ' >
-
-          <h3>Post List</h3>
           {/* <h1 className="border-4 border-green-600">
       Hello world!
     </h1>

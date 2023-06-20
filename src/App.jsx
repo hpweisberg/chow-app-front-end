@@ -30,17 +30,20 @@ import * as profileService from './services/profileService'
 // styles
 import '../src/styles/index.css'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar'
+import FriendList from './pages/FriendList/FriendList'
+import NotificationsPage from './pages/NotificationsPage/NotificationsPage'
 
 function App() {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
+  const [logedInUser, setLogedInUser] = useState('')
   const [profile, setProfile] = useState('')
   const [activeSort, setActiveSort] = useState('rows')
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  console.log(posts)
+  // console.log(profile)
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -118,9 +121,9 @@ function App() {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profile = await profileService.getProfile(user.profile)
+      const logedInUser = await authService.getProfile(user.profile)
       // console.log('profile:: ',profile)
-      setProfile(profile)
+      setLogedInUser(logedInUser)
     }
     if (user) fetchProfile()
   }, [user])
@@ -138,7 +141,7 @@ function App() {
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
-            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile} />} />
+            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile}  />} />
           <Route
             path="/profiles"
             element={
@@ -211,11 +214,27 @@ function App() {
               </ProtectedRoute>
             }
           />
+            <Route
+              path="/:id/friendsList"
+              element={
+                <ProtectedRoute user={user}>
+                  <FriendList profile={profile} />
+                </ProtectedRoute>
+              }
+            />
           <Route
             path="/search"
             element={
               <ProtectedRoute user={user}>
                 <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute user={user}>
+                <NotificationsPage profile={profile} user={user} />
               </ProtectedRoute>
             }
           />

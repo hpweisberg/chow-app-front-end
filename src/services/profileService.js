@@ -102,6 +102,17 @@ const unfriend = async (profileId) => {
   }
 }
 
+const friendList = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/friends`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 export {
   getAllProfiles,
   addPhoto,
@@ -111,4 +122,5 @@ export {
   acceptFriendRequest,
   rejectFriendRequest,
   unfriend,
+  friendList
 }
