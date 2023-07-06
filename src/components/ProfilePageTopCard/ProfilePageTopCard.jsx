@@ -4,28 +4,28 @@ import Button from "../Button/Button";
 import AcceptRequest from "../FriendRequests/AcceptRequest";
 
 
-const ProfilePageTopCard = ({ profile, displayedProfile, handleLogout, handleSort, friendRequestsCount }) => {
-  const isOwnProfile = profile._id === displayedProfile._id; // Check if the displayed profile is the same as the signed-in user's profile
+const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount }) => {
 
+  const isOwnProfile = profile._id === localStorage.getItem('userId')
 
 
   return (
     <>
       <div className="flex justify-center gap-3 flex-nowrap">
         {/* Profile image */}
-        <img className="h-40 border-4 border-black rounded-full" src={displayedProfile.photo} alt="" />
+        <img className="h-40 border-4 border-black rounded-full" src={profile.photo} alt="" />
 
         <div>
           {/* Profile information */}
-          <h1 className="text-2xl font-bold">{displayedProfile.name}</h1>
+          <h1 className="text-2xl font-bold">{profile.name}</h1>
           <div className="flex flex-row justify-center gap-3">
             <div className="flex flex-col items-center justify-center">
-              <p>{displayedProfile.posts.length}</p>
+              <p>{profile.posts.length}</p>
               <p>Posts</p>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <Link to={`/${profile._id}/friendsList`}>
-                <p>{displayedProfile.friends.length}</p>
+              <Link to={`/${profile.handle}/friendsList`}>
+                <p>{profile.friends.length}</p>
               </Link>
               <p>Friends</p>
             </div>

@@ -11,7 +11,7 @@ const FriendListCard = ({ requests }) => {
     <div>
       {requests.map((request) => (
         <div key={request._id} className="friendListCard">
-          <Link to={`/profile/${request._id}`}>
+          <Link to={`/profile/${request.handle}`}>
             <img
               src={request.photo}
               alt={`${request.name}'s profile pic`}
@@ -21,9 +21,9 @@ const FriendListCard = ({ requests }) => {
           <div className="items-start ">
             <div>
               <h1 className="mb-1">{request.name}</h1>
-              <h4 className="opacity-75">@HoldForUserName</h4>
+              <h4 className="opacity-75">{request.handle}</h4>
               <div>
-                <AcceptRequest request={request._id} />
+                <AcceptRequest request={request.handle} />
               </div>
             </div>
           </div>

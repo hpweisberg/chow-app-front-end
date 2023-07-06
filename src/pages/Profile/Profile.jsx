@@ -8,48 +8,38 @@ import * as profileService from '../../services/profileService';
 
 import ProfilePageTopCard from '../../components/ProfilePageTopCard/ProfilePageTopCard';
 
-const Profile = ({ user, activeSort, handleSort, profile, handleLogout }) => {
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
   // ! Prof = user card. 
   //! Profile = profile card.
   // ? Need to fix this. When on a user profile and select own profile from nav bar, no change.
 
+  console.log('user posts: ', profile.posts);
   
-  const params = useParams();
-  const id = params.id;
+  // const params = useParams();
+  // const id = params.id;
 
-  const [prof, setProf] = useState(null);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      if (prof === null) {
-        const profileData = await profileService.getProfile(id);
-        setProf(profileData);
-      }
-    };
-    fetchProfile();
-  }, [id, prof]);
+  // useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     if (id === null) {
+  //       const profileData = await profileService.getProfile(id);
+  //     }
+  //   };
+  //   fetchProfile(profileData);
+  // }, [id]);
 
-  const displayProfile = () => {
-    if (prof) {
-      return prof;
-    } else {
-      return profile;
-    }
-  };
-
-  const displayedProfile = displayProfile();
 
   // console.log('displayProfile: ',displayProfile());
 
-  const friendRequestsCount = displayProfile().friendRequests.length;
+  // const friendRequestsCount = profile.friendRequests?.length;
 
   return (
     <main className="container flex flex-col items-center justify-center">
-      <ProfilePageTopCard profile={profile} displayedProfile={displayedProfile} handleLogout={handleLogout} handleSort={handleSort} friendRequestsCount={friendRequestsCount}/>
+      <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort}  />
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>
-      {activeSort === 'rows' && <PostList posts={displayProfile().posts} />}
+      {activeSort === 'rows' && <PostList posts={profile.posts} />}
       {activeSort === 'meals' && (
         <>
           <MealCard mealName='Breakfast' />

@@ -1,6 +1,6 @@
 // npm modules
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 
 // pages
 import Signup from './pages/Signup/Signup'
@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import NewPost from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
+import PostDetailsNew from './pages/PostDetails/PostDetailsNew'
 import EditPost from './pages/EditPost/EditPost'
 import TailwindTest from './pages/TailwindTest/TailwindTest'
 import Profile from './pages/Profile/Profile'
@@ -36,14 +37,82 @@ import NotificationsPage from './pages/NotificationsPage/NotificationsPage'
 function App() {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
+  const [userProfile, setUserProfile] = useState(null)
   const [posts, setPosts] = useState([])
-  const [logedInUser, setLogedInUser] = useState('')
-  const [profile, setProfile] = useState('')
+  // const [logedInUser, setLogedInUser] = useState('')
+  const [profile, setProfile] = useState(null)
   const [activeSort, setActiveSort] = useState('rows')
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  // console.log(profile)
+  const { id } = useParams();
+  // console.log('app lvl logedInUser: ',logedInUser)
+  // console.log('app lvl profile: ',profile)
+  // console.log('user: ',user)
+  // console.log('posts: ', posts)
+  // console.log('profile: ', profile)
+
+  // ! user profile
+  
+  useEffect(() => {
+    if (user) {
+      profileService.getProfile(user.handle)
+        .then(profile => {
+          setUserProfile(profile)
+          // setProfile(profile)
+        })
+      }
+    }, [user])
+    // console.log('useEffect Profile: ', userProfile)
+
+    // ! User Feed aka friends posts
+    const handleSetFriendsPosts = async () => {
+      try {
+        const friendsPosts = await postService.getFriendPosts();
+        // console.log('friendsPosts: ', friendsPosts)
+        
+        // const friendPosts = friendsPosts.filter(post => {
+        //   return post.author.handle === user.handle
+        // })
+        setPosts(friendsPosts);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    useEffect(() => {
+      if (user) {
+        handleSetFriendsPosts();
+      }
+    }, [user])
+    
+
+
+    // ! Update Profile State/ Show profile
+
+  
+    const handleShowProfile = (profile) => {
+      setProfile(profile)
+      setPosts(profile.posts)
+      navigate(`/profile/${profile.handle}`);
+    };
+    
+    // Fetch and set the profile based on the clicked user's handle
+    useEffect(() => {
+      if (id) {
+        profileService.getProfile(id)
+          .then((clickedProfile) => {
+            setProfile(clickedProfile);
+          })
+          .catch((error) => {
+            console.error('Error fetching profile:', error);
+          });
+      }
+    }, [id]);
+    
+    
+
+  // ! posts
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -69,18 +138,6 @@ function App() {
 
     fetchSearchResults();
   }, [search, user]);
-
-  // const fetchAllPosts = async () => {
-  //   const allPosts = await postService.getAllPosts()
-    
-  //   setPosts(allPosts)
-  // }
-
-  const fetchFriendPosts = async () => {
-    const friendPosts = await postService.getFriendPosts()
-    setPosts(friendPosts)
-  }
-  
 
 
   const handleSort = (sort) => {
@@ -119,20 +176,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const profile = await profileService.getProfile(user.profile)
-      // console.log('profile:: ',profile)
-      setProfile(profile)
-    }
-    if (user) fetchProfile()
-  }, [user])
-
-  useEffect(() => {
-    if (user) fetchFriendPosts()
-  }, [user, setPosts])
-
-  // console.log('profileefwefwe:: ', profile)
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -141,7 +184,7 @@ function App() {
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
-            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile} />} />
+            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile} handleLogout={handleLogout}/>} />
           <Route
             path="/profiles"
             element={
@@ -190,6 +233,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* <Route
+            path="/posts/:id"
+            element={
+              <ProtectedRoute user={user}>
+                <PostDetailsNew user={user} />
+              </ProtectedRoute>
+            }
+          /> */}
           <Route
             path="/test"
             element={
@@ -199,10 +250,11 @@ function App() {
             }
           />
           <Route
-            path="/profile/:id"
+            path="/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout} />
+                <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout}
+                posts={posts}/>
               </ProtectedRoute>
             }
           />
@@ -241,7 +293,7 @@ function App() {
 
         </Routes>
       </div>
-      <BottomNavBar user={user} profile={profile} />
+      <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFriendsPosts={handleSetFriendsPosts}/>
     </div>
   )
 }

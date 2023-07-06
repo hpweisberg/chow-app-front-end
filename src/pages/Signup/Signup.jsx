@@ -16,6 +16,7 @@ const Signup = ({ handleAuthEvt }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    handle: '',
     password: '',
     passwordConf: '',
   })
@@ -43,9 +44,9 @@ const Signup = ({ handleAuthEvt }) => {
       errMsg = "Image must be in gif, jpeg/jpg, png, svg, or webp format"
       isFileInvalid = true
     }
-    
+
     setMessage(errMsg)
-    
+
     if (isFileInvalid) {
       imgInputRef.current.value = null
       return
@@ -71,7 +72,7 @@ const Signup = ({ handleAuthEvt }) => {
     }
   }
 
-  const { name, email, password, passwordConf } = formData
+  const { name, email, handle, password, passwordConf } = formData
 
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
@@ -96,6 +97,15 @@ const Signup = ({ handleAuthEvt }) => {
           />
         </label>
         <label className={styles.label}>
+          Handle
+          <input
+            type="text"
+            value={handle}
+            name="handle"
+            onChange={handleChange}
+          />
+        </label>
+        <label className={styles.label}>
           Password
           <input
             type="password"
@@ -115,9 +125,9 @@ const Signup = ({ handleAuthEvt }) => {
         </label>
         <label className={styles.label}>
           Upload Photo
-          <input 
-            type="file" 
-            name="photo" 
+          <input
+            type="file"
+            name="photo"
             onChange={handleChangePhoto}
             ref={imgInputRef}
           />
@@ -126,7 +136,7 @@ const Signup = ({ handleAuthEvt }) => {
           <Link to="/">Cancel</Link>
           <button
             className={styles.button}
-            disabled={ isFormInvalid() || isSubmitted }
+            disabled={isFormInvalid() || isSubmitted}
           >
             {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
           </button>

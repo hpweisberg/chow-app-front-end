@@ -7,74 +7,77 @@ async function getAllProfiles() {
   try {
     const res = await fetch(BASE_URL, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
-    return await res.json()
+    });
+    return await res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
+
 
 async function getProfile(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
-    return await res.json()
+    });
+    return await res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
 
 async function addPhoto(photoData) {
   try {
-    const photoFormData = new FormData()
-    photoFormData.append('photo', photoData)
-    const profileId = tokenService.getUserFromToken().profile
+    const photoFormData = new FormData();
+    photoFormData.append('photo', photoData);
+    const profileId = tokenService.getUserFromToken().profile;
     const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
       body: photoFormData,
-    })
-    return await res.json()
+    });
+    return await res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
 
-const friendRequests = async () => {
+
+async function friendRequests() {
   try {
     const res = await fetch(`${BASE_URL}/requests`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
-    return res.json()
+    });
+    return res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
 
-const sendFriendRequest = async (profileId) => {
+async function sendFriendRequest(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}/send-friend-request`, {
       method: 'PATCH',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
-    return res.json()
+    });
+    return res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
 
-const acceptFriendRequest = async (profileId) => {
+
+async function acceptFriendRequest(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}/accept-friend-request`, {
       method: 'PATCH',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
-    return res.json()
+    });
+    return res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
 

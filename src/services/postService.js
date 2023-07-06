@@ -29,9 +29,11 @@ async function getFriendPosts() {
 
 async function showPost(id) {
   try {
+    console.log('showPost', id)
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
+    console.log('showPost', res)
     return res.json()
   } catch (err) {
     throw new Error(err)

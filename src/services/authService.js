@@ -75,4 +75,6 @@ async function changePassword(changePasswordFormData) {
   }
 }
 
+// async function update
+
 export { signup, getUser, logout, login, changePassword }

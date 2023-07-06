@@ -7,8 +7,9 @@ const PostDetails = ({ user }) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+  console.log('id:', id)
+  // console.log('post:', post.author.photo)
 
-  // console.log('asdfasdf:', post)
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -18,11 +19,19 @@ const PostDetails = ({ user }) => {
     fetchPost();
   }, [id]);
 
-  if (!post.author || !post.author._id) {
-    return null; // Handle the case when post.author is not available yet
-  }
+  console.log('post:', post)
 
-  const isAuthor = post.author._id === user.profile;
+
+
+
+  // if (!post.author || !post.author.handle) {
+  //   return null; // Handle the case when post.author is not available yet
+  // }
+
+  const isAuthor = user && post.author && user.handle === post.author.handle;
+  console.log('isAuthor:', isAuthor)
+
+  // const handleLike = async () => {
 
   const handleDelete = async () => {
     await postService.deletePost(id);
@@ -35,13 +44,18 @@ const PostDetails = ({ user }) => {
   };
 
   return (
+
+    // <div>test</div>
     <main>
       <div className="flex items-center mb-4">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
-        <Link to={`/profile/${post.author._id}`}>
-          <img src={post.author.photo} alt={post.title} className="w-12 h-12 rounded-full" />
-          <h3 className="ml-2 text-lg font-medium text-center">{post.author.name}</h3>
+        {post.author && (
+
+          <Link to={`/profile/${post.author}`}>
+          <img src={post.author?.photo} alt={post?.title} className="w-12 h-12 rounded-full" />
+          <h3 className="ml-2 text-lg font-medium text-center">{post.author?.name}</h3>
         </Link>
+          )}
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
@@ -70,6 +84,44 @@ const PostDetails = ({ user }) => {
         )}
       </article>
     </main>
+
+
+
+    // <main>
+    //   <div className="flex items-center mb-4">
+    //     <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
+    //     <Link to={`/profile/${post.author.handle}`}>
+    //       <img src={post.author.photo} alt={post.title} className="w-12 h-12 rounded-full" />
+    //       <h3 className="ml-2 text-lg font-medium text-center">{post.author.name}</h3>
+    //     </Link>
+    //   </div>
+    //   <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
+    //     <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
+    //     <h2 className="mb-1 text-2xl font-bold">{post.title}</h2>
+    //     <h4 className="mb-4 text-gray-600">Restaurant: {post.restaurant}</h4>
+    //     <p className="mb-4 text-gray-700">{post.description}</p>
+    //     <div className="flex items-center mb-4">
+    //       <span className="px-2 py-1 mr-2 text-white bg-yellow-500 rounded-md">{post.rating}</span>
+    //       <h4 className="text-gray-600">{post.meal}</h4>
+    //     </div>
+    //     {isAuthor && (
+    //       <div className="flex items-center">
+    //         <Link
+    //           to={{
+    //             pathname: `/posts/${post._id}/edit`,
+    //             state: post
+    //           }}
+    //           className="mr-4 text-blue-500"
+    //         >
+    //           Edit
+    //         </Link>
+    //         <button onClick={handleDelete} className="text-red-500">
+    //           Delete this post
+    //         </button>
+    //       </div>
+    //     )}
+    //   </article>
+    // </main>
   );
 };
 

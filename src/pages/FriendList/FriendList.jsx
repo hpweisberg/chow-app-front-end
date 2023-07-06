@@ -11,6 +11,7 @@ const FriendList = ({ profile }) => {
     const handleFriendList = async () => {
       const friendList = await profileService.friendList(profile._id);
       setFriends(friendList);
+      // console.log(friendList);
     };
 
     handleFriendList();

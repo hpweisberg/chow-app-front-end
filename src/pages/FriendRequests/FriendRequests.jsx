@@ -13,7 +13,7 @@ const FriendRequests = ({ user, profile }) => {
     }
     fetchRequests()
   }, [])
-  console.log('requests:', requests)
+  // console.log('requests:', requests)
 
   return (
     <main>

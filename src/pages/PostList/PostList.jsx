@@ -3,6 +3,8 @@ import Loading from "../Loading/Loading";
 
 const PostList = ({ posts, profile }) => {
   if (!posts && profile) {
+    console.log('asdf',posts)
+    
     return <Loading />;
   }
 

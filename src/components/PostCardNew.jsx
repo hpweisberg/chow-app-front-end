@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const PostCardNew = ({ post }) => {
 
   return (
-    <Link to={`/posts/${post._id}`}>
+    <NavLink to={`/posts/${post._id}`}>
     <div className="mb-1 overflow-hidden bg-white border rounded-lg shadow-lg max-h-48">
       <div className="flex">
         <div className="w-1/4">
@@ -24,7 +24,7 @@ const PostCardNew = ({ post }) => {
         </div>
       </div>
     </div>
-    </Link>
+    </NavLink>
   );
 }
 
