@@ -13,7 +13,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   //! Profile = profile card.
   // ? Need to fix this. When on a user profile and select own profile from nav bar, no change.
 
-  console.log('user posts: ', profile.posts);
+  console.log('user posts: ', profile);
   
   // const params = useParams();
   // const id = params.id;

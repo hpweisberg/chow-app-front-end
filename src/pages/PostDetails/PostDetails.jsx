@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import * as postService from "../../services/postService";
 import { Back } from "../../components/Icons/Icons";
 
-const PostDetails = ({ user }) => {
+const PostDetails = ({ user, handleShowProfile }) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
@@ -51,11 +51,11 @@ const PostDetails = ({ user }) => {
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
         {post.author && (
 
-          <Link to={`/profile/${post.author}`}>
-          <img src={post.author?.photo} alt={post?.title} className="w-12 h-12 rounded-full" />
-          <h3 className="ml-2 text-lg font-medium text-center">{post.author?.name}</h3>
-        </Link>
-          )}
+          <Link to={`/${post.author.handle}`} onClick={() => handleShowProfile(post.author)}>
+            <img src={post.author?.photo} alt={post?.title} className="w-12 h-12 rounded-full" />
+            <h3 className="ml-2 text-lg font-medium text-center">{post.author?.name}</h3>
+          </Link>
+        )}
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />

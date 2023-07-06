@@ -10,7 +10,6 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import NewPost from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
-import PostDetailsNew from './pages/PostDetails/PostDetailsNew'
 import EditPost from './pages/EditPost/EditPost'
 import TailwindTest from './pages/TailwindTest/TailwindTest'
 import Profile from './pages/Profile/Profile'
@@ -49,7 +48,7 @@ function App() {
   // console.log('app lvl logedInUser: ',logedInUser)
   // console.log('app lvl profile: ',profile)
   // console.log('user: ',user)
-  // console.log('posts: ', posts)
+  console.log('posts3: ', posts)
   // console.log('profile: ', profile)
 
   // ! user profile
@@ -91,26 +90,11 @@ function App() {
     // ! Update Profile State/ Show profile
 
   
-    const handleShowProfile = (profile) => {
-      setProfile(profile)
-      setPosts(profile.posts)
-      navigate(`/profile/${profile.handle}`);
+    const handleShowProfile = async (profile) => {
+      const profileData = await profileService.getProfile(profile.handle)
+      setProfile(profileData)
     };
-    
-    // Fetch and set the profile based on the clicked user's handle
-    useEffect(() => {
-      if (id) {
-        profileService.getProfile(id)
-          .then((clickedProfile) => {
-            setProfile(clickedProfile);
-          })
-          .catch((error) => {
-            console.error('Error fetching profile:', error);
-          });
-      }
-    }, [id]);
-    
-    
+  
 
   // ! posts
 
@@ -229,18 +213,11 @@ function App() {
             path="/posts/:id"
             element={
               <ProtectedRoute user={user}>
-                <PostDetails user={user} />
+                <PostDetails user={user} handleShowProfile={handleShowProfile}/>
               </ProtectedRoute>
             }
           />
-          {/* <Route
-            path="/posts/:id"
-            element={
-              <ProtectedRoute user={user}>
-                <PostDetailsNew user={user} />
-              </ProtectedRoute>
-            }
-          /> */}
+
           <Route
             path="/test"
             element={

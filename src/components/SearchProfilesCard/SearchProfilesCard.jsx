@@ -16,7 +16,7 @@ const SearchProfilesCard = ({ profile }) => {
   }
 
   return (
-    <Link to={`/profile/${profile._id}`}>
+    <Link to={`/${profile.handle}`}>
       <div onClick={handleClick} className="friendListCard">
         <img className="w-20 h-20 rounded-full" src={profile.photo} alt={profile.name} />
         <div>
