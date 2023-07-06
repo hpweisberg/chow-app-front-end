@@ -32,6 +32,10 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   // console.log('displayProfile: ',displayProfile());
 
   // const friendRequestsCount = profile.friendRequests?.length;
+  //? Keep here while content is loading
+  if (!profile) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className="container flex flex-col items-center justify-center">

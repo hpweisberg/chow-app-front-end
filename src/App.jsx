@@ -93,6 +93,9 @@ function App() {
     const handleShowProfile = async (profile) => {
       const profileData = await profileService.getProfile(profile.handle)
       setProfile(profileData)
+      setPosts(profileData.posts)
+      console.log('profileData: ',profileData)
+      console.log('profileData.posts: ',profileData.posts)
     };
   
 
