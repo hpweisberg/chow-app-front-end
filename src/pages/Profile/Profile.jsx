@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import * as profileService from '../../services/profileService';
 
 import ProfilePageTopCard from '../../components/ProfilePageTopCard/ProfilePageTopCard';
+import BackBtn from '../../components/BackBtn/BackBtn';
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
   // ! Prof = user card. 
@@ -14,7 +15,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   // ? Need to fix this. When on a user profile and select own profile from nav bar, no change.
 
   console.log('user posts: ', profile);
-  
+
   // const params = useParams();
   // const id = params.id;
 
@@ -32,14 +33,24 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   // console.log('displayProfile: ',displayProfile());
 
   // const friendRequestsCount = profile.friendRequests?.length;
+
+
   //? Keep here while content is loading
   if (!profile) {
     return <div>Loading...</div>;
   }
 
+  const isOwner = user?.handle === profile?.handle;
+
+  const isFriends = profile?.friends?.includes(user.handle);
+  console.log('isFriends: ', isFriends);
+  console.log('profile: ', profile.friends)
+  console.log('user: ', user.handle)
+
   return (
     <main className="container flex flex-col items-center justify-center">
-      <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort}  />
+        {!isOwner && <BackBtn />}
+        <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends}/>
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>

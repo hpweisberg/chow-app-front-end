@@ -7,7 +7,7 @@ const PostDetails = ({ user, handleShowProfile }) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log('id:', id)
+  // console.log('id:', id)
   // console.log('post:', post.author.photo)
 
 
@@ -19,7 +19,7 @@ const PostDetails = ({ user, handleShowProfile }) => {
     fetchPost();
   }, [id]);
 
-  console.log('post:', post)
+  // console.log('post:', post)
 
 
 
@@ -29,7 +29,7 @@ const PostDetails = ({ user, handleShowProfile }) => {
   // }
 
   const isAuthor = user && post.author && user.handle === post.author.handle;
-  console.log('isAuthor:', isAuthor)
+  // console.log('isAuthor:', isAuthor)
 
   // const handleLike = async () => {
 

@@ -3,7 +3,7 @@
 
 import SearchProfilesCard from '../../components/SearchProfilesCard/SearchProfilesCard';
 
-const Search = ({search, handleSearch, searchResults}) => {
+const Search = ({search, handleSearch, searchResults, handleShowProfile}) => {
   
   return (
     <main>
@@ -17,7 +17,7 @@ const Search = ({search, handleSearch, searchResults}) => {
           <ul>
             {searchResults.map((profile) => (
               // <li key={profile._id}>{profile.name}</li>
-              <SearchProfilesCard profile={profile} key={profile._id} />
+              <SearchProfilesCard profile={profile} key={profile._id} handleShowProfile={handleShowProfile}/>
             ))}
           </ul>
         </div>

@@ -2,11 +2,11 @@
 import { Link } from "react-router-dom";
 import { Bell, BellNew, Search } from "../../components/Icons/Icons";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({handleSetFriendsPosts}) => {
   return (
     <div className="flex items-center justify-between mx-4 my-2">
       <Link to={'/'}>
-        <h1 className="text-black no-underline decoration-none">Chow</h1>
+        <h1 onClick={() => handleSetFriendsPosts()} className="text-black no-underline decoration-none">Chow</h1>
       </Link>
       <div className="flex items-center space-x-2">
         <Link to={'/search'}>

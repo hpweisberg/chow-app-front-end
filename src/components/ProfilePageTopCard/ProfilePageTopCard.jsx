@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import AcceptRequest from "../FriendRequests/AcceptRequest";
 
 
-const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount }) => {
+const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends }) => {
 
   const isOwnProfile = profile._id === localStorage.getItem('userId')
 
@@ -35,16 +35,16 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
             </div>
           </div>
           <div className="flex flex-row justify-center gap-3">
-            <Button btnText={'Edit profile'} />
+            { isOwner && <Button btnText={'Edit profile'} />}
             <Button btnText={'Share profile'} />
           </div>
-          {!isOwnProfile && <AcceptRequest />}
-          {!isOwnProfile && <Button btnText={'Remove Friend'} />}
-          {isOwnProfile && <Button btnText={'Logout'} onClick={handleLogout} />}
+          {!isOwner && <AcceptRequest />}
+          {!isOwner && <Button btnText={'Remove Friend'} />}
+          {isOwner && <Button btnText={'Logout'} onClick={handleLogout} />}
         </div>
       </div>
-      <p>friend request: </p>
-      <Link to='/friend-requests'>{friendRequestsCount}</Link>
+      {/* <p>friend request: </p>
+      <Link to='/friend-requests'>{friendRequestsCount}</Link> */}
     </>
   );
 }

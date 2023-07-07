@@ -167,7 +167,7 @@ function App() {
   return (
     <div className='flex flex-col min-h-screen'>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
-      <HeaderComponent />
+      <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts}/>
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
@@ -258,7 +258,7 @@ function App() {
             path="/search"
             element={
               <ProtectedRoute user={user}>
-                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} />
+                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile}/>
               </ProtectedRoute>
             }
           />
