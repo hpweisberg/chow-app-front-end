@@ -62,7 +62,7 @@ const NewPost = () => {
 
   return (
     <main>
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 mt-20">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
         <h1 className="text-2xl font-bold">New Post</h1>
       </div>

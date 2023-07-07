@@ -47,7 +47,7 @@ const PostDetails = ({ user, handleShowProfile }) => {
 
     // <div>test</div>
     <main>
-      <div className="flex items-center mb-4">
+      <div className="flex items-center mb-4 mt-20">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
         {post.author && (
 
@@ -57,7 +57,7 @@ const PostDetails = ({ user, handleShowProfile }) => {
           </Link>
         )}
       </div>
-      <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
+      <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg mb-20">
         <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
         <h2 className="mb-1 text-2xl font-bold">{post.title}</h2>
         <h4 className="mb-4 text-gray-600">Restaurant: {post.restaurant}</h4>

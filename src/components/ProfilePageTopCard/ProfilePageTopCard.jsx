@@ -11,7 +11,7 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
 
   return (
     <>
-      <div className="flex justify-center gap-3 flex-nowrap">
+      <div className="flex justify-center gap-3 flex-nowrap mt-20">
         {/* Profile image */}
         <img className="h-40 border-4 border-black rounded-full" src={profile.photo} alt="" />
 

@@ -20,14 +20,14 @@ const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, pro
     //   <button onClick={handleLogout}>Logout</button>
     // </main>
     <main className=''>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
+      {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
       {user &&
         <div className='flex flex-col justify-center border ' >
           {/* <h1 className="border-4 border-green-600">
       Hello world!
     </h1>
             <h2 className='text-primary-932'>Howdy World</h2> */}
-          <div className='w-full '>
+          <div className='w-full mt-14'>
             <PostIconNav handleSort={handleSort} />
           </div>
           {/* <PostList posts={posts} /> */}
