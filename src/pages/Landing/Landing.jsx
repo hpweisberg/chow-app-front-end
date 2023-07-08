@@ -12,44 +12,37 @@ NavLink
 
 const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, profile, logedInUser, handleLogout }) => {
   // console.log('second time:: ',logedInUser)
+  // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
+
 
 
   return (
-    // <main>
-    //   <h1>hello, {user ? user.handle : 'friend'}</h1>
-    //   <button onClick={handleLogout}>Logout</button>
-    // </main>
     <main className=''>
-      {/* <h1>hello, {user ? user.name : 'friend'}</h1> */}
-      {user &&
-        <div className='flex flex-col justify-center border ' >
-          {/* <h1 className="border-4 border-green-600">
-      Hello world!
-    </h1>
-            <h2 className='text-primary-932'>Howdy World</h2> */}
+      {user && (
+        <div className='flex flex-col justify-center border'>
           <div className='w-full mt-14'>
             <PostIconNav handleSort={handleSort} />
           </div>
-          {/* <PostList posts={posts} /> */}
-          {activeSort === 'rows' && <PostList profile={profile} posts={posts}/>}
-      {activeSort === 'meals' &&
-        <>
-          <MealCard mealName='Breakfast' onClick={handleMealCardClick} />
-          <MealCard mealName='Lunch' />
-          <MealCard mealName='Dinner' />
-          <MealCard mealName='Snack' />
-          <MealCard mealName='Dessert' />
-          <MealCard mealName='Drink' />
-          <MealCard mealName='Brunch' />
-          <MealCard mealName='Other' />
-        </>
-      }
-      {activeSort === 'map' && <></>}
-      {/* <PostList posts={profile} /> */}
+          {activeSort === 'rows' && <PostList profile={profile} posts={posts} />}
+          {activeSort === 'meals' && (
+            <>
+              {/* {posts.map((category) => (
+                <MealCard
+                  key={category}
+                  mealName={category}
+                  onClick={() => handleMealCardClick(category)}
+                  posts={posts}
+                />
+              ))} */}
+              <MealCard posts={posts} />
+            </>
+          )}
+          {activeSort === 'map' && <></>}
         </div>
-      }
+      )}
     </main>
-  )
-}
+  );
+};
+
 
 export default Landing

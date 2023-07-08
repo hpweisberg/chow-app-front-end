@@ -7,41 +7,75 @@ import drinkImage from '../../assets/DrinkPic.jpeg';
 import dessertImage from '../../assets/DessertPic.jpeg';
 import otherImage from '../../assets/OtherPic.jpeg';
 
-
-
-
-
-
-const MealCard = (props) => {
-  const getImage = (mealName) => {
-    const imageMap = {
-      Breakfast: breakfastImage,
-      Lunch: lunchImage,
-      Dinner: dinnerImage,
-      Brunch: brunchImage,
-      Snack: snackImage,
-      Drink: drinkImage,
-      Dessert: dessertImage,
-      Other: otherImage,
-    };
-
-    if (mealName in imageMap) {
-      return imageMap[mealName];
-    }
+const MealCard = ({ posts }) => {
+  const mealImages = {
+    breakfast: breakfastImage,
+    lunch: lunchImage,
+    dinner: dinnerImage,
+    brunch: brunchImage,
+    snack: snackImage,
+    drink: drinkImage,
+    dessert: dessertImage,
+    other: otherImage,
   };
 
-  const imageUrl = getImage(props.mealName);
+  const mealNames = Object.keys(mealImages);
 
-  const cardStyle = {
-    backgroundImage: `url(${imageUrl})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  };
+  if (!posts) {
+    return <div>Loading...</div>;
+  }
+
+  if (posts.length === 0) {
+    return <div>No meal cards yet</div>;
+  }
+
+  const mealTypes = [...new Set(posts.map((post) => post.meal))];
+  console.log('mealTypes: ', mealTypes)
 
   return (
-    <div className='flex items-center justify-center w-full h-24 mb-1 postCard' style={cardStyle}>
-      <h2 className="text-2xl text-white">{props.mealName}</h2>
-    </div>
+    <>
+      {mealTypes.map((mealType) => {
+        if (mealNames.includes(mealType)) {
+          const imageUrl = mealImages[mealType];
+
+          return (
+            <div
+              key={mealType}
+              className='flex items-center justify-center w-full h-24 mb-1 postCard'
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <h2 className='text-2xl text-white'>{mealType}</h2>
+            </div>
+          );
+        }
+        return null;
+      })}
+
+      {/* {mealTypes.map((mealType) => {
+        if (mealNames.includes(mealType)) {
+          const imageUrl = mealImages[mealType];
+
+          return (
+            <div
+              key={mealType}
+              className='flex items-center justify-center w-full h-24 mb-1 postCard'
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <h2 className='text-2xl text-white'>{mealType}</h2>
+            </div>
+          );
+        }
+        return null;
+      })}  */}
+    </>
   );
 };
 

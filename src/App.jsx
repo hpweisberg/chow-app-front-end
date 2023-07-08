@@ -52,7 +52,7 @@ function App() {
   // console.log('profile: ', profile)
 
   // ! user profile
-  
+
   useEffect(() => {
     if (user) {
       profileService.getProfile(user.handle)
@@ -60,44 +60,44 @@ function App() {
           setUserProfile(profile)
           // setProfile(profile)
         })
-      }
-    }, [user])
-    // console.log('useEffect Profile: ', userProfile)
-
-    // ! User Feed aka friends posts
-    const handleSetFriendsPosts = async () => {
-      try {
-        const friendsPosts = await postService.getFriendPosts();
-        // console.log('friendsPosts: ', friendsPosts)
-        
-        // const friendPosts = friendsPosts.filter(post => {
-        //   return post.author.handle === user.handle
-        // })
-        setPosts(friendsPosts);
-      } catch (err) {
-        console.error(err);
-      }
     }
+  }, [user])
+  // console.log('useEffect Profile: ', userProfile)
 
-    useEffect(() => {
-      if (user) {
-        handleSetFriendsPosts();
-      }
-    }, [user])
-    
+  // ! User Feed aka friends posts
+  const handleSetFriendsPosts = async () => {
+    try {
+      const friendsPosts = await postService.getFriendPosts();
+      // console.log('friendsPosts: ', friendsPosts)
+
+      // const friendPosts = friendsPosts.filter(post => {
+      //   return post.author.handle === user.handle
+      // })
+      setPosts(friendsPosts);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    if (user) {
+      handleSetFriendsPosts();
+    }
+  }, [user])
 
 
-    // ! Update Profile State/ Show profile
 
-  
-    const handleShowProfile = async (profile) => {
-      const profileData = await profileService.getProfile(profile.handle)
-      setProfile(profileData)
-      setPosts(profileData.posts)
-      console.log('profileData: ',profileData)
-      console.log('profileData.posts: ',profileData.posts)
-    };
-  
+  // ! Update Profile State/ Show profile
+
+
+  const handleShowProfile = async (profile) => {
+    const profileData = await profileService.getProfile(profile.handle)
+    setProfile(profileData)
+    setPosts(profileData.posts)
+    console.log('profileData: ', profileData)
+    console.log('profileData.posts: ', profileData.posts)
+  };
+
 
   // ! posts
 
@@ -158,20 +158,30 @@ function App() {
     if (mealName === 'rows') {
       setFilteredPosts(posts);
     } else {
-      const filtered = posts.filter(post => post.mealName === mealName);
+      const filtered = posts.filter((post) => post.mealName === mealName);
       setFilteredPosts(filtered);
     }
   };
 
 
+
   return (
     <div className='flex flex-col min-h-screen'>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
-      <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts}/>
+      <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts} />
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
-            {<Landing user={user} posts={posts} handleSort={handleSort} activeSort={activeSort} filteredPosts={filteredPosts} handleMealCardClick={handleMealCardClick} profile={profile} handleLogout={handleLogout}/>} />
+            {<Landing
+              user={user}
+              posts={posts}
+              handleSort={handleSort}
+              activeSort={activeSort}
+              filteredPosts={filteredPosts}
+              handleMealCardClick={handleMealCardClick}
+              profile={profile}
+              handleLogout={handleLogout} />}
+          />
           <Route
             path="/profiles"
             element={
@@ -216,7 +226,7 @@ function App() {
             path="/posts/:id"
             element={
               <ProtectedRoute user={user}>
-                <PostDetails user={user} handleShowProfile={handleShowProfile}/>
+                <PostDetails user={user} handleShowProfile={handleShowProfile} />
               </ProtectedRoute>
             }
           />
@@ -234,7 +244,7 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout}
-                posts={posts}/>
+                  posts={posts} />
               </ProtectedRoute>
             }
           />
@@ -246,19 +256,19 @@ function App() {
               </ProtectedRoute>
             }
           />
-            <Route
-              path="/:id/friendsList"
-              element={
-                <ProtectedRoute user={user}>
-                  <FriendList profile={profile} />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/:id/friendsList"
+            element={
+              <ProtectedRoute user={user}>
+                <FriendList profile={profile} />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/search"
             element={
               <ProtectedRoute user={user}>
-                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile}/>
+                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} />
               </ProtectedRoute>
             }
           />
@@ -273,7 +283,7 @@ function App() {
 
         </Routes>
       </div>
-      <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFriendsPosts={handleSetFriendsPosts}/>
+      <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFriendsPosts={handleSetFriendsPosts} />
     </div>
   )
 }
