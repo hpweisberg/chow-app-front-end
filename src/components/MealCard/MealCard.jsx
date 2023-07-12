@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import breakfastImage from '../../assets/BreakfastPic.jpeg';
-import brunchImage from '../../assets/BrunchPic.jpeg';
-import dessertImage from '../../assets/DessertPic.jpeg';
-import dinnerImage from '../../assets/DinnerPic.jpeg';
-import drinkImage from '../../assets/DrinkPic.jpeg';
 import lunchImage from '../../assets/LunchPic.jpeg';
-import otherImage from '../../assets/OtherPic.jpeg';
+import dinnerImage from '../../assets/DinnerPic.jpeg';
+import brunchImage from '../../assets/BrunchPic.jpeg';
 import snackImage from '../../assets/SnackPic.jpeg';
+import drinkImage from '../../assets/DrinkPic.jpeg';
+import dessertImage from '../../assets/DessertPic.jpeg';
+import otherImage from '../../assets/OtherPic.jpeg';
 import PostCardNew from '../PostCardNew';
 
 
@@ -25,6 +25,7 @@ const MealCard = ({ posts }) => {
   const [expandMealType, setExpandMealType] = useState(false);
 
   const [filteredPosts, setFilteredPosts] = useState([]);
+  
 
   const handleMealFilterClick = (mealType) => {
     setFilteredPosts(posts.filter((post) => post.meal === mealType));
@@ -50,7 +51,28 @@ const MealCard = ({ posts }) => {
 
   return (
     <>
-      {mealTypes.map((mealType) => {
+    {expandMealType ? 
+    <div
+              key={filteredPosts[0].meal}
+              className='flex items-center justify-center w-full h-24 mb-1 postCard'
+              style={{
+                backgroundImage: `url(${mealImages[filteredPosts[0].meal]})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+              onClick={() => handleMealFilterClick(filteredPosts[0].meal)}
+              // onClick={() => handleClick2()}
+            >
+              <h2 className='text-2xl text-white'>{filteredPosts[0].meal}</h2>
+      </div>
+    : null}
+    {expandMealType ? 
+    filteredPosts.map((post) => 
+      <div key={post._id}>
+        <PostCardNew post={post}/>
+      </div>
+      ) : 
+      mealTypes.map((mealType) => {
         if (mealNames.includes(mealType)) {
           const imageUrl = mealImages[mealType];
 
@@ -72,11 +94,6 @@ const MealCard = ({ posts }) => {
         }
         return null;
       })}
-      { expandMealType && filteredPosts.map((post) => 
-      <div key={post._id}>
-        <PostCardNew post={post}/>
-      </div>
-      )}
     </>
   );
 };
