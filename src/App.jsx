@@ -41,10 +41,9 @@ function App() {
   // const [logedInUser, setLogedInUser] = useState('')
   const [profile, setProfile] = useState(null)
   const [activeSort, setActiveSort] = useState('rows')
-  const [filteredPosts, setFilteredPosts] = useState(posts);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const { id } = useParams();
+  // const { id } = useParams();
   // console.log('app lvl logedInUser: ',logedInUser)
   // console.log('app lvl profile: ',profile)
   // console.log('user: ',user)
@@ -94,8 +93,8 @@ function App() {
     const profileData = await profileService.getProfile(profile.handle)
     setProfile(profileData)
     setPosts(profileData.posts)
-    console.log('profileData: ', profileData)
-    console.log('profileData.posts: ', profileData.posts)
+    // console.log('profileData: ', profileData)
+    // console.log('profileData.posts: ', profileData.posts)
   };
 
 
@@ -153,17 +152,6 @@ function App() {
     navigate('/posts/:id')
   }
 
-  const handleMealCardClick = (mealName) => {
-    setActiveSort(mealName);
-    if (mealName === 'rows') {
-      setFilteredPosts(posts);
-    } else {
-      const filtered = posts.filter((post) => post.mealName === mealName);
-      setFilteredPosts(filtered);
-    }
-  };
-
-
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -177,8 +165,8 @@ function App() {
               posts={posts}
               handleSort={handleSort}
               activeSort={activeSort}
-              filteredPosts={filteredPosts}
-              handleMealCardClick={handleMealCardClick}
+              // // filteredPosts={filteredPosts}
+              // handleMealCardClick={handleMealCardClick}
               profile={profile}
               handleLogout={handleLogout} />}
           />

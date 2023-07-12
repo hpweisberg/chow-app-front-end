@@ -10,10 +10,10 @@ NavLink
 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, profile, logedInUser, handleLogout }) => {
+const Landing = ({ user, posts, handleSort, activeSort, profile, logedInUser, handleLogout, filteredPosts }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
-
+console.log('filteredPosts: ', filteredPosts)
 
 
   return (
@@ -30,7 +30,6 @@ const Landing = ({ user, posts, handleSort, activeSort, handleMealCardClick, pro
                 <MealCard
                   key={category}
                   mealName={category}
-                  onClick={() => handleMealCardClick(category)}
                   posts={posts}
                 />
               ))} */}

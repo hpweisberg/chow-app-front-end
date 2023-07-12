@@ -49,23 +49,16 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
 
   return (
     <main className="container flex flex-col items-center justify-center">
-        {!isOwner && <BackBtn />}
-        <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends}/>
+      {!isOwner && <BackBtn />}
+      <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends} />
       <div className='flex items-center justify-between w-64 py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>
       {activeSort === 'rows' && <PostList posts={profile.posts} />}
       {activeSort === 'meals' && (
-        <>
-          <MealCard mealName='Breakfast' />
-          <MealCard mealName='Lunch' />
-          <MealCard mealName='Dinner' />
-          <MealCard mealName='Snack' />
-          <MealCard mealName='Dessert' />
-          <MealCard mealName='Drink' />
-          <MealCard mealName='Brunch' />
-          <MealCard mealName='Other' />
-        </>
+
+        <MealCard posts={posts} />
+
       )}
       {activeSort === 'map' && <></>}
     </main>
