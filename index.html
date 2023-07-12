@@ -10,5 +10,20 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=<INSERT-API-KEY-HERE>&libraries=places&callback=initMap"async></script> -->
+  
+    <!-- <script>
+      // Fetch the API key from the backend
+      fetch('/api/getApiKey')
+        .then(response => response.text())
+        .then(apiKey => {
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=initMap`;
+          script.async = true;
+          document.body.appendChild(script);
+        })
+        .catch(error => {
+          console.error('Failed to retrieve API key:', error);
+        });
+    </script> -->
   </body>
 </html>

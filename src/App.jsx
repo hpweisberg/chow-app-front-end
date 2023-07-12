@@ -32,6 +32,7 @@ import '../src/styles/index.css'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar'
 import FriendList from './pages/FriendList/FriendList'
 import NotificationsPage from './pages/NotificationsPage/NotificationsPage'
+import RestaurantSearch from './pages/RestaurantSearch/RestaurantSearch'
 
 function App() {
   const navigate = useNavigate()
@@ -265,6 +266,14 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <NotificationsPage profile={profile} user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/restaurantSearch"
+            element={
+              <ProtectedRoute user={user}>
+                <RestaurantSearch profile={profile} user={user} />
               </ProtectedRoute>
             }
           />
