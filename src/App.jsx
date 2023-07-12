@@ -73,6 +73,7 @@ function App() {
       //   return post.author.handle === user.handle
       // })
       setPosts(friendsPosts);
+      setActiveSort('rows')
     } catch (err) {
       console.error(err);
     }
@@ -93,6 +94,7 @@ function App() {
     const profileData = await profileService.getProfile(profile.handle)
     setProfile(profileData)
     setPosts(profileData.posts)
+    setActiveSort('rows')
     // console.log('profileData: ', profileData)
     // console.log('profileData.posts: ', profileData.posts)
   };
