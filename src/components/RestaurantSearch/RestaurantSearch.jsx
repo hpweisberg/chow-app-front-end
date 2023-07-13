@@ -4,7 +4,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from 'use-places-autocomplete';
 
-const RestaurantSearch = () => {
+const RestaurantSearch = ({onChange}) => {
   console.log('searchme')
 
   const [location, setLocation] = useState('');
@@ -17,13 +17,14 @@ const RestaurantSearch = () => {
   } = usePlacesAutocomplete({
     requestOptions: {
       // define search scope here
+      types: ['restaurant'],
     },
     debounce: 300,
   });
 
-  const ref = () => {
-    clearSuggestions();
-  }
+  // const ref = () => {
+  //   clearSuggestions();
+  // }
 
   const handleInput = (e) => {
     setValue(e.target.value);
@@ -31,21 +32,28 @@ const RestaurantSearch = () => {
 
   const handleSelect =
     ({ description }) =>
-    () => { 
-      setValue(description, false);
-      clearSuggestions();
+      () => {
+        setValue(description, false);
+        clearSuggestions();
 
-      try {
-        getGeocode({ address: description }).then((results) => {
-          const { lat, lng } = getLatLng(results[0]);
-          console.log("📍 Coordinates: ", { lat, lng });
-        });  
-      } catch (error) {
-        console.log('error', error);
+        try {
+          getGeocode({ address: description }).then((results) => {
+            const { lat, lng } = getLatLng(results[0]);
+            console.log("📍 Coordinates: ", { lat, lng });
+            onChange({
+              name: description,
+              lat,
+              lng,
+              place_id: results[0].place_id,
+            })
+            // console.log("📍 Data: ", { results });
+          });
+        } catch (error) {
+          console.log('error', error);
+        }
       }
-    }
-    
-    const renderSuggestions = () =>
+
+  const renderSuggestions = () =>
     data.map((suggestion) => {
       const {
         place_id,
@@ -62,18 +70,22 @@ const RestaurantSearch = () => {
       );
     })
 
-    return (
-      <div ref={ref}>
-        <input
+  return (
+    <div>
+      <label htmlFor="restaurant-search">Restaurant</label>
+      <input
+        name='restaurant-search'
         value={value}
         onChange={handleInput}
         disabled={!ready}
         placeholder='Where are you going?'
+        className='mt-20' 
+        autoComplete='off'
         />
-        {status === 'OK' && <ul>{renderSuggestions()}</ul>}
-      </div>
-    )
-  
+      {status === 'OK' && <ul>{renderSuggestions()}</ul>}
+    </div>
+  )
+
   // return (
   //   <>
   //     <h1 className="mt-20">Restaurant Search</h1>

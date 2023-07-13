@@ -32,7 +32,8 @@ import '../src/styles/index.css'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar'
 import FriendList from './pages/FriendList/FriendList'
 import NotificationsPage from './pages/NotificationsPage/NotificationsPage'
-import RestaurantSearch from './pages/RestaurantSearch/RestaurantSearch'
+import EditProfile from './pages/EditProfile/EditProfile'
+import RestaurantSearch from './components/RestaurantSearch/RestaurantSearch'
 
 function App() {
   const navigate = useNavigate()
@@ -74,6 +75,7 @@ function App() {
       //   return post.author.handle === user.handle
       // })
       setPosts(friendsPosts);
+      setActiveSort('rows')
     } catch (err) {
       console.error(err);
     }
@@ -94,6 +96,7 @@ function App() {
     const profileData = await profileService.getProfile(profile.handle)
     setProfile(profileData)
     setPosts(profileData.posts)
+    setActiveSort('rows')
     // console.log('profileData: ', profileData)
     // console.log('profileData.posts: ', profileData.posts)
   };
@@ -274,6 +277,15 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <RestaurantSearch profile={profile} user={user} />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/edit-profile"
+            element={
+              <ProtectedRoute user={user}>
+                <EditProfile profile={profile} user={user} />
               </ProtectedRoute>
             }
           />
