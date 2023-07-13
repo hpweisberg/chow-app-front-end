@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as postService from '../../services/postService';
 import { Back } from '../../components/Icons/Icons';
@@ -22,22 +22,49 @@ const NewPost = () => {
     title: '',
     rating: null,
     description: '',
+    restaurant: {
+      placeId: '',
+      restaurantName: '',
+      lat: null,
+      lng: null,
+    }
   });
 
-  const [restaurantData, setRestaurantData] = useState({
-    place_id: '',
-    name: '',
-    lat: '',
-    lng: '',
-    phoneNum: '',
-    website: '',
-  })
+  // const [restaurantData, setRestaurantData] = useState({
+  //   place_id: '',
+  //   restaurantName: '',
+  //   lat: null,
+  //   lng: null,
+  //   phoneNum: null,
+  //   website: '',
+  // })
+
+  // console.log('newpost RD: ', restaurantData)
+  console.log('newpost FD restaurant: ', formData.restaurant)
+  console.log('newpost FD: ', formData)
+// console.log('resturant name: ', formData.restaurant.restaurantName)
+// console.log('place_id: ', formData.restaurant.place_id)
+// console.log('lat: ', formData.restaurant.lat)
+// console.log('lng: ', formData.restaurant.lng)
+
+
+const handleRestaurantData = useCallback((data) => {
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    restaurant: {
+      ...prevFormData.restaurant,
+      ...data,
+    },
+  }));
+}, []);
+
 
   const [photoData, setPhotoData] = useState({});
 
   const handleChangePhoto = (evt) => {
     setPhotoData({ photo: evt.target.files[0] });
   };
+
 
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
@@ -81,7 +108,7 @@ const NewPost = () => {
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
-          <RestaurantSearch />
+          <RestaurantSearch handleRestaurantData={handleRestaurantData} />
           <label htmlFor="name-input">Name</label>
           <input
             required
