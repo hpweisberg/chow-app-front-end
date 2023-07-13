@@ -40,7 +40,7 @@ async function showPost(id) {
   }
 }
 
-async function createPost(post, photo) {
+async function createPost(post, photo, restaurant) {
   try {
     const res = await fetch(BASE_URL, {
       method: 'POST',
@@ -59,6 +59,15 @@ async function createPost(post, photo) {
         photoFormData,
       )
       return postWithPhoto
+    } if (restaurant) {
+      const restaurantFormData = new FormData()
+      restaurantFormData.append('restaurant', restaurant)
+      const postId = await res.json()
+      const postWithRestaurant = await addPhoto(
+        postId._id,
+        restaurantFormData,
+      )
+      return postWithRestaurant
     } else {
       return await res.json()
     }
@@ -112,6 +121,17 @@ async function addPhoto(postId, photoData) {
   return res.json()
 }
 
+async function addRestaurant(postId, restaurantData) {
+  const res = await fetch(`${BASE_URL}/${postId}/add-restaurant`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: restaurantData,
+  })
+  return res.json()
+}
+
 
 export {
   getAllPosts,
@@ -120,5 +140,6 @@ export {
   showPost,
   updatePost,
   deletePost,
-  getFriendPosts
+  getFriendPosts,
+  addRestaurant
 }
