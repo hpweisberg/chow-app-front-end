@@ -44,6 +44,21 @@ async function addPhoto(photoData) {
   }
 }
 
+async function updateProfile(profileData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(profileData),
+    });
+    return await res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 
 async function friendRequests() {
   try {
@@ -125,5 +140,6 @@ export {
   acceptFriendRequest,
   rejectFriendRequest,
   unfriend,
-  friendList
+  friendList,
+  updateProfile
 }

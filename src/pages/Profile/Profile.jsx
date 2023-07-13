@@ -4,7 +4,7 @@ import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
 import { Link, useParams } from "react-router-dom";
-import * as profileService from '../../services/profileService';
+// import * as profileService from '../../services/profileService';
 
 import ProfilePageTopCard from '../../components/ProfilePageTopCard/ProfilePageTopCard';
 import BackBtn from '../../components/BackBtn/BackBtn';

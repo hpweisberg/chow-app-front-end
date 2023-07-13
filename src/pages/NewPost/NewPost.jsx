@@ -5,6 +5,8 @@ import { Back } from '../../components/Icons/Icons';
 
 import Rating from '../../components/Rating/Rating';
 import MealSelector from '../../components/MealSelector/MealSelector';
+// import PlacesAutocomplete from '../../components/PlacesAutocomplete/PlacesAutocomplete';
+import RestaurantSearch from '../../components/RestaurantSearch/RestaurantSearch';
 
 
 
@@ -21,6 +23,16 @@ const NewPost = () => {
     rating: null,
     description: '',
   });
+
+  const [restaurantData, setRestaurantData] = useState({
+    place_id: '',
+    name: '',
+    lat: '',
+    lng: '',
+    phoneNum: '',
+    website: '',
+  })
+
   const [photoData, setPhotoData] = useState({});
 
   const handleChangePhoto = (evt) => {
@@ -68,6 +80,8 @@ const NewPost = () => {
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+
+          <RestaurantSearch />
           <label htmlFor="name-input">Name</label>
           <input
             required

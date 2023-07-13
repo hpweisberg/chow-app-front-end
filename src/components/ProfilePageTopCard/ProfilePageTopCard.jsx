@@ -35,7 +35,11 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
             </div>
           </div>
           <div className="flex flex-row justify-center gap-3">
-            { isOwner && <Button btnText={'Edit profile'} />}
+            {isOwner &&
+              <Link to={`/edit-profile`}>
+                <Button btnText={'Edit profile'} />
+              </Link>
+            }
             <Button btnText={'Share profile'} />
           </div>
           {!isOwner && <AcceptRequest />}
