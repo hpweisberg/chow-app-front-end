@@ -38,7 +38,6 @@ console.log('filteredPosts: ', filteredPosts)
               <MealCard posts={posts} />
             </>
           )}
-          {/* {activeSort === 'map' && <Map />} */}
           {activeSort === 'map' && isLoaded && <Map posts={posts}/>}
           {activeSort === 'map' && !isLoaded && <Loading />}
         </div>
