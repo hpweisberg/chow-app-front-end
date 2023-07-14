@@ -7,7 +7,7 @@ import Rating from '../../components/Rating/Rating';
 import MealSelector from '../../components/MealSelector/MealSelector';
 // import PlacesAutocomplete from '../../components/PlacesAutocomplete/PlacesAutocomplete';
 import RestaurantSearch from '../../components/RestaurantSearch/RestaurantSearch';
-
+import { LoadScript } from '@react-google-maps/api'
 
 
 
@@ -42,21 +42,21 @@ const NewPost = () => {
   // console.log('newpost RD: ', restaurantData)
   console.log('newpost FD restaurant: ', formData.restaurant)
   console.log('newpost FD: ', formData)
-// console.log('resturant name: ', formData.restaurant.restaurantName)
-// console.log('place_id: ', formData.restaurant.place_id)
-// console.log('lat: ', formData.restaurant.lat)
-// console.log('lng: ', formData.restaurant.lng)
+  // console.log('resturant name: ', formData.restaurant.restaurantName)
+  // console.log('place_id: ', formData.restaurant.place_id)
+  // console.log('lat: ', formData.restaurant.lat)
+  // console.log('lng: ', formData.restaurant.lng)
 
 
-const handleRestaurantData = useCallback((data) => {
-  setFormData((prevFormData) => ({
-    ...prevFormData,
-    restaurant: {
-      ...prevFormData.restaurant,
-      ...data,
-    },
-  }));
-}, []);
+  const handleRestaurantData = useCallback((data) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      restaurant: {
+        ...prevFormData.restaurant,
+        ...data,
+      },
+    }));
+  }, []);
 
 
   const [photoData, setPhotoData] = useState({});
@@ -74,14 +74,14 @@ const handleRestaurantData = useCallback((data) => {
     e.preventDefault();
     try {
       const createdPost = await postService.createPost(formData, photoData.photo);
-    // const addPhoto = await postService.addPhoto(createdPost._id, photoData);
+      // const addPhoto = await postService.addPhoto(createdPost._id, photoData);
       navigate('/');
       console.log(createdPost); // You can now use the createdPost object as needed
     } catch (err) {
       console.log(err);
     }
   };
-  
+
 
 
 
@@ -107,8 +107,10 @@ const handleRestaurantData = useCallback((data) => {
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+          {/* <LoadScript> */}
 
-          <RestaurantSearch handleRestaurantData={handleRestaurantData} />
+            <RestaurantSearch handleRestaurantData={handleRestaurantData} />
+          {/* </LoadScript> */}
           <label htmlFor="name-input">Name</label>
           <input
             required

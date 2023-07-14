@@ -1,13 +1,16 @@
 // import { useState } from 'react'
+import { useLoadScript } from "@react-google-maps/api";
 
 // css
 import PostList from '../PostList/PostList'
 import PostIconNav from '../../components/PostIconNav/PostIconNav'
 import MealCard from '../../components/MealCard/MealCard'
 import Map from '../../components/Map/Map'
+import Loading from "../Loading/Loading";
 import { NavLink } from 'react-router-dom'
 NavLink
 
+// import { GoogleMap, useLoadScript, Marker, } from "@react-google-maps/api"
 
 
 
@@ -15,6 +18,11 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, filteredPosts }
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
 console.log('filteredPosts: ', filteredPosts)
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
+    libraries: ["places"],
+  })
 
 
   return (
@@ -27,17 +35,12 @@ console.log('filteredPosts: ', filteredPosts)
           {activeSort === 'rows' && <PostList profile={profile} posts={posts} />}
           {activeSort === 'meals' && (
             <>
-              {/* {posts.map((category) => (
-                <MealCard
-                  key={category}
-                  mealName={category}
-                  posts={posts}
-                />
-              ))} */}
               <MealCard posts={posts} />
             </>
           )}
-          {activeSort === 'map' && <Map />}
+          {/* {activeSort === 'map' && <Map />} */}
+          {activeSort === 'map' && isLoaded && <Map />}
+          {activeSort === 'map' && !isLoaded && <Loading />}
         </div>
       )}
     </main>
