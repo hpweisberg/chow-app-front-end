@@ -6,16 +6,15 @@ import PostCardNew from "../PostCardNew";
 
 const Map = ({ posts }) => {
   const mapRef = useRef();
-  // const center = useMemo(() => ({ lat: 33.983841, lng: -118.451424 }), []);
   const [currentLocation, setCurrentLocation] = useState(null)
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [markers, setMarkers] = useState([]);
   const options = useMemo(() => ({
     disableDefaultUI: true,
     clickableIcons: false,
 
   }), []);
 
-  const [selectedPost, setSelectedPost] = useState(null);
-  const [markers, setMarkers] = useState([]);
 
   const onLoad = useCallback(map => (mapRef.current = map), []);
 
@@ -68,9 +67,8 @@ const Map = ({ posts }) => {
 
   return (
     <>
-      <h1>Map</h1>
-      <div className="w-full h-[550px]">
-      {currentLocation && (
+      <div className="w-full h-[550px] relative">
+        {currentLocation && (
           <GoogleMap
             className="w-full h-full"
             mapContainerClassName="w-full h-full"
@@ -85,11 +83,13 @@ const Map = ({ posts }) => {
         )}
       </div>
       {selectedPost && (
-        <PostCardNew
-          post={selectedPost}
-          onClose={() => setSelectedPost(null)}
-          onCardClick={handleCardClick}
-        />
+        <div className='absolute top-0 left-0 w-full z-10'>
+          <PostCardNew
+            post={selectedPost}
+            onClose={() => setSelectedPost(null)}
+            onCardClick={handleCardClick}
+          />
+        </div>
       )}
     </>
   );
