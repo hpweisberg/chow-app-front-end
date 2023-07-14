@@ -1,21 +1,22 @@
+// Map.js
 
+import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 
-const map = () => {
-  const initMap = () => {
-    const map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
-    });
-  }
-  
+const Map = () => {
   return (
     <>
       <h1>Map</h1>
-      <div id="map" className="w-84 h-84 border-red-500 bg-blue-500">
-        <h4>hi</h4>
+      <div className="w-full h-[650px]">
+        {/* <GoogleMap zoom={8} center={{ lat: -34.397, lng: 150.644 }} /> */}
+      {/* <LoadScript > */}
+        <GoogleMap className="w-full h-full" mapContainerClassName="w-full h-full" center={{ lat: 33.983841, lng: -118.451424 }} zoom={8}>
+          You can add markers or other map components here
+          {/* <Marker position={{ lat: -34.397, lng: 150.644 }} /> */}
+        </GoogleMap>
+      {/* </LoadScript> */}
       </div>
     </>
   );
-}
+};
 
-export default map;
+export default Map;
