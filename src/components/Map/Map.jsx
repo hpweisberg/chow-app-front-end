@@ -6,7 +6,8 @@ import PostCardNew from "../PostCardNew";
 
 const Map = ({ posts }) => {
   const mapRef = useRef();
-  const center = useMemo(() => ({ lat: 33.983841, lng: -118.451424 }), []);
+  // const center = useMemo(() => ({ lat: 33.983841, lng: -118.451424 }), []);
+  const [currentLocation, setCurrentLocation] = useState(null)
   const options = useMemo(() => ({
     disableDefaultUI: true,
     clickableIcons: false,
@@ -31,8 +32,20 @@ const Map = ({ posts }) => {
     setSelectedPost(null)
   }
 
-  console.log('postion: ', 'lat: ', posts.restaurant?.lat, 'lng: ', posts.restaurant?.lng)
+  //! Fetch user's current location
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setCurrentLocation({ lat: latitude, lng: longitude });
+      },
+      (error) => {
+        console.error('Error getting current location:', error);
+      }
+    );
+  }, []);
 
+  // ! Needed to add markers on load
   useEffect(() => {
     if (posts.length > 0) {
       const newMarkers = posts.reduce((markerElements, post) => {
@@ -57,17 +70,19 @@ const Map = ({ posts }) => {
     <>
       <h1>Map</h1>
       <div className="w-full h-[550px]">
-        <GoogleMap
-          className="w-full h-full"
-          mapContainerClassName="w-full h-full"
-          center={center}
-          zoom={12}
-          options={options}
-          onLoad={onLoad}
-          onClick={handleCardClose}
-        >
-          {markers}
-        </GoogleMap>
+      {currentLocation && (
+          <GoogleMap
+            className="w-full h-full"
+            mapContainerClassName="w-full h-full"
+            center={currentLocation}
+            zoom={12}
+            options={options}
+            onLoad={onLoad}
+            onClick={handleCardClose}
+          >
+            {markers}
+          </GoogleMap>
+        )}
       </div>
       {selectedPost && (
         <PostCardNew
