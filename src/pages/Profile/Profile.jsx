@@ -10,29 +10,6 @@ import Loading from "../Loading/Loading";
 import Map from "../../components/Map/Map";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
-  // ! Prof = user card. 
-  //! Profile = profile card.
-  // ? Need to fix this. When on a user profile and select own profile from nav bar, no change.
-
-  console.log('user posts: ', profile);
-
-  // const params = useParams();
-  // const id = params.id;
-
-
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     if (id === null) {
-  //       const profileData = await profileService.getProfile(id);
-  //     }
-  //   };
-  //   fetchProfile(profileData);
-  // }, [id]);
-
-
-  // console.log('displayProfile: ',displayProfile());
-
-  // const friendRequestsCount = profile.friendRequests?.length;
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: '***REMOVED***',
