@@ -4,7 +4,7 @@ import BackBtn from '../../components/BackBtn/BackBtn';
 import * as profileService from '../../services/profileService';
 
 
-const EditProfile = ({profile, user}) => {
+const EditProfile = ({user}) => {
   const { state } = useLocation();
   const [formData, setFormData] = useState(state);
   const navigate = useNavigate();
