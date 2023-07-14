@@ -4,13 +4,14 @@
 import PostList from '../PostList/PostList'
 import PostIconNav from '../../components/PostIconNav/PostIconNav'
 import MealCard from '../../components/MealCard/MealCard'
+import Map from '../../components/Map/Map'
 import { NavLink } from 'react-router-dom'
 NavLink
 
 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, profile, logedInUser, handleLogout, filteredPosts }) => {
+const Landing = ({ user, posts, handleSort, activeSort, profile, filteredPosts }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
 console.log('filteredPosts: ', filteredPosts)
@@ -36,7 +37,7 @@ console.log('filteredPosts: ', filteredPosts)
               <MealCard posts={posts} />
             </>
           )}
-          {activeSort === 'map' && <></>}
+          {activeSort === 'map' && <Map />}
         </div>
       )}
     </main>

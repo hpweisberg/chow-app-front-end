@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
-import Button from "../../components/Button/Button";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
-import { Link, useParams } from "react-router-dom";
 // import * as profileService from '../../services/profileService';
 
 import ProfilePageTopCard from '../../components/ProfilePageTopCard/ProfilePageTopCard';

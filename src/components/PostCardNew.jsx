@@ -13,12 +13,12 @@ const PostCardNew = ({ post }) => {
           <div className="w-3/4 p-4">
             <div className="flex justify-between">
               <div className="mb-2">
-                <h3 className="text-xl font-bold">Hi-Ho Burgers</h3>
+                <h3 className="text-md font-bold">{post.restaurant?.restaurantName ? post.restaurant?.restaurantName : 'No restaurant name'}</h3>
                 <p className="text-gray-700">{post.name}</p>
               </div>
               {/* <p className="text-gray-700">{post}</p> */}
               {/* <p className="text-sm">{post.author.name}</p> */}
-              <img src={post.author.photo} alt=""  className="w-6 h-6 rounded-2xl"/>
+              {post.author?.photo && <img src={post.author.photo} alt="" className="w-6 h-6 rounded-2xl" />}
             </div>
             <div className="overflow-auto h-18">
               <p className="text-gray-700">{post.meal}</p>
