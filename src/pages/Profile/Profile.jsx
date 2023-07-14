@@ -1,3 +1,4 @@
+import { useLoadScript } from "@react-google-maps/api";
 import PostIconNav from '../../components/PostIconNav/PostIconNav';
 import MealCard from '../../components/MealCard/MealCard';
 import PostList from '../PostList/PostList';
@@ -5,6 +6,8 @@ import PostList from '../PostList/PostList';
 
 import ProfilePageTopCard from '../../components/ProfilePageTopCard/ProfilePageTopCard';
 import BackBtn from '../../components/BackBtn/BackBtn';
+import Loading from "../Loading/Loading";
+import Map from "../../components/Map/Map";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
   // ! Prof = user card. 
@@ -30,6 +33,11 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   // console.log('displayProfile: ',displayProfile());
 
   // const friendRequestsCount = profile.friendRequests?.length;
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
+    libraries: ["places"],
+  })
 
 
   //? Keep here while content is loading
@@ -57,7 +65,8 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
         <MealCard posts={posts} />
 
       )}
-      {activeSort === 'map' && <></>}
+      {activeSort === 'map' && isLoaded && <Map posts={posts} />}
+      {activeSort === 'map' && !isLoaded && <Loading />}
     </main>
   );
 };
