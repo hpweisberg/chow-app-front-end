@@ -33,7 +33,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
     <main className="container flex flex-col items-center justify-center">
       {!isOwner && <BackBtn />}
       <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends} />
-      <div className='flex items-center justify-between w-64 py-4'>
+      <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>
       {activeSort === 'rows' && <PostList posts={profile.posts} />}

@@ -9,6 +9,8 @@ const Map = ({ posts }) => {
   const [currentLocation, setCurrentLocation] = useState(null)
   const [selectedPost, setSelectedPost] = useState(null);
   const [markers, setMarkers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const options = useMemo(() => ({
     disableDefaultUI: true,
     clickableIcons: false,
@@ -30,6 +32,13 @@ const Map = ({ posts }) => {
   const handleCardClose = () => {
     setSelectedPost(null)
   }
+
+  const handleLocationSearch = (e) => {
+    console.log(e.target.value)
+    setSearchQuery(e.target.value)
+  }
+
+
 
   //! Fetch user's current location
   useEffect(() => {
@@ -68,6 +77,10 @@ const Map = ({ posts }) => {
   return (
     <>
       <div className="w-full h-[550px] relative">
+        <div className='flex items-center justify-center'>
+          {/* <label htmlFor="locationSearch"></label> */}
+          <input className='w-[80vw]' name='loctionSearch' type="text" placeholder='New York' onChange={handleLocationSearch}/>
+        </div>
         {currentLocation && (
           <GoogleMap
             className="w-full h-full"

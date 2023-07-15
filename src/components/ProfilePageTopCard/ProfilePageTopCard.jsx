@@ -34,17 +34,17 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
               <p>Following</p>
             </div>
           </div>
-          <div className="flex flex-row justify-center gap-3">
+          <div className="flex flex-row justify-center gap-3 bg-red-200">
             {isOwner &&
               <Link to={`/edit-profile`}>
                 <Button btnText={'Edit profile'} />
               </Link>
             }
-            <Button btnText={'Share profile'} />
+            <Button btnText={'Share'} />
+          {!isOwner && !isFriends && <AcceptRequest />}
+          {!isOwner && isFriends && <Button btnText={'Remove Friend'} />}
+          {isOwner && <Button btnText={'LG'} onClick={handleLogout} />}
           </div>
-          {!isOwner && <AcceptRequest />}
-          {!isOwner && <Button btnText={'Remove Friend'} />}
-          {isOwner && <Button btnText={'Logout'} onClick={handleLogout} />}
         </div>
       </div>
       {/* <p>friend request: </p>
