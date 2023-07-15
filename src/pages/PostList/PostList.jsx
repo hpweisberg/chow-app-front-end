@@ -9,7 +9,7 @@ const PostList = ({ posts, profile }) => {
   }
 
   return (
-    <main className="w-screen border-x-0">
+    <main className="w-screen sm:w-auto border-x-0">
       {posts.length === 0 && <h2>Follow or add a friend to see new posts</h2>}
       {posts.map((post) => (
         <PostCardNew
