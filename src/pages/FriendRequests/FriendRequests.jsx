@@ -16,11 +16,10 @@ const FriendRequests = ({ user, profile }) => {
   // console.log('requests:', requests)
 
   return (
-    <main>
-      <h1>Friend Requests</h1>
+    <main className='mt-10'>
+      <h1>Notifications</h1>
       {requests.length !== 0 ? (
         <>
-          <p>Here are your friend requests</p>
           <FriendListCard requests={requests} user={user} />
         </>
       ) : (
