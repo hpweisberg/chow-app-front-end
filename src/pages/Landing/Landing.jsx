@@ -28,8 +28,8 @@ console.log('filteredPosts: ', filteredPosts)
   return (
     <main className='container flex flex-col items-center justify-center'>
       {user && (
-        <div className='flex flex-col justify-center border min-w-full'>
-          <div className='w-full mt-14'>
+        <div className=' flex flex-col justify-center border min-w-full'>
+          <div className='container w-full mt-16 mb-2'>
             <PostIconNav handleSort={handleSort} />
           </div>
           {activeSort === 'rows' && <PostList profile={profile} posts={posts} />}
