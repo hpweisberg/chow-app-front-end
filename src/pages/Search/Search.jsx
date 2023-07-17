@@ -6,10 +6,9 @@ import SearchProfilesCard from '../../components/SearchProfilesCard/SearchProfil
 const Search = ({search, handleSearch, searchResults, handleShowProfile}) => {
   
   return (
-    <main>
-      <h1>Search Page</h1>
-      <form>
-        <input type="text" onChange={handleSearch} value={search} placeholder='@harrison' />
+    <main className='mt-20'>
+      <form className='flex justify-center'>
+        <input type="text" onChange={handleSearch} value={search} placeholder='Search' className='placeholder:flex placeholder:justify-center' />
       </form>
       {searchResults.length > 0 && (
         <div>
