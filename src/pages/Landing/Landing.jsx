@@ -26,7 +26,7 @@ console.log('filteredPosts: ', filteredPosts)
 
 
   return (
-    <main className='container flex flex-col items-center justify-center'>
+    <main className='container flex flex-col items-center justify-center '>
       {user && (
         <div className=' flex flex-col justify-center border min-w-full'>
           <div className='container w-full mt-16 mb-2'>

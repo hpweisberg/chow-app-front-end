@@ -20,7 +20,7 @@
   }
 
   a {
-    @apply text-blue-600 transition hover:text-purple-500 underline-offset-4;
+    @apply text-accent-100 transition hover:text-background-200 underline-offset-4;
   }
 
   .btn {
@@ -72,7 +72,7 @@
 /* ! This is the PostCard section */
 
 .postCard {
-  @apply flex border border-green-500
+  @apply flex border
   bg-slate-100
   rounded-md shadow-inner gap-2
   
@@ -137,3 +137,6 @@
 }
 
 
+.bg-color {
+  @apply bg-background-100
+}

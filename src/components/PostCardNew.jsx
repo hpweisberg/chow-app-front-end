@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 const PostCardNew = ({ post, isLast }) => {
   console.log('post: ', post)
 
+  //! Display the date in the correct format
+  const createdAt = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+
+
   return (
     <NavLink to={`/posts/${post._id}`}>
       <div className={`mb-1 overflow-hidden bg-white border rounded-lg shadow-lg max-h-48 ${isLast ? 'mb-20' : ''}`}>
@@ -13,8 +17,14 @@ const PostCardNew = ({ post, isLast }) => {
           <div className="w-3/4 p-4">
             <div className="flex justify-between">
               <div className="mb-2">
-                <h3 className="text-md font-bold">{post.restaurant?.restaurantName ? post.restaurant?.restaurantName : 'No restaurant name'}</h3>
+                <div className="flex bg-black">
+                  <h3 className="text-md font-bold">{post.restaurant?.restaurantName ? post.restaurant?.restaurantName : 'No restaurant name'}</h3>
+                  <p className="text-gray-700 opacity-50 text-sm ml-2">{createdAt}</p>
+                </div>
+
                 <p className="text-gray-700">{post.name}</p>
+
+
               </div>
               {/* <p className="text-gray-700">{post}</p> */}
               {/* <p className="text-sm">{post.author.name}</p> */}
