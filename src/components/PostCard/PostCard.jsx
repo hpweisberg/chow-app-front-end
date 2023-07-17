@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import PostCardAuthorInfo from "../PostCardAuthorInfo/PostCardAuthorInfo";
 
 const PostCard = ({ post, isLast }) => {
   console.log('post: ', post);
@@ -6,8 +7,9 @@ const PostCard = ({ post, isLast }) => {
   const createdAt = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
 
   return (
-    <>
-      <NavLink to={`/${post.author.handle}`}>
+    <div className={`${isLast ? 'mb-20' : ''}`}>
+      <PostCardAuthorInfo post={post} createdAt={createdAt} />
+      {/* <NavLink to={`/${post.author.handle}`}>
         <div className="relative bg-red-200 rounded-t-lg mx-5">
           <div className="flex justify-center gap-6 items-center space-x-1">
             <div className="flex gap-2 justify-center items-center">
@@ -17,7 +19,7 @@ const PostCard = ({ post, isLast }) => {
             <p className="text-gray-700 opacity-50 text-md">{createdAt}</p>
           </div>
         </div>
-      </NavLink>
+      </NavLink> */}
       <NavLink to={`/posts/${post._id}`}>
         <div className={`mb-3 overflow-hidden bg-primary-100 border rounded-lg shadow-lg max-h-48 ${isLast ? 'mb-20' : ''}`}>
           <div className="flex">
@@ -41,7 +43,7 @@ const PostCard = ({ post, isLast }) => {
           </div>
         </div>
       </NavLink>
-    </>
+    </div>
   );
 }
 

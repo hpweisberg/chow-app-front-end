@@ -7,7 +7,7 @@ import snackImage from '../../assets/SnackPic.jpeg';
 import drinkImage from '../../assets/DrinkPic.jpeg';
 import dessertImage from '../../assets/DessertPic.jpeg';
 import otherImage from '../../assets/OtherPic.jpeg';
-import PostCardNew from '../PostCardNew';
+import PostCard from '../PostCard/PostCard';
 
 
 const MealCard = ({ posts }) => {
@@ -69,7 +69,7 @@ const MealCard = ({ posts }) => {
     {expandMealType ? 
     filteredPosts.map((post) => 
       <div key={post._id}>
-        <PostCardNew post={post}/>
+        <PostCard post={post}/>
       </div>
       ) : 
       mealTypes.map((mealType) => {

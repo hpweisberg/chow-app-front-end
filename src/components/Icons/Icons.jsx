@@ -138,3 +138,10 @@ export function Search(props) {
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256" {...props}><path fill={props.fill || "currentColor"} d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72Z"></path></svg>
   )
 }
+
+
+export function ChoseImage(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill={props.fill || "currentColor"} d="M19 8V6h-2V4h2V2h2v2h2v2h-2v2h-2ZM3 22q-.825 0-1.413-.588T1 20V8q0-.825.588-1.413T3 6h3.15L8 4h6v2H8.875L7.05 8H3v12h16v-9h2v9q0 .825-.588 1.413T19 22H3Zm8-3.5q1.875 0 3.188-1.313T15.5 14q0-1.875-1.313-3.188T11 9.5q-1.875 0-3.188 1.313T6.5 14q0 1.875 1.313 3.188T11 18.5Zm0-2q-1.05 0-1.775-.725T8.5 14q0-1.05.725-1.775T11 11.5q1.05 0 1.775.725T13.5 14q0 1.05-.725 1.775T11 16.5Zm0-2.5Z"></path></svg>
+  )
+}

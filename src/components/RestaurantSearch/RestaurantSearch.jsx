@@ -91,13 +91,13 @@ const RestaurantSearch = ({handleRestaurantData}) => {
 
   return (
     <div>
-      <label htmlFor="restaurant-search">Restaurant</label>
+      {/* <label htmlFor="restaurant-search">Restaurant</label> */}
       <input
         name='restaurant-search'
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder='Where are you going?'
+        placeholder='Where are you eating?'
         className='mt-4' 
         autoComplete='off'
         // onSelect={submit}
