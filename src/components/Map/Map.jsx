@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useCallback, useMemo, useRef } from "react";
 
-import PostCardNew from "../PostCardNew";
+import PostCard from '../PostCard/PostCard';
 
 const Map = ({ posts }) => {
   const mapRef = useRef();
@@ -97,7 +97,7 @@ const Map = ({ posts }) => {
       </div>
       {selectedPost && (
         <div className='absolute top-0 left-0 w-full z-10'>
-          <PostCardNew
+          <PostCard
             post={selectedPost}
             onClose={() => setSelectedPost(null)}
             onCardClick={handleCardClick}

@@ -5,9 +5,10 @@ import { Back } from '../../components/Icons/Icons';
 
 import Rating from '../../components/Rating/Rating';
 import MealSelector from '../../components/MealSelector/MealSelector';
-// import PlacesAutocomplete from '../../components/PlacesAutocomplete/PlacesAutocomplete';
+
 import RestaurantSearch from '../../components/RestaurantSearch/RestaurantSearch';
 import { LoadScript } from '@react-google-maps/api'
+import { ChoseImage } from '../../components/Icons/Icons';
 
 
 
@@ -30,22 +31,9 @@ const NewPost = () => {
     }
   });
 
-  // const [restaurantData, setRestaurantData] = useState({
-  //   place_id: '',
-  //   restaurantName: '',
-  //   lat: null,
-  //   lng: null,
-  //   phoneNum: null,
-  //   website: '',
-  // })
-
-  // console.log('newpost RD: ', restaurantData)
   console.log('newpost FD restaurant: ', formData.restaurant)
   console.log('newpost FD: ', formData)
-  // console.log('resturant name: ', formData.restaurant.restaurantName)
-  // console.log('place_id: ', formData.restaurant.place_id)
-  // console.log('lat: ', formData.restaurant.lat)
-  // console.log('lng: ', formData.restaurant.lng)
+
 
 
   const handleRestaurantData = useCallback((data) => {
@@ -107,55 +95,38 @@ const NewPost = () => {
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-          {/* <LoadScript> */}
 
-            <RestaurantSearch handleRestaurantData={handleRestaurantData} />
-          {/* </LoadScript> */}
-          <label htmlFor="name-input">Name</label>
+          <div className='flex'>
+            <input type="file" name="photo" onChange={handleChangePhoto} className='mealCard' />
+            <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
+          </div>
+          <RestaurantSearch handleRestaurantData={handleRestaurantData} />
+
           <input
             required
             type="text"
             name="name"
-            placeholder="Name"
+            placeholder="What did you eat?"
+            autoComplete='off'
             value={formData.name}
             onChange={handleChange}
           />
-          <label htmlFor="name-input">Photo</label>
-          <input type="file" name="photo" onChange={handleChangePhoto} />
-          <label htmlFor="meal-input">Meal</label>
-          <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
           <label htmlFor="raiting-input">Rating</label>
           <Rating rating={formData.rating} handleNumClick={handleNumClick} />
-          {/* <label htmlFor="title-input">Title</label> */}
-          {/* <input
-            required
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={formData.title}
-            onChange={handleChange}
-          /> */}
-          <label htmlFor="review-input">Review</label>
-          <input
+
+          <textarea
             type="text"
             name="review"
-            placeholder="review"
+            placeholder="Review"
             value={formData.review}
             onChange={handleChange}
+            className='border-2 border-gray-300 p-2 w-full'
           />
-          {/* <label htmlFor="description-input">Description</label>
-          <input
-            required
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-          /> */}
+
           <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline mb-20"
             type="submit">Submit</button>
         </form>
-        {/* <h3 className='text-center text-white bg-red-500 p-14'>Add Restaurant picker</h3> */}
+
       </article>
     </main>
   );
