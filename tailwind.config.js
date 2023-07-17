@@ -72,9 +72,17 @@ export default {
       },
       colors: {
         primary: {
-          100: '#49e659',
-          932: '#434252'
+          100: '#EACDC2',
         },
+        accent: {
+          100: '#F34213',
+        },
+        background: {
+          100: '#774C60',
+          200: '#372549',
+          300: '#1A1423',
+        },
+        
       },
       fontSize: {
         xs: '12px',

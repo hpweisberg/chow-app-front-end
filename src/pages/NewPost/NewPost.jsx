@@ -126,15 +126,15 @@ const NewPost = () => {
           <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
           <label htmlFor="raiting-input">Rating</label>
           <Rating rating={formData.rating} handleNumClick={handleNumClick} />
-          <label htmlFor="title-input">Title</label>
-          <input
+          {/* <label htmlFor="title-input">Title</label> */}
+          {/* <input
             required
             type="text"
             name="title"
             placeholder="Title"
             value={formData.title}
             onChange={handleChange}
-          />
+          /> */}
           <label htmlFor="review-input">Review</label>
           <input
             type="text"
@@ -143,7 +143,7 @@ const NewPost = () => {
             value={formData.review}
             onChange={handleChange}
           />
-          <label htmlFor="description-input">Description</label>
+          {/* <label htmlFor="description-input">Description</label>
           <input
             required
             type="text"
@@ -151,11 +151,11 @@ const NewPost = () => {
             placeholder="Description"
             value={formData.description}
             onChange={handleChange}
-          />
-          <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+          /> */}
+          <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline mb-20"
             type="submit">Submit</button>
         </form>
-        <h3 className='text-center text-white bg-red-500 p-14'>Add Restaurant picker</h3>
+        {/* <h3 className='text-center text-white bg-red-500 p-14'>Add Restaurant picker</h3> */}
       </article>
     </main>
   );

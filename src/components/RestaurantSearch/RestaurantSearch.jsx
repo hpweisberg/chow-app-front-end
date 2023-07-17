@@ -98,7 +98,7 @@ const RestaurantSearch = ({handleRestaurantData}) => {
         onChange={handleInput}
         disabled={!ready}
         placeholder='Where are you going?'
-        className='mt-20' 
+        className='mt-4' 
         autoComplete='off'
         // onSelect={submit}
         />
