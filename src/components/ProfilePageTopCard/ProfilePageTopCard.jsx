@@ -6,18 +6,22 @@ import AcceptRequest from "../FriendRequests/AcceptRequest";
 
 const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends }) => {
 
-  const isOwnProfile = profile._id === localStorage.getItem('userId')
-
 
   return (
     <>
       <div className="flex justify-center gap-3 flex-nowrap mt-20">
         {/* Profile image */}
-        <img className="h-40 border-4 border-black rounded-full" src={profile.photo} alt="" />
+        <img className="h-32 w-32 border-4 border-black rounded-full" src={profile.photo} alt="" />
 
         <div>
-          {/* Profile information */}
-          <h1 className="text-2xl font-bold">{profile.name}</h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold">{profile.name}</h1>
+            {isOwner &&
+              <Link to={`/edit-profile`}>
+                <h1 className="text-2xl font-bold ml-2 text-black pr-2">...</h1>
+              </Link>
+            }
+          </div>
           <div className="flex flex-row justify-center gap-3">
             <div className="flex flex-col items-center justify-center">
               <p>{profile.posts.length}</p>
@@ -35,15 +39,10 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
             </div>
           </div>
           <div className="flex flex-row justify-center gap-3 bg-red-200">
-            {isOwner &&
-              <Link to={`/edit-profile`}>
-                <Button btnText={'Edit profile'} />
-              </Link>
-            }
             <Button btnText={'Share'} />
-          {!isOwner && !isFriends && <AcceptRequest />}
-          {!isOwner && isFriends && <Button btnText={'Remove Friend'} />}
-          {isOwner && <Button btnText={'LG'} onClick={handleLogout} />}
+            {!isOwner && !isFriends && <AcceptRequest />}
+            {!isOwner && isFriends && <Button btnText={'Remove Friend'} />}
+            {isOwner && <Button btnText={'LG'} onClick={handleLogout} />}
           </div>
         </div>
       </div>

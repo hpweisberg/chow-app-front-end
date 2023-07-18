@@ -160,7 +160,8 @@ function App() {
   return (
     <div className='flex flex-col min-h-screen'>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
-      <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts} />
+      {user &&
+        <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts} />}
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
@@ -172,7 +173,8 @@ function App() {
               // // filteredPosts={filteredPosts}
               // handleMealCardClick={handleMealCardClick}
               profile={profile}
-              handleLogout={handleLogout} />}
+              handleLogout={handleLogout}
+              handleAuthEvt={handleAuthEvt} />}
           />
           <Route
             path="/profiles"
@@ -260,7 +262,7 @@ function App() {
             path="/search"
             element={
               <ProtectedRoute user={user}>
-                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} user={user}/>
+                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} user={user} />
               </ProtectedRoute>
             }
           />
@@ -292,7 +294,9 @@ function App() {
 
         </Routes>
       </div>
-      <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFriendsPosts={handleSetFriendsPosts} />
+      {user &&
+        <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFriendsPosts={handleSetFriendsPosts} />
+      }
     </div>
   )
 }
