@@ -10,9 +10,9 @@ const PostCardAuthorInfo = ({ post, createdAt }) => {
   return (
     landingPage ?
       <NavLink to={`/${post.author.handle}`}>
-        <div className="relative bg-red-200 rounded-t-lg mx-5">
-          <div className="flex justify-center gap-6 items-center space-x-1">
-            <div className="flex gap-2 justify-center items-center">
+        <div className="relative bg-red-200 rounded-t-lg mx-6">
+          <div className="flex justify-center gap-6 items-center space-x-1 ">
+            <div className="flex gap-2 justify-center items-center ">
               {post.author?.photo && <img src={post.author.photo} alt="" className="w-5 h-5 rounded-2xl" />}
               {post.author?.name && <p className="text-md font-semibold text-gray-700">{post.author.name}</p>}
             </div>

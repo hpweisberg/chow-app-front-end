@@ -129,7 +129,7 @@
 
 .friendListCard {
   @apply flex justify-center items-center gap-2 shadow-lg
-  w-full h-32
+  w-full h-24
 }
 
 .friendRequestBtn {
