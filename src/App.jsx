@@ -260,7 +260,7 @@ function App() {
             path="/search"
             element={
               <ProtectedRoute user={user}>
-                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} />
+                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} user={user}/>
               </ProtectedRoute>
             }
           />

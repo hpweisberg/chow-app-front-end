@@ -1,36 +1,32 @@
-// import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as profileService from "../../services/profileService";
+import Button from "../Button/Button";
 
+const SearchProfilesCard = ({ profile, handleShowProfile, user }) => {
+  const id = profile.handle;
 
+  const isFriends = profile?.friends?.includes(user.handle);
+  const following = profile?.followers?.includes(user.handle);
 
-const SearchProfilesCard = ({ profile, handleShowProfile }) => {
-  // const navigate = useNavigate();
-  const id = profile.handle
-
-  console.log('id: ', id)
-  console.log('profile:: ', profile)
-
-  // const handleClick = (profile) => {
-  //   handleShowProfile(profile)
-  //   // navigate(`/profile/${id}`);
-  // }
-
-  // const handleShowProfile = async (profile) => {
-  //   const profileData = await profileService.getProfile(profile.handle)
-  //   setProfile(profileData)
-  //   setPosts(profileData.posts)
-  //   console.log('profileData: ',profileData)
-  //   console.log('profileData.posts: ',profileData.posts)
-  // };
+  let buttonText;
+  if (isFriends) {
+    buttonText = "Friends";
+  } else if (following) {
+    buttonText = "Following";
+  } else {
+    buttonText = "Follow";
+  }
 
   return (
     <Link to={`/${id}`}>
-      <div onClick={() => handleShowProfile(profile)}className="friendListCard">
-        <img className="w-20 h-20 rounded-full" src={profile.photo} alt={profile.name} />
-        <div>
-          <h1>{profile.name}</h1>
-          <h4 className="opacity-75">@{profile.handle}</h4>
+      <div onClick={() => handleShowProfile(profile)} className="friendListCard">
+        <img className="w-16 h-16 rounded-full" src={profile.photo} alt={profile.name} />
+        <div className="ml-1 bg-red-100">
+          <h4 className="text-md font-bold">@{profile.handle}</h4>
+          <h1 className="text-lg font-bold opacity-75">{profile.name}</h1>
+        </div>
+        <div className="bg-green-100">
+          <Button btnText={buttonText} />
         </div>
       </div>
     </Link>

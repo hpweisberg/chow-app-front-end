@@ -131,6 +131,30 @@ const friendList = async () => {
   }
 }
 
+const follow = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/follow`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const unfollow = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/unfollow`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 export {
   getAllProfiles,
   addPhoto,
@@ -141,5 +165,7 @@ export {
   rejectFriendRequest,
   unfriend,
   friendList,
-  updateProfile
+  updateProfile,
+  follow,
+  unfollow
 }
