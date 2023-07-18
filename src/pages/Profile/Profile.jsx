@@ -16,6 +16,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
     libraries: ["places"],
   })
 
+  console.log('profile: ', profile)
 
   //? Keep here while content is loading
   if (!profile) {

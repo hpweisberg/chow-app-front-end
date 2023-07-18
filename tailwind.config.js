@@ -69,6 +69,7 @@ export default {
         '72': '18rem',
         '80': '20rem',
         '96': '24rem',
+        '4.5': ''
       },
       colors: {
         primary: {
@@ -105,6 +106,7 @@ export default {
         '14': '3.5rem',
       },     
       margin: {
+        '0' : '0px',
         '10': '2.5rem',
         '12': '3rem',
         '14': '3.5rem',

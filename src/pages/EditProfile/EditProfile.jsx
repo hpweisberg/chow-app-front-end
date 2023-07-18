@@ -4,10 +4,12 @@ import BackBtn from '../../components/BackBtn/BackBtn';
 import * as profileService from '../../services/profileService';
 
 
-const EditProfile = ({user}) => {
+const EditProfile = ({user, profile}) => {
   const { state } = useLocation();
   const [formData, setFormData] = useState(state);
   const navigate = useNavigate();
+
+  console.log('my profile: ', profile)
 
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
@@ -42,7 +44,7 @@ const EditProfile = ({user}) => {
           required
           type="text"
           name="name"
-          placeholder={user.name}
+          placeholder={profile.name}
           value={formData?.name}
           onChange={handleChange}
         />
@@ -61,7 +63,7 @@ const EditProfile = ({user}) => {
           name="bio"
           value={formData?.bio}
           onChange={handleChange}
-          placeholder={user.bio}
+          placeholder={profile.bio}
         ></textarea>
         <button type="submit">Save Changes</button>
       </form>

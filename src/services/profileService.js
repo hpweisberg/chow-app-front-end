@@ -47,7 +47,7 @@ async function addPhoto(photoData) {
 async function updateProfile(profileData) {
   try {
     const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },

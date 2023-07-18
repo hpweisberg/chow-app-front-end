@@ -7,6 +7,9 @@ import * as authService from '../../services/authService'
 
 // css
 import styles from './Login.module.css'
+import Button from '../../components/Button/Button'
+
+
 
 const LoginPage = ({ handleAuthEvt }) => {
   const navigate = useNavigate()
@@ -45,33 +48,29 @@ const LoginPage = ({ handleAuthEvt }) => {
 
   return (
     <main className={styles.container}>
-      <h1>Log In</h1>
+      {/* <h1>Log In</h1> */}
       <p className={styles.message}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Email
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Password
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
-        <div>
-          <Link to="/">Cancel</Link>
-          <button className={styles.button} disabled={isFormInvalid()}>
-            Log In
-          </button>
+      <form autoComplete="off" onSubmit={handleSubmit} className={styles.form} >
+
+        <input className='p-0 w-full m-1 placeholder:text-sm'
+
+          type="text"
+          value={email}
+          name="email"
+          onChange={handleChange}
+          placeholder='Email'
+        />
+        <input className='m-1 w-full p-0 mt-0 placeholder:text-sm'
+          type="password"
+          value={password}
+          name="password"
+          onChange={handleChange}
+          placeholder='Password'
+        />
+        <div className="container mx-auto">
+          <button disabled={isFormInvalid()} className='bg-blue-400 border-2 border-blue-400 rounded-md w-[100%] text-white mt-1 text-sm'>Log in</button>
         </div>
+
       </form>
     </main>
   )

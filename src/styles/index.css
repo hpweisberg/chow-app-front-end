@@ -41,7 +41,7 @@
   }
 
   input[type='text'] {
-    @apply disabled:bg-slate-100 placeholder:italic;
+    @apply disabled:bg-slate-100;
   }
 
   input[type='checkbox'] {
