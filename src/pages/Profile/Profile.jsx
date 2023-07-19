@@ -26,6 +26,11 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   const isOwner = user?.handle === profile?.handle;
 
   const isFriends = profile?.friends?.includes(user.handle);
+
+  const awaitingFriendRequest = profile?.friendRequests?.includes(user.handle);
+
+
+  console.log('awaitingFriendRequest: ', awaitingFriendRequest);
   console.log('isFriends: ', isFriends);
   console.log('profile: ', profile.friends)
   console.log('user: ', user.handle)
@@ -33,7 +38,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   return (
     <main className="container flex flex-col items-center justify-center">
       {!isOwner && <BackBtn />}
-      <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends} />
+      <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends} awaitingFriendRequest={awaitingFriendRequest}/>
       <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>

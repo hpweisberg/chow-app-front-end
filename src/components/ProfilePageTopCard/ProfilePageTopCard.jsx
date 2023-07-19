@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 import AcceptRequest from "../FriendRequests/AcceptRequest";
+import AddFriend from "../FriendRequests/AddFriend";
 
 
-const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends }) => {
+const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest }) => {
 
 
   return (
@@ -39,8 +40,9 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
             </div>
           </div>
           <div className="flex flex-row justify-center gap-3 bg-red-200">
+            {!isOwner && !isFriends && !awaitingFriendRequest && <AddFriend request={profile.handle} />}
             <Button btnText={'Share'} />
-            {!isOwner && !isFriends && <AcceptRequest />}
+            {!isOwner && !isFriends && awaitingFriendRequest && <AcceptRequest />}
             {!isOwner && isFriends && <Button btnText={'Remove Friend'} />}
             {isOwner && <Button btnText={'LG'} onClick={handleLogout} />}
           </div>

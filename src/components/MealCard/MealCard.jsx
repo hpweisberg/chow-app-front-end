@@ -44,12 +44,17 @@ const MealCard = ({ posts }) => {
     return <div>No meal cards yet</div>;
   }
 
-  const mealTypes = [...new Set(posts.map((post) => post.meal))];
+  const mealTypes = Array.isArray(posts) ? [...new Set(posts.map((post) => post.meal))] : [];
   console.log('mealTypes: ', mealTypes)
 
   console.log('filteredPosts3: ', filteredPosts)
 
-  return (
+  if (!Array.isArray(posts) || posts.length === 0) {
+    // Handle the case when posts is not an array or has a length of 0
+    return <p>Follow your friends to see their posts.</p>;
+  }
+  
+    return (
     <>
     {expandMealType ? 
     <div
@@ -67,12 +72,12 @@ const MealCard = ({ posts }) => {
       </div>
     : null}
     {expandMealType ? 
-    filteredPosts.map((post) => 
+    filteredPosts?.map((post) => 
       <div key={post._id}>
         <PostCard post={post}/>
       </div>
       ) : 
-      mealTypes.map((mealType) => {
+      mealTypes?.map((mealType) => {
         if (mealNames.includes(mealType)) {
           const imageUrl = mealImages[mealType];
 
