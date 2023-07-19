@@ -8,6 +8,11 @@ const PostList = ({ posts, profile }) => {
     return <Loading />;
   }
 
+  if (!Array.isArray(posts)) {
+    // Handle the case when posts is not an array (e.g., set a default value or display an error message)
+    return <p>Follow your friends to see their posts.</p>;
+  }
+
   return (
     <main className="w-screen sm:w-auto border-x-0">
       {posts.length === 0 && <h2>Follow or add a friend to see new posts</h2>}
@@ -18,7 +23,7 @@ const PostList = ({ posts, profile }) => {
           isLast={index === posts.length - 1}
         />
       ))} */}
-      {posts.map((post, index) => (
+      {posts?.map((post, index) => (
         <PostCard
           key={post._id}
           post={post}
