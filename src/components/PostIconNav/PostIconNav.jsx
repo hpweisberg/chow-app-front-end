@@ -10,7 +10,7 @@ const PostIconNav = ({ handleSort }) => {
   };
 
   return (
-    <div className="flex items-center w-full py-2 justify-evenly border-y-4">
+    <div className="flex items-center w-full py-2 justify-evenly border-b-4">
       <div className={`w-10 h-10 ${activeOption === 'rows' ? 'active' : ''}`} onClick={() => handleOptionClick('rows')}>
         <Rows className="w-full h-full" />
       </div>

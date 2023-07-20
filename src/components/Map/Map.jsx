@@ -76,7 +76,7 @@ const Map = ({ posts }) => {
 
   return (
     <>
-      <div className="w-full h-[550px] relative">
+      <div className="w-full h-[500px] relative">
         <div className='flex items-center justify-center'>
           {/* <label htmlFor="locationSearch"></label> */}
           <input className='w-[80vw]' name='loctionSearch' type="text" placeholder='New York' onChange={handleLocationSearch}/>

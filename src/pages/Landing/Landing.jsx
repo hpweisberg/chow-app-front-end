@@ -31,7 +31,7 @@ console.log('filteredPosts: ', filteredPosts)
       {user ? (
         <main className='container flex flex-col items-center justify-center '>
           {user && (
-            <div className=' flex flex-col justify-center border min-w-full'>
+            <div className=' flex flex-col justify-center min-w-full'>
               <div className='container w-full mt-16 mb-2'>
                 <PostIconNav handleSort={handleSort} />
               </div>

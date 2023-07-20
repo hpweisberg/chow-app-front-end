@@ -107,6 +107,7 @@ export default {
       },     
       margin: {
         '0' : '0px',
+        '0.5': '0.125rem',
         '10': '2.5rem',
         '12': '3rem',
         '14': '3.5rem',
