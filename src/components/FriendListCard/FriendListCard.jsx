@@ -1,4 +1,5 @@
 import AcceptRequest from "../FriendRequests/AcceptRequest";
+import RejectRequest from "../FriendRequests/RejectRequest";
 import { Link } from "react-router-dom";
 
 const FriendListCard = ({ requests }) => {
@@ -22,8 +23,9 @@ const FriendListCard = ({ requests }) => {
             <div>
               <h1 className="mb-1">{request.name}</h1>
               <h4 className="opacity-75">{request.handle}</h4>
-              <div>
+              <div >
                 <AcceptRequest request={request.handle} />
+                <RejectRequest request={request.handle} />
               </div>
             </div>
           </div>
