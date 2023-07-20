@@ -18,7 +18,7 @@ NavLink
 const Landing = ({ user, posts, handleSort, activeSort, profile, filteredPosts, handleAuthEvt }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
-console.log('filteredPosts: ', filteredPosts)
+// console.log('filteredPosts: ', filteredPosts)
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',

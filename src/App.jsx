@@ -49,7 +49,7 @@ function App() {
   // console.log('app lvl logedInUser: ',logedInUser)
   // console.log('app lvl profile: ',profile)
   // console.log('user: ',user)
-  console.log('posts3: ', posts)
+  // console.log('posts3: ', posts)
   // console.log('profile: ', profile)
 
   // ! user profile
@@ -95,7 +95,9 @@ function App() {
   const handleShowProfile = async (profile) => {
     const profileData = await profileService.getProfile(profile.handle)
     setProfile(profileData)
-    setPosts(profileData.posts)
+    const reversedPosts = [...profileData.posts].reverse();
+console.log('reversedPosts: ', reversedPosts)
+    setPosts(reversedPosts)
     setActiveSort('rows')
     // console.log('profileData: ', profileData)
     // console.log('profileData.posts: ', profileData.posts)

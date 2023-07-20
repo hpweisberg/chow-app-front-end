@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const PostCardAuthorInfo = ({ post, createdAt }) => {
   const landingPage = window.location.pathname === "/";
 
-  console.log(landingPage)
+  // console.log(landingPage)
 
   return (
     landingPage ?
