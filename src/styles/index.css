@@ -112,7 +112,7 @@
 /* ! Meal Card Selector */
 
 .mealCard {
-  @apply flex flex-col items-center p-6 m-4 border cursor-pointer shadow-lg rounded-md
+  @apply flex flex-col items-center p-6 border cursor-pointer shadow-lg rounded-md
 }
 
 
@@ -139,4 +139,51 @@
 
 .bg-color {
   @apply bg-background-100
+}
+
+/* ! New post photo preview  */
+/*! CSS for photo preview */
+.photo-preview {
+  width: 150px;
+  height: 150px; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*! CSS for photo selection box */
+.photo-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 2px dashed #ccc;
+  cursor: pointer;
+  position: relative;
+}
+
+.plus-icon {
+  font-size: 48px;
+  color: #ccc;
+}
+
+/*! Hide the input[type="file"] element */
+input[type="file"] {
+  display: none;
+}
+
+
+.photo-clear-btn {
+  display: block;
+  margin-top: 8px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
 }

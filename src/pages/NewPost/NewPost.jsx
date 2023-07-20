@@ -70,7 +70,7 @@ const NewPost = ({ user, handleShowProfile }) => {
       console.log(createdPost);
     } catch (err) {
       console.log(err);
-      setIsCreatingPost(false); 
+      setIsCreatingPost(false);
     }
   };
 
@@ -92,13 +92,36 @@ const NewPost = ({ user, handleShowProfile }) => {
     <main>
       <div className="flex items-center mb-4 mt-20">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
-        <h1 className="text-2xl font-bold">New Post</h1>
+        <h1 className="text-2xl font-bold mb-0">New Post</h1>
       </div>
       <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
-          <div className='flex'>
-            <input type="file" name="photo" onChange={handleChangePhoto} className='mealCard' />
+          <div className='flex gap-1 justify-center'>
+            {photoData.photo ? (
+              <div>
+                <div
+                  className="photo-preview shadow-lg"
+                  style={{ backgroundImage: `url(${URL.createObjectURL(photoData.photo)})` }}
+                />
+                <button className="photo-clear-btn" onClick={() => setPhotoData({ photo: '' })}>
+                  Clear Photo
+                </button>
+              </div>
+            ) : (
+              <label htmlFor="photo-input" className="photo-selection shadow-lg">
+                <ChoseImage className="plus-icon" />
+                <input
+                  type="file"
+                  id="photo-input"
+                  name="photo"
+                  accept="image/*"
+                  onChange={handleChangePhoto}
+                />
+              </label>
+            )}
+
+            {/* <input type="file" name="photo" onChange={handleChangePhoto} className='mealCard' /> */}
             <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
           </div>
           <RestaurantSearch handleRestaurantData={handleRestaurantData} />
@@ -127,8 +150,8 @@ const NewPost = ({ user, handleShowProfile }) => {
           <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline mb-20"
             disabled={isCreatingPost}
             type="submit">
-              {isCreatingPost ? 'Creating...' : 'Submit'}
-            </button>
+            {isCreatingPost ? 'Creating...' : 'Submit'}
+          </button>
         </form>
 
       </article>
