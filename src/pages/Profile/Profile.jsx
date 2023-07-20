@@ -8,9 +8,21 @@ import ProfilePageTopCard from '../../components/ProfilePageTopCard/ProfilePageT
 import BackBtn from '../../components/BackBtn/BackBtn';
 import Loading from "../Loading/Loading";
 import Map from "../../components/Map/Map";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh }) => {
   // console.log(posts)
+  const { id } = useParams();
+  console.log('prof: ', profile)
+  console.log('hand: ', id)
+
+  useEffect(() => {
+    if (!profile) {
+      handleDirectProfileNavigationOrRefresh({ handle: id });
+    }
+  }, [profile, id, handleDirectProfileNavigationOrRefresh]);
+
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: '***REMOVED***',

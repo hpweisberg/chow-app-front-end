@@ -155,6 +155,14 @@ function App() {
     navigate('/posts/:id')
   }
 
+  const handleDirectProfileNavigationOrRefresh = async (profile) => {
+    const profileData = await profileService.getProfile(profile.handle)
+    setProfile(profileData)
+    const reversedPosts = [...profileData.posts].reverse();
+    setPosts(reversedPosts)
+    setActiveSort('rows')
+  }
+
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -238,7 +246,7 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout}
-                  posts={posts} />
+                  posts={posts} handleDirectProfileNavigationOrRefresh={handleDirectProfileNavigationOrRefresh} />
               </ProtectedRoute>
             }
           />
