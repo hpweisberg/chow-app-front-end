@@ -155,6 +155,12 @@ function App() {
     navigate('/posts/:id')
   }
 
+  const handleDeletePost = async (postId) => {
+    const deletedPost = await postService.deletePost(postId)
+    setPosts(posts.filter((post) => post._id !== deletedPost._id))
+    navigate(`/${user.handle}`)
+  }
+
   const handleDirectProfileNavigationOrRefresh = async (profile) => {
     const profileData = await profileService.getProfile(profile.handle)
     setProfile(profileData)
@@ -228,7 +234,7 @@ function App() {
             path="/posts/:id"
             element={
               <ProtectedRoute user={user}>
-                <PostDetails user={user} handleShowProfile={handleShowProfile} />
+                <PostDetails user={user} handleShowProfile={handleShowProfile} handleDeletePost={handleDeletePost}/>
               </ProtectedRoute>
             }
           />
