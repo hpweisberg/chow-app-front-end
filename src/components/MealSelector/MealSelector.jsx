@@ -40,9 +40,18 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
         onClick={toggleMealOptions}
       >
         {selectedMeal && (
-          <span className="">{mealOptions.find((meal) => meal.id === selectedMeal)?.label}</span>
+          <div className='flex items-center justify-center flex-col'>
+            <span>
+              {mealOptions.find((meal) => meal.id === selectedMeal)?.icon({ className: 'meal-type-icon' })}
+            </span>
+            <span className="text-lg">
+              {mealOptions.find((meal) => meal.id === selectedMeal)?.label}
+            </span>
+          </div>
         )}
-        <span className="text-gray-700 opacity-50">{selectedMeal ? 'Change' : 'Select Meal'}</span>
+        {!selectedMeal && (
+          <span className="text-gray-700 opacity-50">Select Meal</span>
+        )}
       </div>
       {isMealOptionsVisible && (
         <div className="absolute top-full left-0 w-full p-2 bg-white border rounded shadow-md">
@@ -65,61 +74,5 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
   );
 };
 
+
 export default MealSelector;
-
-
-// import { useState } from 'react';
-// import {
-//   Breakfast,
-//   Lunch,
-//   Dinner,
-//   Snack,
-//   Dessert,
-//   Drink,
-//   Brunch,
-//   Other,
-// } from '../Icons/Icons';
-
-// const MealSelector = ({ selectedMeal, onSelectMeal }) => {
-//   const [meals] = useState([
-//     { id: 'breakfast', label: 'Breakfast', icon: Breakfast },
-//     { id: 'lunch', label: 'Lunch', icon: Lunch },
-//     { id: 'dinner', label: 'Dinner', icon: Dinner },
-//     { id: 'snack', label: 'Snack', icon: Snack },
-//     { id: 'dessert', label: 'Dessert', icon: Dessert },
-//     { id: 'drink', label: 'Drink', icon: Drink },
-//     { id: 'brunch', label: 'Brunch', icon: Brunch },
-//     { id: 'other', label: 'Other', icon: Other },
-//   ]);
-
-//   const handleMealClick = (mealId) => {
-//     onSelectMeal(mealId);
-//     console.log(mealId)
-//   };
-
-//   return (
-//     <div className="grid grid-cols-2">
-//       {meals.map((meal) => {
-//         const Icon = meal.icon;
-//         return (
-//           <div
-//             key={meal.id}
-//             className={`mealCard ${selectedMeal === meal.id ? 'selectedMealCard' : ''}`}
-//             onClick={() => handleMealClick(meal.id)}
-//           >
-//             {Icon && (
-//               <Icon
-//                 className={`mealIcon ${selectedMeal === meal.id ? 'selectedMealIcon' : ''}`}
-//                 fill={meal.id === selectedMeal ? 'blue' : '#AAAAAA'}
-
-//               />
-//             )}
-//             <span>{meal.label}</span>
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// };
-
-// export default MealSelector;

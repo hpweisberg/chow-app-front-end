@@ -124,6 +124,13 @@
   @apply text-blue-500
 }
 
+.meal-type-icon {
+  @apply w-6 h-6 mr-2 text-gray-500 ml-2
+}
+/* 
+.meal-type-text {
+  @apply text-lg
+} */
 
 /* ! Friend Request Card */
 
