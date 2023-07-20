@@ -188,10 +188,10 @@ function App() {
             path="/auth/signup"
             element={<Signup handleAuthEvt={handleAuthEvt} />}
           />
-          <Route
+          {/* <Route
             path="/auth/login"
             element={<Login handleAuthEvt={handleAuthEvt} />}
-          />
+          /> */}
           <Route
             path="/auth/change-password"
             element={
