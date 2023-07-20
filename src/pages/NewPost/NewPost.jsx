@@ -124,19 +124,26 @@ const NewPost = ({ user, handleShowProfile }) => {
             {/* <input type="file" name="photo" onChange={handleChangePhoto} className='mealCard' /> */}
             <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
           </div>
-          <RestaurantSearch handleRestaurantData={handleRestaurantData} />
+          <div className='flex flex-col gap-4 items-center'>
 
-          <input
-            required
-            type="text"
-            name="name"
-            placeholder="What did you eat?"
-            autoComplete='off'
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <label htmlFor="raiting-input">Rating</label>
-          <Rating rating={formData.rating} handleNumClick={handleNumClick} />
+            <RestaurantSearch handleRestaurantData={handleRestaurantData} />
+
+            <input
+              required
+              type="text"
+              name="name"
+              placeholder="What did you eat?"
+              autoComplete='off'
+              value={formData.name}
+              onChange={handleChange}
+              className='m-0'
+            />
+          </div>
+          <div className='flex flex-col items-center'>
+
+            <label htmlFor="raiting-input">Rating</label>
+            <Rating rating={formData.rating} handleNumClick={handleNumClick} />
+          </div>
 
           <textarea
             type="text"
