@@ -10,7 +10,7 @@ import Loading from "../Loading/Loading";
 import Map from "../../components/Map/Map";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
-  console.log(posts)
+  // console.log(posts)
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',

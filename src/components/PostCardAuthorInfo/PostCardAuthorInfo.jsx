@@ -6,7 +6,6 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
   const landingPage = window.location.pathname === "/";
 
   // console.log(landingPage)
-  console.log(post.author.handle)
   const authorProfile = post.author;
 
   
