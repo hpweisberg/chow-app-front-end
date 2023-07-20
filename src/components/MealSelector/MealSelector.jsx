@@ -36,7 +36,7 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
   return (
     <div className="relative">
       <div
-        className={`mealCard ${selectedMeal ? 'selectedMealCard' : ''}`}
+        className={`mealCard h-[150px] w-[150px] ${selectedMeal ? 'selectedMealCard' : ''}`}
         onClick={toggleMealOptions}
       >
         {selectedMeal && (
