@@ -5,11 +5,8 @@ import { NavLink } from 'react-router-dom'
 import { Home, NewPost } from "../../components/Icons/Icons";
 
 const BottomNavBar = ({ user, handleShowProfile, handleSetFriendsPosts }) => {
-    // console.log('user', user);
   const handleUserProfileClick = (profileData) => {
     handleShowProfile(profileData);
-    // console.log('clicked', profileData);
-  
   }
 
   return (

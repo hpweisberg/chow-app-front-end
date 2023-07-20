@@ -96,11 +96,8 @@ function App() {
     const profileData = await profileService.getProfile(profile.handle)
     setProfile(profileData)
     const reversedPosts = [...profileData.posts].reverse();
-console.log('reversedPosts: ', reversedPosts)
     setPosts(reversedPosts)
     setActiveSort('rows')
-    // console.log('profileData: ', profileData)
-    // console.log('profileData.posts: ', profileData.posts)
   };
 
 
@@ -146,10 +143,10 @@ console.log('reversedPosts: ', reversedPosts)
     setUser(authService.getUser())
   }
 
+  // ! Might not be needed
   const handleAddPost = async (postData) => {
-    const newPost = await postService.createPost(postData)
-    setPosts([newPost, ...posts])
-    navigate('/')
+    setPosts([postData, ...posts])
+    navigate(`/${user.handle}`);
   }
 
   const handleUpdatePost = async (postData) => {
@@ -207,7 +204,7 @@ console.log('reversedPosts: ', reversedPosts)
             path="/posts/new"
             element={
               <ProtectedRoute user={user}>
-                <NewPost handleAddPost={handleAddPost} />
+                <NewPost handleAddPost={handleAddPost} user={user} handleShowProfile={handleShowProfile} />
               </ProtectedRoute>
             }
           />

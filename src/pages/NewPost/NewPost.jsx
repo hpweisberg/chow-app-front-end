@@ -12,8 +12,9 @@ import { ChoseImage } from '../../components/Icons/Icons';
 
 
 
-const NewPost = () => {
+const NewPost = ({ user, handleShowProfile }) => {
   const navigate = useNavigate();
+  const [isCreatingPost, setIsCreatingPost] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -61,17 +62,17 @@ const NewPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsCreatingPost(true);
       const createdPost = await postService.createPost(formData, photoData.photo);
-      // const addPhoto = await postService.addPhoto(createdPost._id, photoData);
-      navigate('/');
-      console.log(createdPost); // You can now use the createdPost object as needed
+      setIsCreatingPost(false);
+      navigate(`/${user.handle}`);
+      handleShowProfile(user)
+      console.log(createdPost);
     } catch (err) {
       console.log(err);
+      setIsCreatingPost(false); 
     }
   };
-
-
-
 
 
   const handleNumClick = (rating) => {
@@ -124,7 +125,10 @@ const NewPost = () => {
           />
 
           <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline mb-20"
-            type="submit">Submit</button>
+            disabled={isCreatingPost}
+            type="submit">
+              {isCreatingPost ? 'Creating...' : 'Submit'}
+            </button>
         </form>
 
       </article>
