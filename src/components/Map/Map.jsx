@@ -22,7 +22,7 @@ const Map = ({ posts }) => {
 
   const handleMarkerClick = (post) => {
     setSelectedPost(post)
-    console.log(post)
+    // console.log(post)
   }
 
   const handleCardClick = (post) => {

@@ -10,13 +10,14 @@ import Loading from "../Loading/Loading";
 import Map from "../../components/Map/Map";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts }) => {
+  console.log(posts)
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: '***REMOVED***',
     libraries: ["places"],
   })
 
-  console.log('profile: ', profile)
+  // console.log('profile: ', profile)
 
   //? Keep here while content is loading
   if (!profile) {
@@ -30,10 +31,10 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
   const awaitingFriendRequest = profile?.friendRequests?.includes(user.handle);
 
 
-  console.log('awaitingFriendRequest: ', awaitingFriendRequest);
-  console.log('isFriends: ', isFriends);
-  console.log('profile: ', profile.friends)
-  console.log('user: ', user.handle)
+  // console.log('awaitingFriendRequest: ', awaitingFriendRequest);
+  // console.log('isFriends: ', isFriends);
+  // console.log('profile: ', profile.friends)
+  // console.log('user: ', user.handle)
 
   return (
     <main className="container flex flex-col items-center justify-center">
@@ -42,7 +43,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts })
       <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>
-      {activeSort === 'rows' && <PostList posts={profile.posts} />}
+      {activeSort === 'rows' && <PostList posts={posts} />}
       {activeSort === 'meals' && (
 
         <MealCard posts={posts} />
