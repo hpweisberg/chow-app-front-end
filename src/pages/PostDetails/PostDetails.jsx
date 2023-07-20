@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import * as postService from "../../services/postService";
 import { Back } from "../../components/Icons/Icons";
 
-const PostDetails = ({ user, handleShowProfile }) => {
+const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
@@ -34,9 +34,7 @@ const PostDetails = ({ user, handleShowProfile }) => {
   // const handleLike = async () => {
 
   const handleDelete = async () => {
-    await postService.deletePost(id);
-    navigate("/");
-    // Handle the deletion (e.g., navigate to a different page)
+    handleDeletePost(id)
   };
 
   const handleBack = () => {
