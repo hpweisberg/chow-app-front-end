@@ -12,10 +12,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh }) => {
-  // console.log(posts)
   const { id } = useParams();
-  console.log('prof: ', profile)
-  console.log('hand: ', id)
 
   useEffect(() => {
     if (!profile) {
