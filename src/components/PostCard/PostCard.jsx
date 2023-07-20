@@ -10,23 +10,21 @@ const PostCard = ({ post, isLast }) => {
     <div className={`${isLast ? 'mb-20' : ''}`}>
       <PostCardAuthorInfo post={post} createdAt={createdAt} />
       <NavLink to={`/posts/${post._id}`}>
-        <div className={`mb-3 overflow-hidden bg-primary-100 border rounded-lg shadow-lg max-h-48 ${isLast ? 'mb-20' : ''}`}>
+        <div className={`mb-3 overflow-hidden bg-primary-100 border rounded-lg shadow-lg ${isLast ? 'mb-20' : ''}`}>
           <div className="flex">
-            <div className="w-1/4">
+            <div className="w-1/3 flex-shrink-0 h-32"> {/* Set a fixed width for the image container */}
               <img src={post.photo} alt="Restaurant" className="object-cover h-full" />
             </div>
-            <div className="w-5/6 p-3">
+            <div className="w-2/3 p-3"> {/* Adjusted the width for the text container */}
               <div className="">
                 <div className="mb-2">
-                  <div className="flex justify-between ">
-                    <h3 className="text-lg font-bold mr-2 ">{post.restaurant?.restaurantName ? post.restaurant.restaurantName : post.meal}</h3>
-                    <p className="text-2xl font-bold text-black-100 ">{post.rating}/5</p>
-                  </div>
-                  <p className="text-gray-700 text-md">{post.name}</p>
+                  <h3 className="text-md font-bold mr-2 bg-black truncate">{post.restaurant?.restaurantName ? post.restaurant.restaurantName : post.meal}</h3>
+                  <h2 className="text-gray-700 text-md">{post.name}</h2>
                 </div>
               </div>
-              <div className="overflow-auto h-18">
+              <div className="overflow-auto h-18 flex justify-between">
                 <p className="overflow-hidden text-gray-700 line-clamp-2">{post.review}</p>
+                <p className="text-2xl font-bold text-black-100 ">{post.rating}/5</p>
               </div>
             </div>
           </div>
