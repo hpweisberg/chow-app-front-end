@@ -15,7 +15,7 @@ NavLink
 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, profile, filteredPosts, handleAuthEvt }) => {
+const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
 // console.log('filteredPosts: ', filteredPosts)
@@ -35,7 +35,7 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, filteredPosts, 
               <div className='container w-full mt-16 mb-2'>
                 <PostIconNav handleSort={handleSort} />
               </div>
-              {activeSort === 'rows' && <PostList profile={profile} posts={posts} />}
+              {activeSort === 'rows' && <PostList profile={profile} posts={posts} handleShowProfile={handleShowProfile}/>}
               {activeSort === 'meals' && (
                 <>
                   <MealCard posts={posts} />

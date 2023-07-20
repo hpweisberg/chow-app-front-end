@@ -176,7 +176,8 @@ console.log('reversedPosts: ', reversedPosts)
               // handleMealCardClick={handleMealCardClick}
               profile={profile}
               handleLogout={handleLogout}
-              handleAuthEvt={handleAuthEvt} />}
+              handleAuthEvt={handleAuthEvt}
+              handleShowProfile={handleShowProfile} />}
           />
           <Route
             path="/profiles"

@@ -2,7 +2,7 @@ import PostCard from "../../components/PostCard/PostCard";
 import PostCardNew from "../../components/PostCardNew";
 import Loading from "../Loading/Loading";
 
-const PostList = ({ posts, profile }) => {
+const PostList = ({ posts, profile, handleShowProfile }) => {
   if (!posts && profile) {
     return <Loading />;
   }
@@ -27,6 +27,7 @@ const PostList = ({ posts, profile }) => {
           key={post._id}
           post={post}
           isLast={index === posts.length - 1}
+          handleShowProfile={handleShowProfile}
         />
       ))}
     </main>
