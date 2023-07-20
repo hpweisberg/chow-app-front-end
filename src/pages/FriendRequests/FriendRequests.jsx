@@ -20,9 +20,10 @@ const FriendRequests = ({ user, profile }) => {
     <main className='mt-10'>
       <h1>Notifications</h1>
       {requests.length !== 0 ? (
-        <>
+        <div id={requests.handle}>
+          <h2>Friend Requests:</h2>
           <FriendListCard requests={requests} user={user} />
-        </>
+        </div>
       ) : (
         <p>No friend requests</p>
       )}

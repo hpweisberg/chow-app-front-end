@@ -9,7 +9,7 @@ const AcceptRequest = ({ request, }) => {
 
   return (
     <div>
-      <Button btnText={'Accept friend request'} onClick={handleAcceptRequest} />
+      <Button btnText={'✅'} onClick={handleAcceptRequest} />
     </div>
   );
 }

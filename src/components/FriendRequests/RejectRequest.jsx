@@ -9,7 +9,7 @@ const RejectRequest = ({ request, }) => {
 
   return (
     <div>
-      <Button btnText={'Reject friend request'} onClick={handleRejectRequest} />
+      <Button btnText={'❌'} onClick={handleRejectRequest} />
     </div>
   );
 }

@@ -19,14 +19,14 @@ const FriendListCard = ({ requests }) => {
               className="w-20 h-20 rounded-full"
             />
           </Link>
-          <div className="items-start ">
-            <div>
+          <div className="flex justify-between">
+            <div className="flex flex-col">
               <h1 className="mb-1">{request.name}</h1>
               <h4 className="opacity-75">{request.handle}</h4>
-              <div >
-                <AcceptRequest request={request.handle} />
-                <RejectRequest request={request.handle} />
-              </div>
+            </div>
+            <div className="flex justify-between gap-2">
+              <AcceptRequest request={request.handle} />
+              <RejectRequest request={request.handle} />
             </div>
           </div>
         </div>
