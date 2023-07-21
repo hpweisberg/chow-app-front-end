@@ -4,6 +4,8 @@ import Button from "../Button/Button";
 import AcceptRequest from "../FriendRequests/AcceptRequest";
 import AddFriend from "../FriendRequests/AddFriend";
 
+import ProfileDropDown from "../ProfileDropDown/ProfileDropDown";
+
 
 const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest }) => {
 
@@ -17,11 +19,13 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
         <div>
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">{profile.name}</h1>
-            {isOwner &&
+            {isOwner && <ProfileDropDown handleLogout={handleLogout}/>}
+            {/* {isOwner &&
               <Link to={`/edit-profile`}>
+                <ProfileDropDown />
                 <h1 className="text-2xl font-bold ml-2 text-black pr-2">...</h1>
               </Link>
-            }
+            } */}
           </div>
           <div className="flex flex-row justify-center gap-3">
             <div className="flex flex-col items-center justify-center">
