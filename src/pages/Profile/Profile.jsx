@@ -46,7 +46,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   // console.log('user: ', user.handle)
 
   return (
-    <main className="container flex flex-col items-center justify-center">
+    <main className=" flex flex-col ">
       {!isOwner && <BackBtn />}
       <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends} awaitingFriendRequest={awaitingFriendRequest}/>
       <div className='flex items-center justify-between w-full py-4'>

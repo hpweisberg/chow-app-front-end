@@ -135,7 +135,7 @@ const ProfileDropDown = ({ handleLogout }) => {
   }
 
   return (
-    <div className="fixed top-14 w-48 text-right pb-3">
+    <div className="pb-3 pr-1">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center 
