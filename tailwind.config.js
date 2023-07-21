@@ -73,15 +73,18 @@ export default {
       },
       colors: {
         primary: {
-          100: '#EACDC2',
+          100: '#143F6B', /* Dark Blue */
+          150: '#1A1423', /* Darkest Blue */
+          200: '#F55353', /* Red */
         },
         accent: {
-          100: '#F34213',
+          100: '#FEB139', /* Yellow */
+          200: '#F6F54D', /* Light Yellow */
         },
         background: {
-          100: '#774C60',
-          200: '#372549',
-          300: '#1A1423',
+          100: '#6b4014', /* Dark Red */
+          // 200: '#372549',
+          // 300: '#1A1423',
         },
         
       },

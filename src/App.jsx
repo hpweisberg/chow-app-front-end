@@ -171,7 +171,7 @@ function App() {
 
 
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col '>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       {user &&
         <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts} />}
