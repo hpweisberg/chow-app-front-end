@@ -28,6 +28,7 @@ const PostList = ({ posts, profile, handleShowProfile }) => {
           post={post}
           isLast={index === posts.length - 1}
           handleShowProfile={handleShowProfile}
+          className='postCard'
         />
       ))}
     </main>

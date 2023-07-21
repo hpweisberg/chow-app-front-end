@@ -75,6 +75,7 @@
   @apply flex border
   bg-slate-100
   rounded-md shadow-inner gap-2
+  w-screen sm:w-auto border-x-0
   
 } 
 
