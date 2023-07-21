@@ -32,7 +32,7 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
       // The createdAt date should appear on the right side of the component. The text should not extend further left.
 
       <div className="flex justify-end pr-5">
-        <p className="text-gray-700 opacity-50 text-md px-3 bg-red-200 rounded-t-lg">{createdAt}</p>
+        <p className="text-primary-200 opacity-75 text-md px-3 bg-primary-100 rounded-t-lg">{createdAt}</p>
       </div>
     // <NavLink to={`/${post.author.handle}`}>
     //   <div className="relative bg-red-200 rounded-t-lg mx-5">
