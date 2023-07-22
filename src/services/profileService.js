@@ -155,6 +155,65 @@ const unfollow = async (profileId) => {
   }
 }
 
+const followersList = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/followers`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const followingList = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/following`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const followRequests = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/follow-requests`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const acceptFollowRequest = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/accept-follow-request`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+const rejectFollowRequest = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/reject-follow-request`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+
+
 export {
   getAllProfiles,
   addPhoto,
@@ -167,5 +226,10 @@ export {
   friendList,
   updateProfile,
   follow,
-  unfollow
+  unfollow,
+  followersList,
+  followingList,
+  followRequests,
+  acceptFollowRequest,
+  rejectFollowRequest
 }
