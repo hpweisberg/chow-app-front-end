@@ -10,7 +10,7 @@ import FollowingTracker from "../FollowingTracker/FollowingTracker";
 
 
 
-const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest, iAmFollowing, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, awaitingFollowRequest }) => {
+const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest, iAmFollowing, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, awaitingFollowRequest, followRequestRecieved }) => {
 
 
   return (
@@ -30,6 +30,7 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
             rejectFollowRequest={rejectFollowRequest}
             profile={profile}
             awaitingFollowRequest={awaitingFollowRequest}
+            followRequestRecieved={followRequestRecieved}
           />
         </div>
         <div className="w-4/5 px-2">
