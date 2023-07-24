@@ -10,7 +10,7 @@ import FollowingTracker from "../FollowingTracker/FollowingTracker";
 
 
 
-const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest }) => {
+const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest, iAmFollowing, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest }) => {
 
 
   return (
@@ -19,7 +19,17 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
       <div className="flex w-full mb-2">
         <div className="flex flex-col items-center justify-start ml-2 w-2/6">
           <img src={profile.photo} alt="" className="h-24 w-24 border-4 border-black rounded-full mx-4" />
-          <ProfileBtns isOwner={isOwner} isFriends={isFriends} awaitingFriendRequest={awaitingFriendRequest} />
+          <ProfileBtns
+            isOwner={isOwner}
+            isFriends={isFriends}
+            awaitingFriendRequest={awaitingFriendRequest}
+            iAmFollowing={iAmFollowing}
+            followThisProfile={followThisProfile}
+            unfollowThisProfile={unfollowThisProfile}
+            acceptFollowRequest={acceptFollowRequest}
+            rejectFollowRequest={rejectFollowRequest}
+            profile={profile}
+          />
         </div>
         <div className="w-4/5 px-2">
 
