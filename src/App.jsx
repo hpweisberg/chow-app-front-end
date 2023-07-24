@@ -51,6 +51,7 @@ function App() {
   // console.log('user: ',user)
   // console.log('posts3: ', posts)
   // console.log('profile: ', profile)
+  console.log('userProfile: ', userProfile)
 
   // ! user profile
 
@@ -65,16 +66,16 @@ function App() {
   }, [user])
   // console.log('useEffect Profile: ', userProfile)
 
-  // ! User Feed aka friends posts
-  const handleSetFriendsPosts = async () => {
+  // ! User Feed aka follow posts
+  const handleSetFollowingPosts = async () => {
     try {
-      const friendsPosts = await postService.getFriendPosts();
+      const followingPosts = await postService.getFollowingPosts();
       // console.log('friendsPosts: ', friendsPosts)
 
       // const friendPosts = friendsPosts.filter(post => {
       //   return post.author.handle === user.handle
       // })
-      setPosts(friendsPosts);
+      setPosts(followingPosts);
       setActiveSort('rows')
     } catch (err) {
       console.error(err);
@@ -83,7 +84,7 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      handleSetFriendsPosts();
+      handleSetFollowingPosts();
     }
   }, [user])
 
@@ -107,26 +108,29 @@ function App() {
     setSearch(e.target.value);
   }
 
+  // ! Search input
+  
   useEffect(() => {
     const fetchSearchResults = async () => {
       try {
         if (search.length === 0) return setSearchResults([]);
+  
         const profiles = await profileService.getAllProfiles();
         const filteredResults = profiles.filter((profile) => {
-          // console.log('profile4: ',profile)
-          // console.log('user4: ',user)
-          const name = profile.name.toLowerCase();
+          const name = profile?.name?.toLowerCase() ?? '';
+          const handle = profile?.handle?.toLowerCase() ?? '';
           const searchQuery = search.toLowerCase();
-          return name.startsWith(searchQuery) && profile.name !== user.name;
+          return name.startsWith(searchQuery) || handle.startsWith(searchQuery);
         });
         setSearchResults(filteredResults);
       } catch (err) {
         console.log(err);
       }
     };
-
+  
     fetchSearchResults();
-  }, [search, user]);
+  }, [search]);
+  
 
 
   const handleSort = (sort) => {
@@ -174,7 +178,7 @@ function App() {
     <div className='flex flex-col '>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       {user &&
-        <HeaderComponent handleSetFriendsPosts={handleSetFriendsPosts} />}
+        <HeaderComponent handleSetFollowingPosts={handleSetFollowingPosts} />}
       <div className='flex-grow overflow-y-auto'>
         <Routes>
           <Route path="/" element=
@@ -309,7 +313,7 @@ function App() {
         </Routes>
       </div>
       {user &&
-        <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFriendsPosts={handleSetFriendsPosts} />
+        <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFollowingPosts={handleSetFollowingPosts} />
       }
     </div>
   )

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import { Home, NewPost } from "../../components/Icons/Icons";
 
-const BottomNavBar = ({ user, handleShowProfile, handleSetFriendsPosts }) => {
+const BottomNavBar = ({ user, handleShowProfile, handleSetFollowingPosts }) => {
   const handleUserProfileClick = (profileData) => {
     handleShowProfile(profileData);
   }
@@ -17,7 +17,7 @@ const BottomNavBar = ({ user, handleShowProfile, handleSetFriendsPosts }) => {
             <li className=''>
               <NavLink to="/">
                 <div className='h-16 w-14'>
-                  <Home onClick={() => handleSetFriendsPosts()} className='w-full h-full' />
+                  <Home onClick={() => handleSetFollowingPosts()} className='w-full h-full' />
                 </div>
               </NavLink>
             </li>
