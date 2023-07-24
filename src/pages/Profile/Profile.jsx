@@ -11,7 +11,7 @@ import Map from "../../components/Map/Map";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh }) => {
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,7 +39,9 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
   const iAmFollowing = profile?.followers?.includes(user.handle);
 
-  const awaitingFriendRequest = profile?.friendRequests?.includes(user.handle);
+  const theyAreFollowingMe = profile?.following?.includes(user.handle);
+
+  const awaitingFriendRequest = userProfile?.friendRequests?.includes(user.handle);
 
 
   // console.log('awaitingFriendRequest: ', awaitingFriendRequest);
@@ -50,7 +52,20 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   return (
     <main className=" flex flex-col ">
       {!isOwner && <BackBtn />}
-      <ProfilePageTopCard profile={profile} handleLogout={handleLogout} handleSort={handleSort} isOwner={isOwner} isFriends={isFriends} awaitingFriendRequest={awaitingFriendRequest}/>
+      <ProfilePageTopCard
+        profile={profile}
+        handleLogout={handleLogout}
+        handleSort={handleSort}
+        isOwner={isOwner}
+        isFriends={isFriends}
+        awaitingFriendRequest={awaitingFriendRequest}
+        iAmFollowing={iAmFollowing}
+        theyAreFollowingMe={theyAreFollowingMe}
+        followThisProfile={followThisProfile}
+        unfollowThisProfile={unfollowThisProfile}
+        acceptFollowRequest={acceptFollowRequest}
+        rejectFollowRequest={rejectFollowRequest}
+      />
       <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />
       </div>

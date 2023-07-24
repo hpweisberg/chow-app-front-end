@@ -101,6 +101,19 @@ function App() {
     setActiveSort('rows')
   };
 
+  const handleShowProfileRefresh = async (profile) => {
+    if (profile.followPublic) {
+      const profileData = await profileService.getProfile(profile.handle)
+      setProfile(profileData)
+    } else {
+      const profileData = await profileService.getProfile(profile.handle)
+      setProfile(profileData)
+      setPosts([])
+    
+
+    }
+  }
+
 
   // ! posts
 
@@ -109,12 +122,12 @@ function App() {
   }
 
   // ! Search input
-  
+
   useEffect(() => {
     const fetchSearchResults = async () => {
       try {
         if (search.length === 0) return setSearchResults([]);
-  
+
         const profiles = await profileService.getAllProfiles();
         const filteredResults = profiles.filter((profile) => {
           const name = profile?.name?.toLowerCase() ?? '';
@@ -127,10 +140,10 @@ function App() {
         console.log(err);
       }
     };
-  
+
     fetchSearchResults();
   }, [search]);
-  
+
 
 
   const handleSort = (sort) => {
@@ -172,6 +185,34 @@ function App() {
     setPosts(reversedPosts)
     setActiveSort('rows')
   }
+
+  // ! Follower functions
+
+  
+  const followThisProfile = async (profile) => {
+    const updatedProfile = await profileService.follow(profile.handle);
+    handleShowProfileRefresh(updatedProfile); // Update the profile after follow
+  };
+
+  // Function to unfollow a profile
+  const unfollowThisProfile = async (profile) => {
+    const updatedProfile = await profileService.unfollow(profile.handle);
+    handleShowProfileRefresh(updatedProfile); // Update the profile after unfollow
+  };
+
+  // Function to accept a follow request
+  const acceptFollowRequest = async (profile) => {
+    const updatedProfile = await profileService.acceptFollowRequest(profile.handle);
+    handleShowProfileRefresh(updatedProfile); // Update the profile after accepting follow request
+  };
+
+  // Function to reject a follow request
+  const rejectFollowRequest = async (profile) => {
+    const updatedProfile = await profileService.rejectFollowRequest(profile.handle);
+    handleShowProfileRefresh(updatedProfile); // Update the profile after rejecting follow request
+  };
+
+  // ! update profile when profile is changed
 
 
   return (
@@ -238,7 +279,7 @@ function App() {
             path="/posts/:id"
             element={
               <ProtectedRoute user={user}>
-                <PostDetails user={user} handleShowProfile={handleShowProfile} handleDeletePost={handleDeletePost}/>
+                <PostDetails user={user} handleShowProfile={handleShowProfile} handleDeletePost={handleDeletePost} />
               </ProtectedRoute>
             }
           />
@@ -255,8 +296,20 @@ function App() {
             path="/:id"
             element={
               <ProtectedRoute user={user}>
-                <Profile user={user} handleSort={handleSort} activeSort={activeSort} profile={profile} handleLogout={handleLogout}
-                  posts={posts} handleDirectProfileNavigationOrRefresh={handleDirectProfileNavigationOrRefresh} />
+                <Profile
+                  user={user}
+                  handleSort={handleSort}
+                  activeSort={activeSort}
+                  profile={profile}
+                  handleLogout={handleLogout}
+                  posts={posts}
+                  handleDirectProfileNavigationOrRefresh={handleDirectProfileNavigationOrRefresh}
+                  userProfile={userProfile}
+                  followThisProfile={followThisProfile}
+                  unfollowThisProfile={unfollowThisProfile}
+                  acceptFollowRequest={acceptFollowRequest}
+                  rejectFollowRequest={rejectFollowRequest}
+                />
               </ProtectedRoute>
             }
           />
