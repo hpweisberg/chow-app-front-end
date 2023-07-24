@@ -26,7 +26,6 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
     libraries: ["places"],
   })
 
-  // console.log('profile: ', profile)
 
   //? Keep here while content is loading
   if (!profile) {
@@ -40,6 +39,8 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   const iAmFollowing = profile?.followers?.includes(user.handle);
 
   const theyAreFollowingMe = profile?.following?.includes(user.handle);
+
+  const awaitingFollowRequest = profile?.followRequests?.includes(user.handle);
 
   const awaitingFriendRequest = userProfile?.friendRequests?.includes(user.handle);
 
@@ -65,6 +66,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         unfollowThisProfile={unfollowThisProfile}
         acceptFollowRequest={acceptFollowRequest}
         rejectFollowRequest={rejectFollowRequest}
+        awaitingFollowRequest={awaitingFollowRequest}
       />
       <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />

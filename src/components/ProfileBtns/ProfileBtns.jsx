@@ -1,14 +1,17 @@
 import Button from "../Button/Button";
 
-const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, theyAreFollowingMe, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, profile }) => {
+const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, theyAreFollowingMe, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, profile, awaitingFollowRequest }) => {
 
   let buttonText = "";
 
   switch (true) {
-    case isOwner && awaitingFriendRequest:
+    case isOwner && awaitingFollowRequest:
       buttonText = "Accept friend request";
       break;
     // ? reject friend request in the return.
+    case !isOwner && awaitingFollowRequest:
+      buttonText = "Request sent";
+      break;
     case !isOwner && !iAmFollowing && !theyAreFollowingMe:
       buttonText = "Follow";
       break;
@@ -33,7 +36,7 @@ const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, 
       // For example: buttonText = "Default";
       break;
   }
-  
+
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -43,11 +46,14 @@ const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, 
             btnText={buttonText}
             onClick={() => {
               switch (true) {
-                case awaitingFriendRequest:
+                case awaitingFollowRequest:
                   acceptFollowRequest(profile); // Call the function for accepting friend request
+                  break;
+                case !isOwner && awaitingFollowRequest:
                   break;
                 case !isOwner && !iAmFollowing && !theyAreFollowingMe:
                   followThisProfile(profile); // Call the function for following
+                  // console.log('pressed')
                   break;
                 case !isOwner && iAmFollowing && !theyAreFollowingMe:
                   unfollowThisProfile(profile); // Call the function for unfollowing
@@ -57,6 +63,7 @@ const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, 
                   break;
                 case !isOwner && iAmFollowing && theyAreFollowingMe:
                   // You can implement logic for the "F&F" case here if needed
+                  unfollowThisProfile(profile)
                   break;
                 default:
                   // You can set a default value for buttonText if none of the cases match.

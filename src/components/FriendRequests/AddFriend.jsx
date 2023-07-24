@@ -2,7 +2,6 @@ import * as profileService from '../../services/profileService';
 import Button from '../Button/Button';
 
 const AddFriend = ({ request, }) => {
-  // console.log('accepting reqfuest', request);
   const handleAddFriend = async () => {
     profileService.sendFriendRequest(request);
   }

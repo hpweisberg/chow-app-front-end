@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 const PostCardNew = ({ post, isLast }) => {
-  // console.log('post: ', post)
-
   //! Display the date in the correct format
   const createdAt = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
 
