@@ -91,14 +91,12 @@ function App() {
 
 
   // ! Update Profile State/ Show profile
-
-
   const handleShowProfile = async (profile) => {
     const profileData = await profileService.getProfile(profile.handle);
     setProfile(profileData);
-  
+
     const isOwnProfile = profile.handle === userProfile.handle;
-  
+
     if (isOwnProfile) {
       // If it's your own profile, set the posts as usual
       const reversedPosts = [...profileData.posts].reverse();
@@ -114,7 +112,7 @@ function App() {
       } else {
         // If followPublic is false, check if the userProfile is already following the profile
         const isFollowing = userProfile.following.includes(profileData.handle);
-  
+
         // If userProfile is already following, set the posts as usual
         if (isFollowing) {
           const reversedPosts = [...profileData.posts].reverse();
@@ -127,93 +125,95 @@ function App() {
       }
     }
   };
-  
 
-  console.log(profile)
+
+  // console.log('prof: ', profile)
 
 
   // ! Not working properly
-  const handleShowProfileRefresh = async (profile) => {
-    const isFollowing = userProfile.following.includes(profile.handle);
+  // const handleShowProfileRefresh = async (profile) => {
+  //   const isFollowing = userProfile.following.includes(profile.handle);
 
-    if (profile.handle === userProfile.handle) {
-      const profileData = await profileService.getProfile(profile.handle)
-      setProfile(profileData)
-      const reversedPosts = [...profileData.posts].reverse();
-      setPosts(reversedPosts);
-      console.log('allowed')
-      return
-    }
-
-    if (profile.followPublic === false) {
-      if (isFollowing) {
-        const profileData = await profileService.getProfile(profile.handle)
-        setProfile(profileData)
-        const reversedPosts = [...profileData.posts].reverse();
-        setPosts(reversedPosts);
-        console.log('allowed')
-      } else {
-        const profileData = await profileService.getProfile(profile.handle)
-        setProfile(profileData)
-        setPosts([])
-        console.log('not allowed')
-      }
-    }
-
-    if (profile.followPublic === true) {
-      const profileData = await profileService.getProfile(profile.handle)
-      setProfile(profileData)
-      const reversedPosts = [...profileData.posts].reverse();
-      setPosts(reversedPosts);
-      console.log('allowed')
-    }
-
-    // if (profile.followPublic) {
-    //   const profileData = await profileService.getProfile(profile.handle)
-    //   setProfile(profileData)
-    //   const reversedPosts = [...profileData.posts].reverse();
-    //   setPosts(reversedPosts);
-    //   console.log('allowed')
-    // }
-    // if (isFollowing) {
-    //   const profileData = await profileService.getProfile(profile.handle)
-    //   setProfile(profileData)
-    //   const reversedPosts = [...profileData.posts].reverse();
-    //   setPosts(reversedPosts);
-    //   console.log('allowed')
-    // } else {
-    //   const profileData = await profileService.getProfile(profile.handle)
-    //   setProfile(profileData)
-    //   setPosts([])
-    //   console.log('not allowed')
-    // }
-  }
-
-  //   const handleShowProfileRefresh = async (profile) => {
-  //   const profileData = await profileService.getProfile(profile.handle);
-  //   setProfile(profileData);
-
-  //   // Check if the profile has followPublic set to true
-  //   if (profileData.followPublic === true) {
-  //     // If followPublic is true, set the posts as usual
+  //   if (profile.handle === userProfile.handle) {
+  //     const profileData = await profileService.getProfile(profile.handle)
+  //     setProfile(profileData)
   //     const reversedPosts = [...profileData.posts].reverse();
   //     setPosts(reversedPosts);
-  //   } else {
-  //     // If followPublic is false, check if the userProfile is already following the profile
-  //     // const userProfile = await profileService.getProfile(user.handle);
-  //     const isFollowing = userProfile.following.includes(profileData.handle);
-  //     // setPosts([]);
+  //     console.log('allowed')
+  //     return
+  //   }
 
-  //     // If userProfile is already following, set the posts as usual
+  //   if (profile.followPublic === false) {
   //     if (isFollowing) {
+  //       const profileData = await profileService.getProfile(profile.handle)
+  //       setProfile(profileData)
   //       const reversedPosts = [...profileData.posts].reverse();
   //       setPosts(reversedPosts);
+  //       console.log('allowed')
   //     } else {
-  //       // If userProfile is not following, set the posts to an empty array
-  //       setPosts([]);
+  //       const profileData = await profileService.getProfile(profile.handle)
+  //       setProfile(profileData)
+  //       setPosts([])
+  //       console.log('not allowed')
   //     }
   //   }
-  // };
+
+  //   if (profile.followPublic === true) {
+  //     const profileData = await profileService.getProfile(profile.handle)
+  //     setProfile(profileData)
+  //     const reversedPosts = [...profileData.posts].reverse();
+  //     setPosts(reversedPosts);
+  //     console.log('allowed')
+  //   }
+
+  //   // if (profile.followPublic) {
+  //   //   const profileData = await profileService.getProfile(profile.handle)
+  //   //   setProfile(profileData)
+  //   //   const reversedPosts = [...profileData.posts].reverse();
+  //   //   setPosts(reversedPosts);
+  //   //   console.log('allowed')
+  //   // }
+  //   // if (isFollowing) {
+  //   //   const profileData = await profileService.getProfile(profile.handle)
+  //   //   setProfile(profileData)
+  //   //   const reversedPosts = [...profileData.posts].reverse();
+  //   //   setPosts(reversedPosts);
+  //   //   console.log('allowed')
+  //   // } else {
+  //   //   const profileData = await profileService.getProfile(profile.handle)
+  //   //   setProfile(profileData)
+  //   //   setPosts([])
+  //   //   console.log('not allowed')
+  //   // }
+  // }
+
+  //! THIS IS FOR PROFILE BTN PRESSES
+
+  const handleShowProfileRefresh = async (profile) => {
+    const profileData = await profileService.getProfile(profile.handle);
+    setProfile(profileData);
+
+    // Check if the profile has followPublic set to true
+    if (profileData.followPublic === true) {
+      // If followPublic is true, set the posts as usual
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+    } else {
+      // If followPublic is false, check if the userProfile is already following the profile
+      // const userProfile = await profileService.getProfile(user.handle);
+      const isFollowing = userProfile.following.includes(profileData.handle);
+      // setPosts([]);
+
+      // If userProfile is already following, set the posts as usual
+      if (isFollowing) {
+        const reversedPosts = [...profileData.posts].reverse();
+        setPosts(reversedPosts);
+      } else {
+        // If userProfile is not following, set the posts to an empty array
+        setPosts([]);
+      }
+    }
+  };
 
 
 
@@ -280,198 +280,212 @@ function App() {
     navigate(`/${user.handle}`)
   }
 
+  // !REFRESH PROFILE
   const handleDirectProfileNavigationOrRefresh = async (profile) => {
-    const profileData = await profileService.getProfile(profile.handle)
-    setProfile(profileData)
-    const reversedPosts = [...profileData.posts].reverse();
-    setPosts(reversedPosts)
-    setActiveSort('rows')
+    const isFollowing = userProfile.following.includes(profile.handle);
+    const profileData = await profileService.getProfile(profile.handle);
+    setProfile(profileData);
+
+    if (profileData.followPublic === true) {
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+    }
+    if (isFollowing) {
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+    }
+    if (profileData.followPublic === false && isFollowing) {
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+    }
+
+    if (profileData.followPublic === false && !isFollowing) {
+      setPosts([])
+    }
   }
 
-  // ! Follower functions
+    // ! Follower functions
+    const followThisProfile = async (profile) => {
+      const updatedProfile = await profileService.follow(profile.handle);
+      handleShowProfileRefresh(updatedProfile); // Update the profile after follow
+    };
+
+    // Function to unfollow a profile
+    const unfollowThisProfile = async (profile) => {
+      const updatedProfile = await profileService.unfollow(profile.handle);
+      handleShowProfileRefresh(updatedProfile); // Update the profile after unfollow
+    };
+
+    // Function to accept a follow request
+    const acceptFollowRequest = async (profile) => {
+      const updatedProfile = await profileService.acceptFollowRequest(profile.handle);
+      handleShowProfileRefresh(updatedProfile); // Update the profile after accepting follow request
+    };
+
+    // Function to reject a follow request
+    const rejectFollowRequest = async (profile) => {
+      const updatedProfile = await profileService.rejectFollowRequest(profile.handle);
+      handleShowProfileRefresh(updatedProfile); // Update the profile after rejecting follow request
+    };
+
+    // ! update profile when profile is changed
 
 
-  const followThisProfile = async (profile) => {
-    const updatedProfile = await profileService.follow(profile.handle);
-    handleShowProfileRefresh(updatedProfile); // Update the profile after follow
-  };
-
-  // Function to unfollow a profile
-  const unfollowThisProfile = async (profile) => {
-    const updatedProfile = await profileService.unfollow(profile.handle);
-    handleShowProfileRefresh(updatedProfile); // Update the profile after unfollow
-  };
-
-  // Function to accept a follow request
-  const acceptFollowRequest = async (profile) => {
-    const updatedProfile = await profileService.acceptFollowRequest(profile.handle);
-    handleShowProfileRefresh(updatedProfile); // Update the profile after accepting follow request
-  };
-
-  // Function to reject a follow request
-  const rejectFollowRequest = async (profile) => {
-    const updatedProfile = await profileService.rejectFollowRequest(profile.handle);
-    handleShowProfileRefresh(updatedProfile); // Update the profile after rejecting follow request
-  };
-
-  // ! update profile when profile is changed
-
-
-  return (
-    <div className='flex flex-col '>
-      {/* <NavBar user={user} handleLogout={handleLogout} /> */}
-      {user &&
-        <HeaderComponent handleSetFollowingPosts={handleSetFollowingPosts} />}
-      <div className='flex-grow overflow-y-auto'>
-        <Routes>
-          <Route path="/" element=
-            {<Landing
-              user={user}
-              posts={posts}
-              handleSort={handleSort}
-              activeSort={activeSort}
-              // // filteredPosts={filteredPosts}
-              // handleMealCardClick={handleMealCardClick}
-              profile={profile}
-              handleLogout={handleLogout}
-              handleAuthEvt={handleAuthEvt}
-              handleShowProfile={handleShowProfile} />}
-          />
-          <Route
-            path="/profiles"
-            element={
-              <ProtectedRoute user={user}>
-                <Profiles />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/auth/signup"
-            element={<Signup handleAuthEvt={handleAuthEvt} />}
-          />
-          {/* <Route
+    return (
+      <div className='flex flex-col '>
+        {/* <NavBar user={user} handleLogout={handleLogout} /> */}
+        {user &&
+          <HeaderComponent handleSetFollowingPosts={handleSetFollowingPosts} />}
+        <div className='flex-grow overflow-y-auto'>
+          <Routes>
+            <Route path="/" element=
+              {<Landing
+                user={user}
+                posts={posts}
+                handleSort={handleSort}
+                activeSort={activeSort}
+                // // filteredPosts={filteredPosts}
+                // handleMealCardClick={handleMealCardClick}
+                profile={profile}
+                handleLogout={handleLogout}
+                handleAuthEvt={handleAuthEvt}
+                handleShowProfile={handleShowProfile} />}
+            />
+            <Route
+              path="/profiles"
+              element={
+                <ProtectedRoute user={user}>
+                  <Profiles />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/auth/signup"
+              element={<Signup handleAuthEvt={handleAuthEvt} />}
+            />
+            {/* <Route
             path="/auth/login"
             element={<Login handleAuthEvt={handleAuthEvt} />}
           /> */}
-          <Route
-            path="/auth/change-password"
-            element={
-              <ProtectedRoute user={user}>
-                <ChangePassword handleAuthEvt={handleAuthEvt} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/posts/new"
-            element={
-              <ProtectedRoute user={user}>
-                <NewPost handleAddPost={handleAddPost} user={user} handleShowProfile={handleShowProfile} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/posts/:id/edit"
-            element={
-              <ProtectedRoute user={user}>
-                <EditPost handleUpdatePost={handleUpdatePost} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/posts/:id"
-            element={
-              <ProtectedRoute user={user}>
-                <PostDetails user={user} handleShowProfile={handleShowProfile} handleDeletePost={handleDeletePost} />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/auth/change-password"
+              element={
+                <ProtectedRoute user={user}>
+                  <ChangePassword handleAuthEvt={handleAuthEvt} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/posts/new"
+              element={
+                <ProtectedRoute user={user}>
+                  <NewPost handleAddPost={handleAddPost} user={user} handleShowProfile={handleShowProfile} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/posts/:id/edit"
+              element={
+                <ProtectedRoute user={user}>
+                  <EditPost handleUpdatePost={handleUpdatePost} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/posts/:id"
+              element={
+                <ProtectedRoute user={user}>
+                  <PostDetails user={user} handleShowProfile={handleShowProfile} handleDeletePost={handleDeletePost} />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/test"
-            element={
-              <ProtectedRoute user={user}>
-                <TailwindTest />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/:id"
-            element={
-              <ProtectedRoute user={user}>
-                <Profile
-                  user={user}
-                  handleSort={handleSort}
-                  activeSort={activeSort}
-                  profile={profile}
-                  handleLogout={handleLogout}
-                  posts={posts}
-                  handleDirectProfileNavigationOrRefresh={handleDirectProfileNavigationOrRefresh}
-                  userProfile={userProfile}
-                  followThisProfile={followThisProfile}
-                  unfollowThisProfile={unfollowThisProfile}
-                  acceptFollowRequest={acceptFollowRequest}
-                  rejectFollowRequest={rejectFollowRequest}
-                />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/friend-requests"
-            element={
-              <ProtectedRoute user={user}>
-                <FriendRequests user={user} profile={profile} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/:id/friendsList"
-            element={
-              <ProtectedRoute user={user}>
-                <FriendList profile={profile} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/search"
-            element={
-              <ProtectedRoute user={user}>
-                <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} user={user} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/notifications"
-            element={
-              <ProtectedRoute user={user}>
-                <NotificationsPage profile={profile} user={user} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/restaurantSearch"
-            element={
-              <ProtectedRoute user={user}>
-                <RestaurantSearch profile={profile} user={user} />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/test"
+              element={
+                <ProtectedRoute user={user}>
+                  <TailwindTest />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/:id"
+              element={
+                <ProtectedRoute user={user}>
+                  <Profile
+                    user={user}
+                    handleSort={handleSort}
+                    activeSort={activeSort}
+                    profile={profile}
+                    handleLogout={handleLogout}
+                    posts={posts}
+                    handleDirectProfileNavigationOrRefresh={handleDirectProfileNavigationOrRefresh}
+                    userProfile={userProfile}
+                    followThisProfile={followThisProfile}
+                    unfollowThisProfile={unfollowThisProfile}
+                    acceptFollowRequest={acceptFollowRequest}
+                    rejectFollowRequest={rejectFollowRequest}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/friend-requests"
+              element={
+                <ProtectedRoute user={user}>
+                  <FriendRequests user={user} profile={profile} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/:id/friendsList"
+              element={
+                <ProtectedRoute user={user}>
+                  <FriendList profile={profile} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/search"
+              element={
+                <ProtectedRoute user={user}>
+                  <Search search={search} searchResults={searchResults} handleSearch={handleSearch} profile={profile} handleLogout={handleLogout} handleShowProfile={handleShowProfile} user={user} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/notifications"
+              element={
+                <ProtectedRoute user={user}>
+                  <NotificationsPage profile={profile} user={user} />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/restaurantSearch"
+              element={
+                <ProtectedRoute user={user}>
+                  <RestaurantSearch profile={profile} user={user} />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route
-            path="/edit-profile"
-            element={
-              <ProtectedRoute user={user}>
-                <EditProfile profile={profile} user={user} />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/edit-profile"
+              element={
+                <ProtectedRoute user={user}>
+                  <EditProfile profile={profile} user={user} />
+                </ProtectedRoute>
+              }
+            />
 
-        </Routes>
+          </Routes>
+        </div>
+        {user &&
+          <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFollowingPosts={handleSetFollowingPosts} />
+        }
       </div>
-      {user &&
-        <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFollowingPosts={handleSetFollowingPosts} />
-      }
-    </div>
-  )
-}
+    )
+  }
 
-export default App
+  export default App

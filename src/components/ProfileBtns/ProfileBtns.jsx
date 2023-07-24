@@ -1,11 +1,14 @@
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 
-const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, theyAreFollowingMe, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, profile, awaitingFollowRequest }) => {
+const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, theyAreFollowingMe, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, profile, awaitingFollowRequest, followRequestRecieved }) => {
+
+  const [showFollowRequestButtons, setShowFollowRequestButtons] = useState(followRequestRecieved);
 
   let buttonText = "";
 
   switch (true) {
-    case isOwner && awaitingFollowRequest:
+    case followRequestRecieved && awaitingFollowRequest:
       buttonText = "Accept friend request";
       break;
     // ? reject friend request in the return.
@@ -36,6 +39,20 @@ const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, 
       // For example: buttonText = "Default";
       break;
   }
+// ! update accept, reject btns after click
+  useEffect(() => {
+    setShowFollowRequestButtons(followRequestRecieved);
+  }, [followRequestRecieved]);
+
+  const handleAcceptRequest = () => {
+    acceptFollowRequest(profile);
+    setShowFollowRequestButtons(false); // Hide the follow request buttons after accepting
+  };
+
+  const handleRejectRequest = () => {
+    rejectFollowRequest(profile);
+    setShowFollowRequestButtons(false); // Hide the follow request buttons after rejecting
+  };
 
 
   return (
@@ -66,17 +83,16 @@ const ProfileBtns = ({ isOwner, isFriends, iAmFollowing, awaitingFriendRequest, 
                   unfollowThisProfile(profile)
                   break;
                 default:
-                  // You can set a default value for buttonText if none of the cases match.
-                  // For example: buttonText = "Default";
                   break;
               }
             }}
           />
         </div>
       )}
-      {awaitingFriendRequest && (
+      {showFollowRequestButtons && (
         <div className="m-2">
-          <Button btnText="Reject Friend Request" onClick={() => { }} />
+          <Button btnText="Accept Request" onClick={handleAcceptRequest} />
+          <Button btnText="Reject Request" onClick={handleRejectRequest} />
         </div>
       )}
     </div>

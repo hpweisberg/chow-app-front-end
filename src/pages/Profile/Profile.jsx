@@ -42,6 +42,8 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
   const awaitingFollowRequest = profile?.followRequests?.includes(user.handle);
 
+  const followRequestRecieved = userProfile?.followRequests?.includes(profile.handle);
+
   const awaitingFriendRequest = userProfile?.friendRequests?.includes(user.handle);
 
 
@@ -67,6 +69,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         acceptFollowRequest={acceptFollowRequest}
         rejectFollowRequest={rejectFollowRequest}
         awaitingFollowRequest={awaitingFollowRequest}
+        followRequestRecieved={followRequestRecieved}
       />
       <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />
