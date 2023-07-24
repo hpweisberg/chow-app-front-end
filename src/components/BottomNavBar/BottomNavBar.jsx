@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import { Home, NewPost } from "../../components/Icons/Icons";
 
-const BottomNavBar = ({ user, handleShowProfile, handleSetFollowingPosts }) => {
-  const handleUserProfileClick = (profileData) => {
-    handleShowProfile(profileData);
+const BottomNavBar = ({ user, handleShowProfile, handleSetFollowingPosts, userProfile }) => {
+  const handleUserProfileClick = (userProfile) => {
+    handleShowProfile(userProfile);
   }
 
   return (

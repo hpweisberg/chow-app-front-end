@@ -21,10 +21,10 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   }, [profile, id, handleDirectProfileNavigationOrRefresh]);
 
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
-    libraries: ["places"],
-  })
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
+  //   libraries: ["places"],
+  // })
 
 
   //? Keep here while content is loading
@@ -80,8 +80,8 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         <MealCard posts={posts} />
 
       )}
-      {activeSort === 'map' && isLoaded && <Map posts={posts} />}
-      {activeSort === 'map' && !isLoaded && <Loading />}
+      {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />}
+      {activeSort === 'map' && !isLoaded && <Loading />} */}
     </main>
   );
 };

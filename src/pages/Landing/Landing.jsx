@@ -20,10 +20,10 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
 // console.log('filteredPosts: ', filteredPosts)
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
-    libraries: ["places"],
-  })
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
+  //   libraries: ["places"],
+  // })
 
 
   return (
@@ -41,8 +41,8 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
                   <MealCard posts={posts} />
                 </>
               )}
-              {activeSort === 'map' && isLoaded && <Map posts={posts} />}
-              {activeSort === 'map' && !isLoaded && <Loading />}
+              {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />} */}
+              {/* {activeSort === 'map' && !isLoaded && <Loading />} */}
             </div>
           )}
         </main>
