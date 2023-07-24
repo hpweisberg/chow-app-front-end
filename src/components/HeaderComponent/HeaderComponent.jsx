@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { Bell, BellNew, Search } from "../../components/Icons/Icons";
 
-const HeaderComponent = ({ handleSetFriendsPosts }) => {
+const HeaderComponent = ({ handleSetFollowingPosts }) => {
   return (
     <div className="fixed w-full h-16 top-0 z-50 bg-white shadow">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between my-2">
           <Link to="/">
             <h1
-              onClick={() => handleSetFriendsPosts()}
+              onClick={() => handleSetFollowingPosts()}
               className="text-black no-underline decoration-none"
             >
               Chow

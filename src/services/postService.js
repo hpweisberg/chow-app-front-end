@@ -25,6 +25,17 @@ async function getFriendPosts() {
   }
 }
 
+async function getFollowingPosts() {
+  try {
+    const res = await fetch(`${BASE_URL}/following`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 
 
 async function showPost(id) {
@@ -141,5 +152,6 @@ export {
   updatePost,
   deletePost,
   getFriendPosts,
-  addRestaurant
+  addRestaurant,
+  getFollowingPosts
 }

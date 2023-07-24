@@ -37,6 +37,8 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
   const isFriends = profile?.friends?.includes(user.handle);
 
+  const iAmFollowing = profile?.followers?.includes(user.handle);
+
   const awaitingFriendRequest = profile?.friendRequests?.includes(user.handle);
 
 
