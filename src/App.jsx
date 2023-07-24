@@ -49,7 +49,7 @@ function App() {
   // console.log('app lvl logedInUser: ',logedInUser)
   // console.log('app lvl profile: ',profile)
   // console.log('user: ',user)
-  // console.log('posts3: ', posts)
+  console.log('posts3: ', posts)
   // console.log('profile: ', profile)
   console.log('userProfile: ', userProfile)
 
