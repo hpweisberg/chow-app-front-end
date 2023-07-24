@@ -94,25 +94,127 @@ function App() {
 
 
   const handleShowProfile = async (profile) => {
-    const profileData = await profileService.getProfile(profile.handle)
-    setProfile(profileData)
-    const reversedPosts = [...profileData.posts].reverse();
-    setPosts(reversedPosts)
-    setActiveSort('rows')
-  };
-
-  const handleShowProfileRefresh = async (profile) => {
-    if (profile.followPublic) {
-      const profileData = await profileService.getProfile(profile.handle)
-      setProfile(profileData)
+    const profileData = await profileService.getProfile(profile.handle);
+    setProfile(profileData);
+  
+    const isOwnProfile = profile.handle === userProfile.handle;
+  
+    if (isOwnProfile) {
+      // If it's your own profile, set the posts as usual
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+      setActiveSort('rows');
     } else {
+      // If it's not your own profile, check if the profile has followPublic set to true
+      if (profileData.followPublic === true) {
+        // If followPublic is true, set the posts as usual
+        const reversedPosts = [...profileData.posts].reverse();
+        setPosts(reversedPosts);
+        setActiveSort('rows');
+      } else {
+        // If followPublic is false, check if the userProfile is already following the profile
+        const isFollowing = userProfile.following.includes(profileData.handle);
+  
+        // If userProfile is already following, set the posts as usual
+        if (isFollowing) {
+          const reversedPosts = [...profileData.posts].reverse();
+          setPosts(reversedPosts);
+          setActiveSort('rows');
+        } else {
+          // If userProfile is not following, set the posts to an empty array
+          setPosts([]);
+        }
+      }
+    }
+  };
+  
+
+  console.log(profile)
+
+
+  // ! Not working properly
+  const handleShowProfileRefresh = async (profile) => {
+    const isFollowing = userProfile.following.includes(profile.handle);
+
+    if (profile.handle === userProfile.handle) {
       const profileData = await profileService.getProfile(profile.handle)
       setProfile(profileData)
-      setPosts([])
-    
-
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+      console.log('allowed')
+      return
     }
+
+    if (profile.followPublic === false) {
+      if (isFollowing) {
+        const profileData = await profileService.getProfile(profile.handle)
+        setProfile(profileData)
+        const reversedPosts = [...profileData.posts].reverse();
+        setPosts(reversedPosts);
+        console.log('allowed')
+      } else {
+        const profileData = await profileService.getProfile(profile.handle)
+        setProfile(profileData)
+        setPosts([])
+        console.log('not allowed')
+      }
+    }
+
+    if (profile.followPublic === true) {
+      const profileData = await profileService.getProfile(profile.handle)
+      setProfile(profileData)
+      const reversedPosts = [...profileData.posts].reverse();
+      setPosts(reversedPosts);
+      console.log('allowed')
+    }
+
+    // if (profile.followPublic) {
+    //   const profileData = await profileService.getProfile(profile.handle)
+    //   setProfile(profileData)
+    //   const reversedPosts = [...profileData.posts].reverse();
+    //   setPosts(reversedPosts);
+    //   console.log('allowed')
+    // }
+    // if (isFollowing) {
+    //   const profileData = await profileService.getProfile(profile.handle)
+    //   setProfile(profileData)
+    //   const reversedPosts = [...profileData.posts].reverse();
+    //   setPosts(reversedPosts);
+    //   console.log('allowed')
+    // } else {
+    //   const profileData = await profileService.getProfile(profile.handle)
+    //   setProfile(profileData)
+    //   setPosts([])
+    //   console.log('not allowed')
+    // }
   }
+
+  //   const handleShowProfileRefresh = async (profile) => {
+  //   const profileData = await profileService.getProfile(profile.handle);
+  //   setProfile(profileData);
+
+  //   // Check if the profile has followPublic set to true
+  //   if (profileData.followPublic === true) {
+  //     // If followPublic is true, set the posts as usual
+  //     const reversedPosts = [...profileData.posts].reverse();
+  //     setPosts(reversedPosts);
+  //   } else {
+  //     // If followPublic is false, check if the userProfile is already following the profile
+  //     // const userProfile = await profileService.getProfile(user.handle);
+  //     const isFollowing = userProfile.following.includes(profileData.handle);
+  //     // setPosts([]);
+
+  //     // If userProfile is already following, set the posts as usual
+  //     if (isFollowing) {
+  //       const reversedPosts = [...profileData.posts].reverse();
+  //       setPosts(reversedPosts);
+  //     } else {
+  //       // If userProfile is not following, set the posts to an empty array
+  //       setPosts([]);
+  //     }
+  //   }
+  // };
+
 
 
   // ! posts
@@ -188,7 +290,7 @@ function App() {
 
   // ! Follower functions
 
-  
+
   const followThisProfile = async (profile) => {
     const updatedProfile = await profileService.follow(profile.handle);
     handleShowProfileRefresh(updatedProfile); // Update the profile after follow

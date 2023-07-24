@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import PostCardAuthorInfo from "../PostCardAuthorInfo/PostCardAuthorInfo";
 
 const PostCard = ({ post, isLast, handleShowProfile }) => {
-  // console.log('post: ', post);
 
   const createdAt = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
 
