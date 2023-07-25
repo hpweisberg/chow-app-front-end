@@ -522,7 +522,9 @@ function App() {
         </Routes>
       </div>
       {user &&
-        <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFollowingPosts={handleSetFollowingPosts} userProfile={userProfile} />
+        <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFollowingPosts={handleSetFollowingPosts} userProfile={userProfile} 
+        darkEnabled={darkEnabled}
+        />
       }
     </div>
   )
