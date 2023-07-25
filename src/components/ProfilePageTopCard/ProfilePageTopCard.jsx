@@ -37,13 +37,13 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
 
           <div className="flex justify-between items-center mr-1">
             <h1 className="m-0 mr-4 text-2xl font-bold">{profile.handle}</h1>
-            <ProfileDropDown handleLogout={handleLogout} />
+            <ProfileDropDown handleLogout={handleLogout} profile={profile}/>
           </div>
 
           <div className="">
             <h4 className="m-0 mr-4 font-bold">{profile.name}</h4>
             <p>{profile.bio}</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt pariatur eligendi culpa deserunt molestias asperiores, dolorem explicabo saepe? Dolore, non.</p>
+            {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt pariatur eligendi culpa deserunt molestias asperiores, dolorem explicabo saepe? Dolore, non.</p> */}
           </div>
         </div>
       </div>
