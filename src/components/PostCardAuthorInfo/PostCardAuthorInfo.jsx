@@ -18,12 +18,14 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
   return (
     landingPage ?
       <NavLink to={`/${post.author.handle}`}>
-        <div className="relative bg-primary-100 rounded-t-lg mx-6">
-          <div className="flex justify-center gap-6 items-center space-x-1 ">
+        <div className="relative postCardAuthorInfoColor rounded-t-lg mx-2 shadow-inner ">
+          <div className="flex justify-center gap-4 items-center space-x-1 ">
             <div onClick={() => handleUserProfileClick(authorProfile)} className="flex gap-2 justify-center items-center ">
               {post.author?.photo && <img src={post.author.photo} alt="" className="w-5 h-5 my-0.5 rounded-2xl" />}
-              {post.author?.name && <p className="text-md font-semibold text-primary-200 opacity-75">{post.author.name}</p>}
+              {post.author?.name && <p className="text-md font-semibold opacity-75">{post.author.name}</p>}
             </div>
+            {/* Temp. Add must have indicator */}
+            <p className="">Must have</p>
             <p className="text-primary-200 opacity-50 text-md">{createdAt}</p>
           </div>
         </div>
@@ -32,7 +34,7 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
       // The createdAt date should appear on the right side of the component. The text should not extend further left.
 
       <div className="flex justify-end pr-5">
-        <p className="text-primary-200 opacity-75 text-md px-3 bg-primary-100 rounded-t-lg">{createdAt}</p>
+        <p className="postCardAuthorInfoColor opacity-75 text-md px-3 200 rounded-t-lg">{createdAt}</p>
       </div>
     // <NavLink to={`/${post.author.handle}`}>
     //   <div className="relative bg-red-200 rounded-t-lg mx-5">

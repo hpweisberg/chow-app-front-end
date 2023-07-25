@@ -11,7 +11,7 @@ import Map from "../../components/Map/Map";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest }) => {
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, darkEnabled }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         rejectFollowRequest={rejectFollowRequest}
         awaitingFollowRequest={awaitingFollowRequest}
         followRequestRecieved={followRequestRecieved}
+        darkEnabled={darkEnabled}
       />
       <div className='flex items-center justify-between w-full py-4'>
         <PostIconNav handleSort={handleSort} />
