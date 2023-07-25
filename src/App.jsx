@@ -464,6 +464,7 @@ function App() {
                   unfollowThisProfile={unfollowThisProfile}
                   acceptFollowRequest={acceptFollowRequest}
                   rejectFollowRequest={rejectFollowRequest}
+                  darkEnabled={darkEnabled}
                 />
               </ProtectedRoute>
             }

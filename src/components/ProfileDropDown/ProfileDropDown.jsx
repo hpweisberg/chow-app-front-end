@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const ProfileDropDown = ({ handleLogout, profile }) => {
+const ProfileDropDown = ({ handleLogout, profile, darkEnabled }) => {
 
   function EditInactiveIcon(props) {
     return (
@@ -16,7 +16,8 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
       >
         <path
           d="M4 13V16H7L16 7L13 4L4 13Z"
-          fill="#EDE9FE"
+          fill={props.fill}
+          // fill="#EDE9FE"
           stroke="#A78BFA"
           strokeWidth="2"
         />
@@ -34,7 +35,8 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
       >
         <path
           d="M4 13V16H7L16 7L13 4L4 13Z"
-          fill="#8B5CF6"
+          // fill="#8B5CF6"
+          fill={props.fill}
           stroke="#C4B5FD"
           strokeWidth="2"
         />
@@ -104,7 +106,8 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          fill="#EDE9FE"
+          // fill="#EDE9FE"
+          fill={props.fill}
           stroke="#A78BFA"
           strokeWidth="2"
           d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
@@ -126,7 +129,8 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          fill="#8B5CF6"
+          // fill="#8B5CF6"
+          fill={props.fill}
           stroke="#C4B5FD"
           strokeWidth="2"
           d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
@@ -140,7 +144,7 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
         <div>
           <Menu.Button className="inline-flex w-full justify-center 
           
-          rounded-full p-1 text-lg font-medium text-black hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75
+          rounded-full p-1 text-lg font-medium text-light-txt-100 dark:text-dark-txt-100 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75
           ">
             ...
             {/* <ChevronDownIcon
@@ -158,20 +162,21 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-[0px] mt-1 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+          <Menu.Items className="absolute right-[0px] mt-1 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-light-primary-100 dark:bg-dark-background-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
           z-10">
             <div className="px-1 py-1 ">
               <Link to={'/edit-profile'} state={profile}>
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                      className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900 dark:text-gray-200'
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <EditActiveIcon
                           className="mr-2 h-5 w-5"
                           aria-hidden="true"
+                          // fill={darkEnabled ? '#09090b' : '#fff'}
                         />
                       ) : (
                         <EditInactiveIcon
@@ -188,7 +193,7 @@ const ProfileDropDown = ({ handleLogout, profile }) => {
                 {({ active }) => (
                   <button
                     onClick={handleLogout}
-                    className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                    className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900 dark:text-gray-200'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     {active ? (

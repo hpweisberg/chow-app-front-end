@@ -4,13 +4,13 @@ import DarkMode from "../DarkMode/DarkMode";
 
 const HeaderComponent = ({ handleSetFollowingPosts, handleThemeSwitch, darkEnabled }) => {
   return (
-    <div className="fixed w-full h-16 top-0 z-50 bg-white shadow">
+    <div className="fixed w-full h-16 top-0 z-50 bg-white dark:bg-dark-background-200 shadow">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between my-2">
           <Link to="/">
             <h1
               onClick={() => handleSetFollowingPosts()}
-              className="text-black no-underline decoration-none"
+              className="text-black dark:text-dark-txt-100 no-underline decoration-none"
             >
               Chow
             </h1>

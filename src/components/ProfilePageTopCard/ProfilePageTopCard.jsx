@@ -10,7 +10,7 @@ import FollowingTracker from "../FollowingTracker/FollowingTracker";
 
 
 
-const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest, iAmFollowing, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, awaitingFollowRequest, followRequestRecieved }) => {
+const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsCount, isOwner, isFriends, awaitingFriendRequest, iAmFollowing, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, awaitingFollowRequest, followRequestRecieved, darkEnabled }) => {
 
 
   return (
@@ -37,7 +37,7 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
 
           <div className="flex justify-between items-center mr-1">
             <h1 className="m-0 mr-4 text-2xl font-bold">{profile.handle}</h1>
-            <ProfileDropDown handleLogout={handleLogout} profile={profile}/>
+            <ProfileDropDown handleLogout={handleLogout} profile={profile} darkEnabled={darkEnabled}/>
           </div>
 
           <div className="">
