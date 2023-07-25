@@ -68,10 +68,7 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
         {isAuthor && (
           <div className="flex items-center">
             <Link
-              to={{
-                pathname: `/posts/${post._id}/edit`,
-                state: post
-              }}
+              to={`/posts/${post._id}/edit`} state={post}
               className="mr-4 text-blue-500"
             >
               Edit
