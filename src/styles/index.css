@@ -10,9 +10,28 @@
     font-family: 'Inter', sans-serif ; */
     /* color: red; */
     html {
-      @apply bg-slate-50 dark:bg-slate-800
+      @apply light; /* Apply light mode styles by default */
     }
+    
+    .light {
+      @apply bg-slate-50; /* Light mode background color */
+      color: #000; /* Light mode text color */
+    }
+    
+    .dark {
+      @apply bg-slate-800; /* Dark mode background color */
+      color: #fff; /* Dark mode text color */
+    }
+    
   }
+
+  /* .light {
+    @apply bg-slate-50
+  }
+
+  .dark {
+    @apply bg-slate-800
+  } */
 
   h1 {
     @apply mb-2 text-3xl font-bold;

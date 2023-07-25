@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Bell, BellNew, Search } from "../../components/Icons/Icons";
+import DarkMode from "../DarkMode/DarkMode";
 
-const HeaderComponent = ({ handleSetFollowingPosts }) => {
+const HeaderComponent = ({ handleSetFollowingPosts, handleThemeSwitch, darkEnabled }) => {
   return (
     <div className="fixed w-full h-16 top-0 z-50 bg-white shadow">
       <div className="container mx-auto px-4">
@@ -14,6 +15,10 @@ const HeaderComponent = ({ handleSetFollowingPosts }) => {
               Chow
             </h1>
           </Link>
+          <div className="flex items-center">
+
+            <DarkMode handleThemeSwitch={handleThemeSwitch} darkEnabled={darkEnabled}/>
+          </div>
           <div className="flex items-center space-x-2">
             <Link to="/search">
               <Search className="w-4 h-4 text-black" />
