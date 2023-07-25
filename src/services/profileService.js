@@ -1,5 +1,6 @@
 // services
 import * as tokenService from './tokenService'
+import { addPhoto as addProfilePhoto } from './postService';
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -44,7 +45,7 @@ async function addPhoto(photoData) {
   }
 }
 
-async function updateProfile(profileData) {
+async function updateProfile(profileData, photoData) {
   try {
     console.log('profileData:', profileData);
     const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
@@ -59,6 +60,9 @@ async function updateProfile(profileData) {
     const responseData = await res.text(); // Parse the response manually as text
     console.log('Response from Backend:', responseData); // Log the response data
     const updatedProfile = JSON.parse(responseData); // Manually parse the JSON data
+    if (photoData) {
+      await addProfilePhoto(photoData)
+    }
     return updatedProfile;
   } catch (err) {
     throw new Error(err);

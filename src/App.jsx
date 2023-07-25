@@ -49,9 +49,9 @@ function App() {
   // console.log('app lvl logedInUser: ',logedInUser)
   // console.log('app lvl profile: ',profile)
   // console.log('user: ',user)
-  console.log('posts3: ', posts)
+  // console.log('posts3: ', posts)
   // console.log('profile: ', profile)
-  console.log('userProfile: ', userProfile)
+  // console.log('userProfile: ', userProfile)
 
   // ! user profile
 
@@ -343,7 +343,7 @@ const handleUpdateProfile = async (profileData) => {
 
 
     return (
-      <div className='flex flex-col '>
+      <div className='flex flex-col bg-slate-50 min-h-screen:bg-slate-50'>
         {/* <NavBar user={user} handleLogout={handleLogout} /> */}
         {user &&
           <HeaderComponent handleSetFollowingPosts={handleSetFollowingPosts} />}
