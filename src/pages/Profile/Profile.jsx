@@ -20,6 +20,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
     }
   }, [profile, id, handleDirectProfileNavigationOrRefresh]);
 
+  console.log(profile?.bio)
 
   // const { isLoaded } = useLoadScript({
   //   googleMapsApiKey: '***REMOVED***',

@@ -334,7 +334,12 @@ const handleShowProfile = async (profile) => {
       handleShowProfileRefresh(updatedProfile); // Update the profile after rejecting follow request
     };
 
-    // ! update profile when profile is changed
+    // ! update Profile
+const handleUpdateProfile = async (profileData) => {
+  const updatedProfile = await profileService.updateProfile(profileData);
+  setProfile(updatedProfile);
+};
+
 
 
     return (
@@ -480,7 +485,7 @@ const handleShowProfile = async (profile) => {
               path="/edit-profile"
               element={
                 <ProtectedRoute user={user}>
-                  <EditProfile profile={profile} user={user} />
+                  <EditProfile profile={profile} user={user} handleUpdateProfile={handleUpdateProfile}/>
                 </ProtectedRoute>
               }
             />

@@ -46,18 +46,25 @@ async function addPhoto(photoData) {
 
 async function updateProfile(profileData) {
   try {
+    console.log('profileData:', profileData);
     const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
       method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        // this was the fix
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(profileData),
     });
-    return await res.json();
+    const responseData = await res.text(); // Parse the response manually as text
+    console.log('Response from Backend:', responseData); // Log the response data
+    const updatedProfile = JSON.parse(responseData); // Manually parse the JSON data
+    return updatedProfile;
   } catch (err) {
     throw new Error(err);
   }
 }
+
 
 
 async function friendRequests() {
