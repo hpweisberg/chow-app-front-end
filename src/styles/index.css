@@ -9,7 +9,7 @@
     /* @apply text-lg text-black bg-slate-600 ;
     font-family: 'Inter', sans-serif ; */
     /* color: red; */
-    html {
+    html, article {
       @apply light; /* Apply light mode styles by default */
     }
     
@@ -21,6 +21,10 @@
     .dark {
       @apply bg-dark-background-100 text-dark-txt-100; /* Dark mode background color */
       /* color: #fff; Dark mode text color */
+    }
+
+    html, body {
+      overflow-x: hidden
     }
     
   }
@@ -121,9 +125,12 @@
   @apply flex justify-between
 }
 
+/* ! active postNavIcon */
+
 .active {
-  @apply transition border-b-2 border-blue-500;
+  box-shadow: 0 4px 2px -2px rgb(221, 12, 12);
 }
+
 
 .last {
   @apply mb-12 bg-red-600
@@ -152,7 +159,7 @@
 }
 
 .selectedMealCard {
-  @apply text-blue-500
+  @apply text-red-400
 }
 
 .meal-type-icon {

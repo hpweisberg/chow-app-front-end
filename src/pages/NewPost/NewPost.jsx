@@ -94,7 +94,7 @@ const NewPost = ({ user, handleShowProfile }) => {
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
         <h1 className="text-2xl font-bold mb-0">New Post</h1>
       </div>
-      <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg">
+      <article className="max-w-lg p-4 pt-1 mx-auto bg-light-background-100 dark:bg-dark-background-100 rounded-lg shadow-lg">
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
           <div className='flex gap-1 justify-center'>
@@ -117,16 +117,17 @@ const NewPost = ({ user, handleShowProfile }) => {
                   name="photo"
                   accept="image/*"
                   onChange={handleChangePhoto}
+                  required
                 />
               </label>
             )}
 
             {/* <input type="file" name="photo" onChange={handleChangePhoto} className='mealCard' /> */}
-            <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} />
+            <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} required/>
           </div>
           <div className='flex flex-col gap-4 items-center'>
 
-            <RestaurantSearch handleRestaurantData={handleRestaurantData} />
+            <RestaurantSearch handleRestaurantData={handleRestaurantData} required/>
 
             <input
               required
@@ -141,8 +142,8 @@ const NewPost = ({ user, handleShowProfile }) => {
           </div>
           <div className='flex flex-col items-center'>
 
-            <label htmlFor="raiting-input">Rating</label>
-            <Rating rating={formData.rating} handleNumClick={handleNumClick} />
+            <label htmlFor="raiting-input" className='text-light-txt-100 dark:text-dark-txt-100'>Rating</label>
+            <Rating rating={formData.rating} handleNumClick={handleNumClick} required/>
           </div>
 
           <textarea

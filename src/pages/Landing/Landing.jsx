@@ -15,7 +15,7 @@ NavLink
 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt }) => {
+const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
 // console.log('filteredPosts: ', filteredPosts)
@@ -29,11 +29,11 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
   return (
     <div>
       {user ? (
-        <main className='container flex flex-col items-center justify-center'>
+        <main className='container flex flex-col items-center justify-center '>
           {user && (
             <div className=' flex flex-col justify-center min-w-full'>
               <div className='container w-full mt-16 mb-2'>
-                <PostIconNav handleSort={handleSort} />
+                <PostIconNav handleSort={handleSort} darkEnabled={darkEnabled} />
               </div>
               {activeSort === 'rows' && <PostList profile={profile} posts={posts} handleShowProfile={handleShowProfile}/>}
               {activeSort === 'meals' && (

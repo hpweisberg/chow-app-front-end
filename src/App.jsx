@@ -371,11 +371,11 @@ function App() {
 
 
   return (
-    <div className='flex flex-col bg-slate-50 dark:bg-slate-800'>
+    <div className='flex flex-col bg-slate-50 dark:bg-slate-800 overflow-scroll-x-hidden'>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       {user &&
         <HeaderComponent handleSetFollowingPosts={handleSetFollowingPosts}handleThemeSwitch={handleThemeSwitch} darkEnabled={darkEnabled}/>}
-      <div className='flex-grow overflow-y-auto'>
+      <div className='flex-grow overflow-y-auto overflow-scroll-hidden'>
         <Routes>
           <Route path="/" element=
             {<Landing
@@ -388,7 +388,8 @@ function App() {
               profile={profile}
               handleLogout={handleLogout}
               handleAuthEvt={handleAuthEvt}
-              handleShowProfile={handleShowProfile} />}
+              handleShowProfile={handleShowProfile}
+              darkEnabled={darkEnabled} />}
           />
           <Route
             path="/profiles"
