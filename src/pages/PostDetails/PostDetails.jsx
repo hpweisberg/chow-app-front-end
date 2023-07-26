@@ -9,6 +9,7 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
   const navigate = useNavigate();
   // console.log('id:', id)
   // console.log('post:', post.author.photo)
+  console.log('post: ', post)
 
 
   useEffect(() => {

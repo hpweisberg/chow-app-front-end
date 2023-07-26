@@ -274,7 +274,7 @@ function App() {
   const handleUpdatePost = async (postData) => {
     const updatedBlog = await postService.updatePost(postData)
     setPosts(posts.map((post) => (post._id === updatedBlog._id ? updatedBlog : post)))
-    navigate('/posts/:id')
+    // navigate('/posts/:id')
   }
 
   const handleDeletePost = async (postId) => {
@@ -427,7 +427,7 @@ function App() {
             path="/posts/:id/edit"
             element={
               <ProtectedRoute user={user}>
-                <EditPost handleUpdatePost={handleUpdatePost} />
+                <EditPost handleUpdatePost={handleUpdatePost} userProfile={userProfile}/>
               </ProtectedRoute>
             }
           />
