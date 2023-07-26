@@ -52,7 +52,8 @@ const LoginPage = ({ handleAuthEvt }) => {
       <p className={styles.message}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.form} >
         <div className='relative w-[100%]'>
-          <input className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 text-gray-900 dark:text-gray-600 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent'
+          <input className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
+          dark:bg-dark-background-200/50'
             type="text"
             value={email}
             name="email"
@@ -61,7 +62,7 @@ const LoginPage = ({ handleAuthEvt }) => {
           />
           <label htmlFor="email" className=' absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
           peer-placeholder-shown:text-gray-400
-          peer-placeholder-shown:dark:text-dark-txt-200
+          peer-placeholder-shown:dark:gray-200
           peer-placeholder-shown:top-3
           peer-focus:-top-3 peer-focus:text-sm peer-focus:text-gray-700
           peer-focus:dark:text-dark-txt-100  transition-all
@@ -70,17 +71,19 @@ const LoginPage = ({ handleAuthEvt }) => {
 
         <div className='m-4 relative w-[100%]'>
 
-          <input className='m-1  w-full p-0 mt-0 placeholder:text-sm peer border-b-2 border-gray-300 text-gray-900 dark:text-gray-600 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent'
+          <input className='m-1  w-full p-0 mt-0 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
+          dark:bg-dark-background-200/50'
+
             type="password"
             value={password}
             name="password"
             onChange={handleChange}
             placeholder='Password'
-            
+
           />
           <label htmlFor="password" className=' absolute left-[8px] -top-4 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
           peer-placeholder-shown:text-gray-400
-          peer-placeholder-shown:dark:text-dark-txt-200
+          peer-placeholder-shown:dark:text-gray-400
           peer-placeholder-shown:top-1
           peer-focus:-top-4 peer-focus:text-sm peer-focus:text-gray-700
           peer-focus:dark:text-dark-txt-100
