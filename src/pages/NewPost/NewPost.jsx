@@ -123,37 +123,61 @@ const NewPost = ({ user, handleShowProfile }) => {
             )}
 
             {/* <input type="file" name="photo" onChange={handleChangePhoto} className='mealCard' /> */}
-            <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} required/>
+            <MealSelector selectedMeal={formData.meal} onSelectMeal={handleSelectMeal} required />
           </div>
           <div className='flex flex-col gap-4 items-center'>
 
-            <RestaurantSearch handleRestaurantData={handleRestaurantData} required/>
+            <RestaurantSearch handleRestaurantData={handleRestaurantData} required />
 
-            <input
-              required
-              type="text"
-              name="name"
-              placeholder="What did you eat?"
-              autoComplete='off'
-              value={formData.name}
-              onChange={handleChange}
-              className='m-0'
-            />
+            <div className='relative w-[100%]'>
+              <input
+                required
+                type="text"
+                name="name"
+                placeholder="What did you eat?"
+                autoComplete='off'
+                value={formData.name}
+                onChange={handleChange}
+                className='
+                p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
+          dark:bg-dark-background-200/50'
+              />
+              <label htmlFor="name" className=' absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
+          peer-placeholder-shown:text-gray-400
+          peer-placeholder-shown:dark:gray-200
+          peer-placeholder-shown:top-3
+          peer-focus:-top-3 peer-focus:text-sm peer-focus:text-gray-700
+          peer-focus:dark:text-dark-txt-100  transition-all
+          '
+              >Meal Name</label>
+            </div>
           </div>
-          <div className='flex flex-col items-center'>
+          <div className='flex flex-col items-center mb-2'>
 
             <label htmlFor="raiting-input" className='text-light-txt-100 dark:text-dark-txt-100'>Rating</label>
-            <Rating rating={formData.rating} handleNumClick={handleNumClick} required/>
+            <Rating rating={formData.rating} handleNumClick={handleNumClick} required />
           </div>
 
-          <textarea
-            type="text"
-            name="review"
-            placeholder="Review"
-            value={formData.review}
-            onChange={handleChange}
-            className='border-2 border-gray-300 p-2 w-full h-32'
-          />
+          <div className='relative w-[100%]'>
+
+            <textarea
+              type="text"
+              name="review"
+              placeholder="Review"
+              value={formData.review}
+              onChange={handleChange}
+              className='p-2 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
+          dark:bg-dark-background-200/50 h-32'
+              // className='border-2 border-gray-300 p-2 w-full h-32'
+            />
+            <label htmlFor="review" className=' absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
+          peer-placeholder-shown:text-gray-400
+          peer-placeholder-shown:dark:gray-200
+          peer-placeholder-shown:top-3
+          peer-focus:-top-3 peer-focus:text-sm peer-focus:text-gray-700
+          peer-focus:dark:text-dark-txt-100  transition-all
+          '>Review</label>
+          </div>
 
           <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline mb-20"
             disabled={isCreatingPost}

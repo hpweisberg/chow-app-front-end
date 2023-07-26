@@ -54,7 +54,7 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
         )}
       </div>
       {isMealOptionsVisible && (
-        <div className="absolute top-full left-0 w-full p-2 bg-white border rounded shadow-md">
+        <div className="absolute top-full left-0 w-full p-2 bg-white border rounded shadow-md z-10 dark:bg-black dark:text-dark-txt-100 dark:border-dark-background-100">
           {mealOptions.map((meal) => {
             const Icon = meal.icon;
             return (

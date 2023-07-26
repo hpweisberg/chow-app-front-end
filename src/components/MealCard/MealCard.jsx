@@ -54,7 +54,7 @@ const MealCard = ({ posts }) => {
         <>
           <div
             key={filteredPosts[0].meal}
-            className={`flex items-center justify-center w-full h-24 mb-1 postCard`}
+            className={`flex  items-center justify-center w-full h-24 mb-1 postCard`}
             style={{
               backgroundImage: `url(${mealImages[filteredPosts[0].meal]})`,
               backgroundSize: 'cover',
