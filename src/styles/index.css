@@ -26,6 +26,22 @@
     html, body {
       overflow-x: hidden
     }
+
+    input {
+      @apply border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 
+      focus:outline-none 
+      placeholder-transparent
+      dark:bg-dark-background-200/50
+      placeholder:text-sm
+    }
+
+    label {
+      @apply 
+      dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
+      peer-placeholder-shown:text-gray-400
+      peer-focus:text-sm peer-focus:text-gray-700
+      peer-focus:dark:text-dark-txt-100 transition-all
+    }
     
   }
 

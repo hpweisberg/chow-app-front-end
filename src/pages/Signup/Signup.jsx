@@ -79,59 +79,113 @@ const Signup = ({ handleAuthEvt }) => {
   }
 
   return (
-    <main className={styles.container}>
+    <main className={`${styles.container} mt-20 mx-12`}>
       <h1>Sign Up</h1>
       <p className={styles.message}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Name
-          <input type="text" value={name} name="name" onChange={handleChange} />
-        </label>
-        <label className={styles.label}>
-          Email
+        <div className='relative w-[100%] mb-2'>
+
+          <input
+            type="text"
+            value={name}
+            name="name"
+            onChange={handleChange}
+            placeholder='name'
+            className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50'
+
+          />
+          <label
+            htmlFor='name'
+            className={`absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:dark:gray-200 peer-placeholder-shown:top-3 
+            peer-focus:-top-3
+            focus:border-rose-600 focus:outline-none
+            ${name ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
+              } transition-all`}>
+
+            Name
+          </label>
+        </div>
+        <div className='relative w-[100%] mb-2'>
           <input
             type="text"
             value={email}
             name="email"
             onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Handle
+            placeholder='email'
+            className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
+          <label htmlFor='email'
+            className={`absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:dark:gray-200 peer-placeholder-shown:top-3 
+            peer-focus:-top-3
+            focus:border-rose-600 focus:outline-none
+            ${email ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
+              } transition-all`}>
+            Email
+          </label>
+        </div>
+        <div className='relative w-[100%] mb-2'>
           <input
+
             type="text"
             value={handle}
             name="handle"
             onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Password
+            placeholder='handle'
+            className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
+          <label htmlFor='handle' className={`absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:dark:gray-200 peer-placeholder-shown:top-3 
+            peer-focus:-top-3
+            focus:border-rose-600 focus:outline-none
+            ${handle ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
+              } transition-all`}>
+            Handle
+          </label>
+        </div>
+        <div className='relative w-[100%] mb-2'>
+
           <input
             type="password"
             value={password}
             name="password"
+            placeholder='password'
             onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Confirm Password
+            className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
+          <label htmlFor='password' className={`absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:dark:gray-200 peer-placeholder-shown:top-3 
+            peer-focus:-top-3
+            focus:border-rose-600 focus:outline-none
+            ${password ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
+              } transition-all`}>
+            Password
+          </label>
+        </div>
+        <div className='relative w-[100%]'>
+
           <input
             type="password"
             value={passwordConf}
             name="passwordConf"
+            placeholder='confirm password'
             onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Upload Photo
+            className='p-0 m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
+          <label htmlFor='passwordConf' className={`absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:dark:gray-200 peer-placeholder-shown:top-3 
+            peer-focus:-top-3
+            focus:border-rose-600 focus:outline-none
+            ${passwordConf ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
+              } transition-all`}>
+            Confirm Password
+          </label>
+        </div>
+        <div className='relative w-[100%]'>
+
           <input
             type="file"
             name="photo"
             onChange={handleChangePhoto}
             ref={imgInputRef}
           />
-        </label>
+
+          <label className={styles.label} htmlFor='photo'>
+            Upload Photo
+          </label>
+        </div>
         <div>
           <Link to="/">Cancel</Link>
           <button
