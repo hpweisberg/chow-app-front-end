@@ -175,7 +175,7 @@ const Signup = ({ handleAuthEvt }) => {
             Confirm Password
           </label>
         </div>
-        <div className='flex gap-1 justify-center'>
+        <div className='flex gap-1 justify-center my-2'>
           <label htmlFor="photo"></label>
           {photoData.photo ? (
             <div>
