@@ -17,13 +17,14 @@ const Splash = ({ handleAuthEvt }) => {
         </div>
         {/* <p className="flex justify-center">Log in with Google</p>
         <p className="flex justify-center opacity-70">comming soon</p> */}
-
-        <p className="mt-6">Don't have an account? <span>
-          <Link to={'/auth/signup'} className="text-blue-500">
-            Sign up
-          </Link>
-        </span>
-        </p>
+        <div className="flex flex-col items-center justify-center">
+          <p className="mt-6">Don't have an account? <span>
+            <Link to={'/auth/signup'} className="text-blue-500">
+              Sign up
+            </Link>
+          </span>
+          </p>
+        </div>
       </div>
     </div>
   );
