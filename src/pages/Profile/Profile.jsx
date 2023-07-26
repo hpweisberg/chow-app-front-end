@@ -55,7 +55,9 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
   return (
     <main className=" flex flex-col">
-      {!isOwner && <BackBtn />}
+      {/* {!isOwner && 
+      <BackBtn />
+      } */}
       <ProfilePageTopCard
         profile={profile}
         handleLogout={handleLogout}
