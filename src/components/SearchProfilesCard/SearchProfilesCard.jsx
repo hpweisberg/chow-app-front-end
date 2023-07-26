@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import * as profileService from "../../services/profileService";
+// import * as profileService from "../../services/profileService";
 import Button from "../Button/Button";
 
 const SearchProfilesCard = ({ profile, handleShowProfile, user }) => {
   const id = profile.handle;
 
-  const isFriends = profile?.friends?.includes(user.handle);
+  // const isFriends = profile?.friends?.includes(user.handle);
   const following = profile?.followers?.includes(user.handle);
   const follower = profile?.following?.includes(user.handle);
-  const followingEachother = profile?.followers?.includes(user.handle) && profile?.following?.includes(user.handle);
+  const followingEachother = user?.followers?.includes(profile.handle) && profile?.following?.includes(user.handle);
 
   let buttonText;
   // if (isFriends) {
