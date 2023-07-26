@@ -14,12 +14,12 @@ const DarkMode = ({ handleThemeSwitch, darkEnabled }) => {
       checked={darkEnabled}
       onChange={handleSwitch}
       className={`${darkEnabled ? 'bg-blue-600' : 'bg-gray-200'
-        } relative inline-flex h-6 w-20 items-center rounded-full`}
+        } relative inline-flex h-5 w-20 items-center rounded-full`}
     >
       <span className="sr-only">Enable dark mode</span>
       <span
         className={`${darkEnabled ? 'translate-x-6' : 'translate-x-1'
-          } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+          } inline-block h-4 w-4 transform rounded-full bg-red-400 transition`}
       />
     </Switch>
   );
