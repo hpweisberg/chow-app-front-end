@@ -168,7 +168,7 @@ const NewPost = ({ user, handleShowProfile }) => {
               onChange={handleChange}
               className='p-2 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
           dark:bg-dark-background-200/50 h-32'
-              // className='border-2 border-gray-300 p-2 w-full h-32'
+            // className='border-2 border-gray-300 p-2 w-full h-32'
             />
             <label htmlFor="review" className=' absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
           peer-placeholder-shown:text-gray-400
