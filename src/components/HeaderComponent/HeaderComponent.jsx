@@ -21,7 +21,7 @@ const HeaderComponent = ({ handleSetFollowingPosts, handleThemeSwitch, darkEnabl
           </div>
           <div className="flex items-center space-x-2">
             <Link to="/search">
-              <Search className="w-4 h-4 text-black" />
+              <Search className="w-4 h-4 text-black dark:text-slate-50" />
             </Link>
             <Link to="/notifications">
               <Bell className="w-4 h-4" />
