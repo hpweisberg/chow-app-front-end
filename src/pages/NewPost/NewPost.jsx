@@ -152,7 +152,7 @@ const NewPost = ({ user, handleShowProfile }) => {
             placeholder="Review"
             value={formData.review}
             onChange={handleChange}
-            className='border-2 border-gray-300 p-2 w-full'
+            className='border-2 border-gray-300 p-2 w-full h-32'
           />
 
           <button className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline mb-20"

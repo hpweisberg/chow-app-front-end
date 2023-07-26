@@ -25,7 +25,7 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
               {post.author?.name && <p className="text-md font-semibold opacity-75">{post.author.name}</p>}
             </div>
             {/* Temp. Add must have indicator */}
-            <p className="">Must have</p>
+            <p className="h-4">Must have</p>
             <p className="text-primary-200 opacity-50 text-md">{createdAt}</p>
           </div>
         </div>

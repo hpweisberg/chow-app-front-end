@@ -45,17 +45,17 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
 
     // <div>test</div>
     <main>
-      <div className="flex items-center mb-4 mt-20">
-        <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
-        {post.author && (
+      <article className="max-w-lg p-4 pt-1 mx-auto bg-light-background-100 dark:bg-dark-background-100 rounded-lg shadow-lg mb-20">
+        <div className="flex items-center mb-2 mt-20">
+          <Back onClick={handleBack} className="w-4 h-4 ml-0 mr-2" />
+          {post.author && (
 
-          <Link to={`/${post.author.handle}`} onClick={() => handleShowProfile(post.author)}>
-            <img src={post.author?.photo} alt={post?.title} className="w-12 h-12 rounded-full" />
-            <h3 className="ml-2 text-lg font-medium text-center">{post.author?.name}</h3>
-          </Link>
-        )}
-      </div>
-      <article className="max-w-lg p-4 pt-1 mx-auto bg-white rounded-lg shadow-lg mb-20">
+            <Link to={`/${post.author.handle}`} onClick={() => handleShowProfile(post.author)} className="flex items-end">
+              <img src={post.author?.photo} alt={post?.title} className="w-12 h-12 rounded-full" />
+              <h3 className="ml-2 text-3xl font-bold text-center text-light-txt-100 dark:text-dark-txt-200 ">{post.author?.handle}</h3>
+            </Link>
+          )}
+        </div>
         <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
         <h2 className="mb-1 text-2xl font-bold">{post.title}</h2>
         <h4 className="mb-4 text-gray-600">Restaurant: {post.restaurant?.restaurantName}</h4>
