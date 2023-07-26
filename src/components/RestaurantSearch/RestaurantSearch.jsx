@@ -5,8 +5,8 @@ import usePlacesAutocomplete, {
   // getDetails
 } from 'use-places-autocomplete';
 
-const RestaurantSearch = ({handleRestaurantData}) => {
-  
+const RestaurantSearch = ({ handleRestaurantData }) => {
+
   const [placeId, setPlaceId] = useState('');
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
@@ -14,16 +14,16 @@ const RestaurantSearch = ({handleRestaurantData}) => {
   // console.log('placeid: ', placeId, 'name: ', name, 'lat: ', lat, 'lng: ', lng)
 
   // selectedRestaurant({placeId, lat, lng, name})
-  
+
   // useEffect(() => {
   //   setRestaurantData({placeId, restaurantName, lat, lng})
   // }, [placeId, restaurantName, lat, lng, setRestaurantData])
 
 
   useEffect(() => {
-    handleRestaurantData({placeId, restaurantName, lat, lng})
+    handleRestaurantData({ placeId, restaurantName, lat, lng })
   }, [placeId, restaurantName, lat, lng, handleRestaurantData])
-  
+
 
   const {
     ready,
@@ -66,7 +66,7 @@ const RestaurantSearch = ({handleRestaurantData}) => {
           console.log('error', error);
         }
       }
-      // console.log('placeId: ', placeId)
+  // console.log('placeId: ', placeId)
 
 
   const renderSuggestions = () =>
@@ -87,21 +87,27 @@ const RestaurantSearch = ({handleRestaurantData}) => {
         </li>
       );
     })
-// console.log('value:' , value)
+  // console.log('value:' , value)
 
   return (
-    <div>
-      {/* <label htmlFor="restaurant-search">Restaurant</label> */}
+    <div className='relative w-[100%]'>
       <input
         name='restaurant-search'
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder='Where are you eating?'
-        className='m-0 mt-2' 
-        autoComplete='off'
-        // onSelect={submit}
-        />
+        placeholder='Restaurant'
+        className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
+        dark:bg-dark-background-200/50'        autoComplete='off'
+      // onSelect={submit}
+      />
+      <label htmlFor="restaurant-search" className=' absolute left-[8px] -top-3 dark:text-dark-txt-100 text-xs peer-placeholder-shown:text-sm
+          peer-placeholder-shown:text-gray-400
+          peer-placeholder-shown:dark:gray-200
+          peer-placeholder-shown:top-3
+          peer-focus:-top-3 peer-focus:text-sm peer-focus:text-gray-700
+          peer-focus:dark:text-dark-txt-100  transition-all
+          '>Restaurant</label>
       {status === 'OK' && <ul>{renderSuggestions()}</ul>}
     </div>
   )
