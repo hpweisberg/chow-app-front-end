@@ -50,7 +50,7 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
           </div>
         )}
         {!selectedMeal && (
-          <span className="text-gray-700 opacity-50">Select Meal</span>
+          <span className="text-gray-700 dark:text-gray-300  opacity-70">Select Meal</span>
         )}
       </div>
       {isMealOptionsVisible && (

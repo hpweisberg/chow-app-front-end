@@ -7,7 +7,7 @@ const Rating = ({ rating, handleNumClick }) => {
         <PlateRating
           key={num}
           className={num <= rating ? 'numActive' : 'num'}
-          fill={num <= rating ? 'red' : '#AAAAAA'}
+          fill={num <= rating ? '#f87171' : '#AAAAAA'}
           onClick={() => handleNumClick(num)}
         />
       ))}

@@ -54,7 +54,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   // console.log('user: ', user.handle)
 
   return (
-    <main className=" flex flex-col ">
+    <main className=" flex flex-col">
       {!isOwner && <BackBtn />}
       <ProfilePageTopCard
         profile={profile}
@@ -74,7 +74,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         darkEnabled={darkEnabled}
       />
       <div className='flex items-center justify-between w-full py-4'>
-        <PostIconNav handleSort={handleSort} />
+        <PostIconNav handleSort={handleSort} darkEnabled={darkEnabled}/>
       </div>
       {activeSort === 'rows' && <PostList posts={posts} />}
       {activeSort === 'meals' && (
