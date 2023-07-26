@@ -8,12 +8,14 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
   // console.log(landingPage)
   const authorProfile = post.author;
 
-  
+
   const handleUserProfileClick = (authorProfile) => {
     handleShowProfile(authorProfile);
     console.log('clicked', authorProfile);
-  
   }
+
+  const mustTry = post?.mustTry;
+  console.log(mustTry);
 
   return (
     landingPage ?
@@ -25,7 +27,10 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
               {post.author?.name && <p className="text-md font-semibold opacity-75">{post.author.name}</p>}
             </div>
             {/* Temp. Add must have indicator */}
-            <p className="h-4">Must have</p>
+            {post.mustTry &&
+
+              <p className="h-4">Must have</p>
+            }
             <p className="text-primary-200 opacity-50 text-md">{createdAt}</p>
           </div>
         </div>
