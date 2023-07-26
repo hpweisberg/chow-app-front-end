@@ -2,6 +2,8 @@
 import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+// components
+import { ChoseImage } from '../../components/Icons/Icons'
 // services
 import * as authService from '../../services/authService'
 
@@ -135,7 +137,7 @@ const Signup = ({ handleAuthEvt }) => {
             peer-focus:-top-3
             focus:border-rose-600 focus:outline-none
             ${handle ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
-              } transition-all`}>
+            } transition-all`}>
             Handle
           </label>
         </div>
@@ -152,7 +154,7 @@ const Signup = ({ handleAuthEvt }) => {
             peer-focus:-top-3
             focus:border-rose-600 focus:outline-none
             ${password ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
-              } transition-all`}>
+            } transition-all`}>
             Password
           </label>
         </div>
@@ -169,22 +171,35 @@ const Signup = ({ handleAuthEvt }) => {
             peer-focus:-top-3
             focus:border-rose-600 focus:outline-none
             ${passwordConf ? '-top-2 text-sm text-gray-700 dark:text-dark-txt-100' : ''
-              } transition-all`}>
+            } transition-all`}>
             Confirm Password
           </label>
         </div>
-        <div className='relative w-[100%]'>
-
-          <input
-            type="file"
-            name="photo"
-            onChange={handleChangePhoto}
-            ref={imgInputRef}
-          />
-
-          <label className={styles.label} htmlFor='photo'>
-            Upload Photo
-          </label>
+        <div className='flex gap-1 justify-center'>
+          <label htmlFor="photo"></label>
+          {photoData.photo ? (
+            <div>
+              <div
+                className="photo-preview shadow-lg"
+                style={{ backgroundImage: `url(${URL.createObjectURL(photoData.photo)})` }}
+              />
+              <button className="photo-clear-btn" onClick={() => setPhotoData({ photo: '' })}>
+                Clear Photo
+              </button>
+            </div>
+          ) : (
+            <label htmlFor="photo-input" className="photo-selection shadow-lg">
+              <ChoseImage className="plus-icon" />
+              <input
+                type="file"
+                id="photo-input"
+                name="photo"
+                accept="image/*"
+                onChange={handleChangePhoto}
+                required
+              />
+            </label>
+          )}
         </div>
         <div>
           <Link to="/">Cancel</Link>
