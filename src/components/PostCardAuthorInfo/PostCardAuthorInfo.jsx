@@ -11,11 +11,11 @@ const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
 
   const handleUserProfileClick = (authorProfile) => {
     handleShowProfile(authorProfile);
-    console.log('clicked', authorProfile);
+    // console.log('clicked', authorProfile);
   }
 
   const mustTry = post?.mustTry;
-  console.log(mustTry);
+  // console.log(mustTry);
 
   return (
     landingPage ?

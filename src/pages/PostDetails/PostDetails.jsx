@@ -9,7 +9,7 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
   const navigate = useNavigate();
   // console.log('id:', id)
   // console.log('post:', post.author.photo)
-  console.log('post: ', post)
+  // console.log('post: ', post)
 
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
         <h2 className="mb-1 text-2xl font-bold">{post.title}</h2>
         <h4 className="mb-4 text-gray-600">Restaurant: {post.restaurant?.restaurantName}</h4>
 
-        <p className="mb-4 text-gray-700">{post.description}</p>
+        <p className="mb-4 text-gray-700">{post.name}</p>
         <div className="flex items-center mb-4">
           <span className="px-2 py-1 mr-2 text-white bg-yellow-500 rounded-md">{post.rating}</span>
           <h4 className="text-gray-600">{post.meal}</h4>
