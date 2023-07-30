@@ -6,7 +6,7 @@ import MealSelector from '../../components/MealSelector/MealSelector';
 import RestaurantSearch from '../../components/RestaurantSearch/RestaurantSearch';
 import { ChoseImage } from '../../components/Icons/Icons';
 
-const EditPost = ({ handleUpdatePost, userProfile }) => {
+const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
   const { state } = useLocation();
   const [formData, setFormData] = useState(state);
   const navigate = useNavigate();
@@ -14,48 +14,43 @@ const EditPost = ({ handleUpdatePost, userProfile }) => {
   const [photoPreview, setPhotoPreview] = useState(formData.photo);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  console.log('formData: ', formData)
+  // console.log('formData: ', formData) 
 
 
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
   };
 
-  const handleSubmit = (e) => {
+  // ! works for text and photo
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // console.log('submited: ', formData)
-      formData.author = userProfile.handle
-      handleUpdatePost(formData);
+      formData.author = userProfile.handle;
+      const updatedPost = await handleUpdatePost(formData); // Pass only the formData here
+      // ! selectedPhoto instanceof File will only run if new file is present.
+      if (selectedPhoto instanceof File) {        
+        await handleUpdatePostPhoto(updatedPost._id, selectedPhoto);
+      }
+      // console.log('test1: ', updatedPost._id);
       navigate(`/posts/${formData._id}`);
     } catch (error) {
       console.log('Error:', error);
-
     }
-  };
+  }; 
 
   const handleChangePhoto = (evt) => {
     const selectedPhoto = evt.target.files[0];
-
+  
     if (formData.photo) {
       URL.revokeObjectURL(formData.photo);
     }
     if (selectedPhoto) {
-      setFormData({ ...formData, photo: selectedPhoto });
+      setSelectedPhoto(selectedPhoto); // Store the file object in selectedPhoto state
+      setFormData({ ...formData, photo: selectedPhoto }); // Store the file object in the formData state
       setPhotoPreview(URL.createObjectURL(selectedPhoto));
-
-      // if (selectedPhoto) {
-      //   const reader = new FileReader();
-      //   reader.onloadend = () => {
-      //     setSelectedPhoto(selectedPhoto);
-      //     setPhotoPreview(reader.result);
-      //   };
-      //   reader.readAsDataURL(selectedPhoto);
-      // } else {
-      //   setSelectedPhoto(null);
-      //   setPhotoPreview(null);
     }
   };
+  
 
   const handleClearPhoto = () => {
     setSelectedPhoto(null);

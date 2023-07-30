@@ -1,6 +1,6 @@
 // services
 import * as tokenService from './tokenService'
-import { addPhoto as addProfilePhoto } from './postService';
+// import { addPhoto as addProfilePhoto } from './postService';
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -45,9 +45,10 @@ async function addPhoto(photoData) {
   }
 }
 
-async function updateProfile(profileData, photoData) {
+async function updateProfile(profileData) {
   try {
-    console.log('profileData:', profileData);
+    const updatedProfileData = { ...profileData }
+    delete updatedProfileData.photo;
     const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
       method: 'PUT',
       headers: {
@@ -55,15 +56,49 @@ async function updateProfile(profileData, photoData) {
         // this was the fix
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(profileData),
+      body: JSON.stringify(updatedProfileData),
     });
-    const responseData = await res.text(); // Parse the response manually as text
-    console.log('Response from Backend:', responseData); // Log the response data
-    const updatedProfile = JSON.parse(responseData); // Manually parse the JSON data
-    if (photoData) {
-      await addProfilePhoto(photoData)
-    }
-    return updatedProfile;
+    return await res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+// async function updateProfile(profileData, photoData) {
+//   try {
+//     console.log('profileData:', profileData);
+//     const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
+//       method: 'PUT',
+//       headers: {
+//         'Authorization': `Bearer ${tokenService.getToken()}`,
+//         // this was the fix
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(profileData),
+//     });
+//     const responseData = await res.text(); // Parse the response manually as text
+//     console.log('Response from Backend:', responseData); // Log the response data
+//     const updatedProfile = JSON.parse(responseData); // Manually parse the JSON data
+//     if (photoData) {
+//       await addPhoto(photoData)
+//     }
+//     return updatedProfile;
+//   } catch (err) {
+//     throw new Error(err);
+//   }
+// }
+// ! not working
+async function updateProfilePhoto(profileId, photoData) {
+  try {
+    const photoFormData = new FormData();
+    photoFormData.append('photo', photoData);
+    const res = await fetch(`${BASE_URL}/${profileId}/update-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoFormData,
+    });
+    return await res.json();
   } catch (err) {
     throw new Error(err);
   }
@@ -228,6 +263,7 @@ const rejectFollowRequest = async (profileId) => {
 export {
   getAllProfiles,
   addPhoto,
+  updateProfilePhoto,
   getProfile,
   friendRequests,
   sendFriendRequest,

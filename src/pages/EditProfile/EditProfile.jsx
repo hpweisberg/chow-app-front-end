@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BackBtn from '../../components/BackBtn/BackBtn';
 // import * as profileService from '../../services/profileService';
 import { ChoseImage } from '../../components/Icons/Icons';
 
 
-const EditProfile = ({ user, profile, handleUpdateProfile }) => {
+const EditProfile = ({ user, profile, handleUpdateProfile, handleUpdateProfilePhoto, updateProfileAfterChange }) => {
   const { state } = useLocation();
   const [formData, setFormData] = useState(state);
   const navigate = useNavigate();
-  const [photoData, setPhotoData] = useState({});
+  const [photoPreview, setPhotoPreview] = useState(formData.photo);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+
+  // console.log(formData.photo)
 
   const handleChange = ({ target }) => {
     setFormData({ ...formData, [target.name]: target.value });
@@ -18,11 +22,11 @@ const EditProfile = ({ user, profile, handleUpdateProfile }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedData = { ...formData };
-      if (photoData.photo) {
-        updatedData.photo = photoData.photo;
+      if (selectedPhoto instanceof File) {
+        await handleUpdateProfilePhoto(user.handle, selectedPhoto);
       }
-      await handleUpdateProfile(updatedData);
+      const updatedProfile = await handleUpdateProfile(formData);
+      await updateProfileAfterChange(updatedProfile);
       navigate(`/${user.handle}`);
     } catch (error) {
       console.log('Error:', error);
@@ -31,8 +35,32 @@ const EditProfile = ({ user, profile, handleUpdateProfile }) => {
   };
 
   const handleChangeProfilePicture = (evt) => {
-    setPhotoData({ photo: evt.target.files[0] });
+    const selectedPhoto = evt.target.files[0];
+
+    if (formData.photo) {
+      URL.revokeObjectURL(formData.photo);
+    }
+    if (selectedPhoto) {
+      setSelectedPhoto(selectedPhoto); // Store the file object in selectedPhoto state
+      setFormData({ ...formData, photo: selectedPhoto }); // Store the file object in the formData state
+      setPhotoPreview(URL.createObjectURL(selectedPhoto));
+    }
   };
+  // const handleChangeProfilePicture = (evt) => {
+  //   setPhotoData({ photo: evt.target.files[0] });
+  // };
+
+  const handleClearPhoto = () => {
+    setSelectedPhoto(null);
+    setPhotoPreview(null);
+    setFormData({ ...formData, photo: null }); // Clear the photo in the form data
+  };
+
+  useEffect(() => {
+    setSelectedPhoto(formData.photo || null); // Set selectedPhoto to the current photo in formData, or null if none exists
+    setPhotoPreview(formData.photo ? <img src={formData.photo} alt='' /> : null);
+  }, [formData.photo]);
+
 
   return (
     <main className="mt-20 flex flex-col items-center">
@@ -49,14 +77,18 @@ const EditProfile = ({ user, profile, handleUpdateProfile }) => {
         onChange={handleChangeProfilePicture}
       /> */}
       <form onSubmit={handleSubmit} className='flex flex-col items-center'>
-        {photoData.photo ? (
+        {/* {selectedPhoto || photoPreview ? ( */}
+        {/* {photoData.photo ? ( */}
+        {photoPreview ? (
           // Show photo preview and clear button if photo is selected
           <div>
             <div
               className="photo-preview shadow-lg"
-              style={{ backgroundImage: `url(${URL.createObjectURL(photoData.photo)})` }}
+              style={{
+                backgroundImage: `url(${photoPreview || URL.createObjectURL(selectedPhoto)})`
+              }}
             />
-            <button className="photo-clear-btn" onClick={() => setPhotoData({ photo: '' })}>
+            <button className="photo-clear-btn" onClick={handleClearPhoto}>
               Clear Photo
             </button>
           </div>

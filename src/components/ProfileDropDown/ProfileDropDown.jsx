@@ -165,7 +165,7 @@ const ProfileDropDown = ({ handleLogout, profile, darkEnabled }) => {
           <Menu.Items className="absolute right-[0px] mt-1 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-light-primary-100 dark:bg-dark-background-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
           z-10">
             <div className="px-1 py-1 ">
-              <Link to={'/edit-profile'} state={profile}>
+              <Link to={`/${profile.handle}/edit-profile`}  state={profile}>
                 <Menu.Item>
                   {({ active }) => (
                     <button
@@ -215,6 +215,7 @@ const ProfileDropDown = ({ handleLogout, profile, darkEnabled }) => {
           </Menu.Items>
         </Transition>
       </Menu>
+      
     </div>
   )
 }

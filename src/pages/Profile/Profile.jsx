@@ -20,13 +20,6 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
     }
   }, [profile, id, handleDirectProfileNavigationOrRefresh]);
 
-  console.log(profile?.bio)
-
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
-  //   libraries: ["places"],
-  // })
-
 
   //? Keep here while content is loading
   if (!profile) {
@@ -54,7 +47,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   // console.log('user: ', user.handle)
 
   return (
-    <main className=" flex flex-col">
+    <main className=" flex flex-col sm:container">
       {/* {!isOwner && 
       <BackBtn />
       } */}

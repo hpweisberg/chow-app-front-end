@@ -271,11 +271,30 @@ function App() {
     navigate(`/${user.handle}`);
   }
 
+  // ! works as is for text
   const handleUpdatePost = async (postData) => {
-    const updatedBlog = await postService.updatePost(postData)
-    setPosts(posts.map((post) => (post._id === updatedBlog._id ? updatedBlog : post)))
-    // navigate('/posts/:id')
-  }
+    try {
+      const updatedPost = await postService.updatePost(postData);
+      // if (selectedPhoto) {
+      //   await handleUpdatePostPhoto(postData, selectedPhoto);
+      // }
+      setPosts(posts.map((post) => (post._id === updatedPost._id ? updatedPost : post)));
+      return updatedPost
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+  
+  const handleUpdatePostPhoto = async (postId, selectedPhoto) => {
+    try {
+      await postService.updatePhoto(postId, selectedPhoto);
+    } catch (error) {
+      console.log('Error updating photo:', error);
+    }
+  };
+  
+  
+  
 
   const handleDeletePost = async (postId) => {
     const deletedPost = await postService.deletePost(postId)
@@ -285,7 +304,7 @@ function App() {
 
   // !REFRESH PROFILE
   const handleDirectProfileNavigationOrRefresh = async (profile) => {
-    const isFollowing = userProfile.following.includes(profile.handle);
+    const isFollowing = userProfile?.following.includes(profile.handle);
     const profileData = await profileService.getProfile(profile.handle);
     setProfile(profileData);
 
@@ -339,10 +358,34 @@ function App() {
 
   // ! update Profile
   const handleUpdateProfile = async (profileData) => {
-    const updatedProfile = await profileService.updateProfile(profileData);
-    setProfile(updatedProfile);
-  };
+    try {
+      const updatedProfile = await profileService.updateProfile(profileData);
+      // if (profileData.photo) {
+      //   handleUpdateProfilePhoto(profileData);
+      // }
+      setUserProfile(updatedProfile);
+      return updatedProfile
+    } catch (error) {
+      console.log('Error:', error);
+    }
 
+  };
+  
+  const handleUpdateProfilePhoto = async (profileId, selectedPhoto) => {
+    try {
+      await profileService.updateProfilePhoto(profileId, selectedPhoto);
+    } catch (error) {
+      console.log('Error updating photo:', error);
+    }
+  }
+
+  const updateProfileAfterChange = async (profileData) => {
+    try {
+      setProfile(profileData);
+    } catch (error) {
+      console.log('Error updating photo:', error);
+    }
+  }
 
   // ! Dark mode
   useEffect(() => {
@@ -427,7 +470,7 @@ function App() {
             path="/posts/:id/edit"
             element={
               <ProtectedRoute user={user}>
-                <EditPost handleUpdatePost={handleUpdatePost} userProfile={userProfile}/>
+                <EditPost handleUpdatePost={handleUpdatePost} userProfile={userProfile} handleUpdatePostPhoto={handleUpdatePostPhoto}  />
               </ProtectedRoute>
             }
           />
@@ -512,10 +555,10 @@ function App() {
           />
 
           <Route
-            path="/edit-profile"
+            path="/:handle/edit-profile"
             element={
               <ProtectedRoute user={user}>
-                <EditProfile profile={profile} user={user} handleUpdateProfile={handleUpdateProfile} />
+                <EditProfile profile={profile} user={user} handleUpdateProfile={handleUpdateProfile} handleUpdateProfilePhoto={handleUpdateProfilePhoto} updateProfileAfterChange={updateProfileAfterChange}/>
               </ProtectedRoute>
             }
           />

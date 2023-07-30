@@ -1,5 +1,7 @@
 // services
 import * as tokenService from './tokenService'
+import { addPhoto as addProfilePhoto } from './profileService'
+
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`
 
@@ -40,17 +42,16 @@ async function getFollowingPosts() {
 
 async function showPost(id) {
   try {
-    console.log('showPost', id)
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
-    console.log('showPost', res)
     return res.json()
   } catch (err) {
     throw new Error(err)
   }
 }
 
+// ! Good as is
 async function createPost(post, photo, restaurant) {
   try {
     const res = await fetch(BASE_URL, {
@@ -87,22 +88,50 @@ async function createPost(post, photo, restaurant) {
   }
 }
 
-
+// ! works for text
 async function updatePost(formData) {
   try {
+    // Create a copy of the formData object to avoid modifying the original object
+    const updatedFormData = { ...formData };
+
+    // Remove the photo property from the updatedFormData object
+    delete updatedFormData.photo;
+
     const res = await fetch(`${BASE_URL}/${formData._id}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
-    })
-    return res.json()
+      body: JSON.stringify(updatedFormData) // Use the updatedFormData without the photo property here
+    });
+
+    return await res.json();
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err);
   }
 }
+
+// ! works for photo
+async function updatePhoto(postId, photoData) {
+  try {
+    const photoFormData = new FormData();
+    photoFormData.append('photo', photoData);
+    console.log('photoFormData:', photoFormData);
+    const res = await fetch(`${BASE_URL}/${postId}/update-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoFormData,
+    });
+    return await res.json();
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
+
 
 async function deletePost(id) {
   try {
@@ -120,16 +149,39 @@ async function deletePost(id) {
 }
 
 
-
+// ! Good as is for creating new post
 async function addPhoto(postId, photoData) {
-  const res = await fetch(`${BASE_URL}/${postId}/add-photo`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-    body: photoData,
-  })
-  return res.json()
+  try {
+
+    const res = await fetch(`${BASE_URL}/${postId}/add-photo`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoData,
+    });
+  return await res.json();
+} catch (err) {
+  throw new Error(err);
+}
+
+  
+// async function addPhoto(photoData) {
+//   try {
+//     const photoFormData = new FormData();
+//     photoFormData.append('photo', photoData);
+//     const postId = photoData._id;
+//     const res = await fetch(`${BASE_URL}/${postId}/add-photo`, {
+//       method: 'PUT',
+//       headers: {
+//         'Authorization': `Bearer ${tokenService.getToken()}`
+//       },
+//       body: photoFormData,
+//     });
+//     return await res.json();
+//   } catch (err) {
+//     throw new Error(err);
+//   }
 }
 
 async function addRestaurant(postId, restaurantData) {
@@ -153,5 +205,6 @@ export {
   deletePost,
   getFriendPosts,
   addRestaurant,
-  getFollowingPosts
+  getFollowingPosts,
+  updatePhoto
 }
