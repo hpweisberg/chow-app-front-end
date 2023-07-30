@@ -89,7 +89,7 @@ const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
         <BackBtn />
         <h1>Edit Post</h1>
       </div>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4 container'>
 
         <div className='flex gap-1 justify-center'>
           {selectedPhoto || photoPreview ? (
