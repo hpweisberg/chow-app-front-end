@@ -1,8 +1,9 @@
 // import { Search } from "../../components/Icons/Icons";
-import { Search } from '../../components/Icons/Icons'
 import { Link } from 'react-router-dom';
+import { Search } from '../../components/Icons/Icons';
 
-const NoFollowingScreen = () => {
+const NoFollowingScreen = ({ user, profile, userProfile }) => {
+
   return (
     <div className="container flex justify-center align-middle mt-[45vh] gap-2">
       <Link to="/search">

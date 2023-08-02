@@ -10,6 +10,7 @@ import Loading from "../Loading/Loading";
 import { NavLink } from 'react-router-dom'
 import Splash from "../Splash/Splash";
 import NoFollowingScreen from "../../components/NoFollowingScreen/NoFollowingScreen";
+import { useEffect } from "react";
 
 // import { GoogleMap, useLoadScript, Marker, } from "@react-google-maps/api"
 
@@ -18,22 +19,14 @@ import NoFollowingScreen from "../../components/NoFollowingScreen/NoFollowingScr
 const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled, userProfile }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
-  // console.log('filteredPosts: ', filteredPosts)
+  console.log('posts: ', posts)
 
   // const { isLoaded } = useLoadScript({
   //   googleMapsApiKey: 'AIzaSyDHxO2cQAXBHkIJ0P9Augy9SmBiI-iat1o',
   //   libraries: ["places"],
   // })
 
-  console.log(userProfile)
-
-  if (userProfile.following.length === 0) {
-    return (
-      <div>
-        <NoFollowingScreen />
-      </div>
-    )
-  }
+  // console.log(userProfile)
 
 
   return (
