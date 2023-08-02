@@ -15,6 +15,8 @@ import TailwindTest from './pages/TailwindTest/TailwindTest'
 import Profile from './pages/Profile/Profile'
 import FriendRequests from './pages/FriendRequests/FriendRequests'
 import Search from './pages/Search/Search'
+import FollowersPage from './pages/FollowersPage/FollowersPage'
+import FollowingPage from './pages/FollowingPage/FollowingPage'
 
 // components
 // import NavBar from './components/NavBar/NavBar'
@@ -47,6 +49,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [theme, setTheme] = useState(null);
   const [darkEnabled, setDarkEnabled] = useState(false)
+  const [followerList, setFollowers] = useState([])
 
   // const { id } = useParams();
   // console.log('app lvl logedInUser: ',logedInUser)
@@ -94,6 +97,11 @@ function App() {
 
   // ! Update Profile State/ Show profile
   const handleShowProfile = async (profile) => {
+    if (!profile) {
+      // Handle the case when the profile is null or undefined
+      console.log("Profile is null or undefined.");
+      return;
+    }
     const profileData = await profileService.getProfile(profile.handle);
     setProfile(profileData);
 
@@ -413,6 +421,25 @@ function App() {
   }
 
 
+  // // ! Following and Followers functions
+//   const showProfileFollowing = async (profile) => {
+//     const profileFollowing = await profileService.followingList(profile.handle);
+//     console.log('following: ', profileFollowing)
+//     // handleShowProfileRefresh(updatedProfile); // Update the profile after follow
+//   };
+
+//   const showProfileFollowers = async (profile) => {
+//     try {
+//       const profileFollowers = await profileService.followersList(profile.handle);
+//       console.log('followers: ', profileFollowers);
+//       setFollowers(profileFollowers); // Update the state with the followers' data
+//     } catch (error) {
+//       console.error('Error fetching followers:', error);
+//     }
+//   };
+  
+// console.log(followerList)
+
   return (
     <div className='flex flex-col bg-slate-50 dark:bg-slate-800 overflow-scroll-x-hidden'>
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
@@ -526,6 +553,22 @@ function App() {
             element={
               <ProtectedRoute user={user}>
                 <FriendList profile={profile} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/:handle/followers-list"
+            element={
+              <ProtectedRoute user={user}>
+                <FollowersPage profile={profile} handleShowProfile={handleShowProfile}/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/:handle/following-list"
+            element={
+              <ProtectedRoute user={user}>
+                <FollowingPage profile={profile} handleShowProfile={handleShowProfile}/>
               </ProtectedRoute>
             }
           />
