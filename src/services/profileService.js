@@ -203,7 +203,7 @@ const unfollow = async (profileId) => {
 
 const followersList = async (profileId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${profileId}/followers`, {
+    const res = await fetch(`${BASE_URL}/${profileId}/following-list`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()
@@ -214,7 +214,7 @@ const followersList = async (profileId) => {
 
 const followingList = async (profileId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${profileId}/following`, {
+    const res = await fetch(`${BASE_URL}/${profileId}/followers-list`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()

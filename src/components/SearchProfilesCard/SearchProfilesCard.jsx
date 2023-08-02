@@ -24,7 +24,7 @@ const SearchProfilesCard = ({ profile, handleShowProfile, user }) => {
   return (
     <Link to={`/${id}`}>
       <div onClick={() => handleShowProfile(profile)} className="friendListCard">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-3 ml-2">
 
           <img className="w-16 h-16 rounded-full" src={profile.photo} alt={profile.name} />
           <div className="text-black dark:text-dark-primary-200">
