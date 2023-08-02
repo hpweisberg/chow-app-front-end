@@ -8,7 +8,7 @@ const PostList = ({ posts, profile, handleShowProfile }) => {
 
   if (!Array.isArray(posts) || posts.length === 0) {
     // Handle the case when posts is not an array or is an empty array
-    return <p>Follow your friends to see their posts.</p>;
+    return null;
   }
 
   

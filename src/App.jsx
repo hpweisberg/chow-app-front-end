@@ -81,6 +81,7 @@ function App() {
       // const friendPosts = friendsPosts.filter(post => {
       //   return post.author.handle === user.handle
       // })
+      console.log('i have posts:', followingPosts )
       setPosts(followingPosts);
       setActiveSort('rows')
     } catch (err) {
@@ -449,6 +450,8 @@ function App() {
         <Routes>
           <Route path="/" element=
             {<Landing
+              key={userProfile?.handle ?? "landing"} // Use a unique key, userProfile.handle might be null initially
+
               user={user}
               posts={posts}
               handleSort={handleSort}

@@ -10,6 +10,8 @@ import Loading from "../Loading/Loading";
 import Map from "../../components/Map/Map";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import NoFollowingScreen from "../../components/NoFollowingScreen/NoFollowingScreen";
+import NoPostsPage from "../../components/NoPostsPage/NoPostsPage";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, darkEnabled }) => {
   const { id } = useParams();
@@ -68,9 +70,14 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         followRequestRecieved={followRequestRecieved}
         darkEnabled={darkEnabled}
       />
-      <div className='flex items-center justify-between w-full py-4'>
-        <PostIconNav handleSort={handleSort} darkEnabled={darkEnabled}/>
-      </div>
+
+      {posts.length === 0 ? <NoPostsPage isOwner={isOwner} />
+        :
+        <div className='flex items-center justify-between w-full py-4'>
+
+          <PostIconNav handleSort={handleSort} darkEnabled={darkEnabled} />
+        </div>
+      }
       {activeSort === 'rows' && <PostList posts={posts} />}
       {activeSort === 'meals' && (
 
@@ -78,7 +85,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
       )}
       {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />}
-      {activeSort === 'map' && !isLoaded && <Loading />} */}
+    {activeSort === 'map' && !isLoaded && <Loading />} */}
     </main>
   );
 };
