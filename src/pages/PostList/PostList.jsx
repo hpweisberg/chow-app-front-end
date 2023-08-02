@@ -1,5 +1,4 @@
 import PostCard from "../../components/PostCard/PostCard";
-import PostCardNew from "../../components/PostCardNew";
 import Loading from "../Loading/Loading";
 
 const PostList = ({ posts, profile, handleShowProfile }) => {
@@ -12,6 +11,7 @@ const PostList = ({ posts, profile, handleShowProfile }) => {
     return <p>Follow your friends to see their posts.</p>;
   }
 
+  
   
 
   return (

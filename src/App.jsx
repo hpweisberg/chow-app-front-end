@@ -459,7 +459,8 @@ function App() {
               handleLogout={handleLogout}
               handleAuthEvt={handleAuthEvt}
               handleShowProfile={handleShowProfile}
-              darkEnabled={darkEnabled} />}
+              darkEnabled={darkEnabled} 
+              userProfile={userProfile}/>}
           />
           <Route
             path="/profiles"
