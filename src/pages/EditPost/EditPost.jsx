@@ -131,6 +131,7 @@ const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
               required
               type="text"
               name="name"
+              id="name"
               placeholder="What did you eat?"
               autoComplete='off'
               value={formData.name}
@@ -160,6 +161,7 @@ peer-focus:dark:text-dark-txt-100  transition-all
           <textarea
             type="text"
             name="review"
+            id="review"
             placeholder="Review"
             value={formData.review}
             onChange={handleChange}

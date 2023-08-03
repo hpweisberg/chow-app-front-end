@@ -149,6 +149,7 @@ const EditProfile = ({ user, profile, handleUpdateProfile, handleUpdateProfilePh
           <input
             type="text"
             name="name"
+            id="name"
             placeholder={profile.name}
             value={formData?.name}
             onChange={handleChange}
@@ -171,6 +172,7 @@ peer-focus:dark:text-dark-txt-100  transition-all
             className='p-2 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto
           dark:bg-dark-background-200/50 h-32'
             name="bio"
+            id="bio"
             value={formData.bio}
             onChange={handleChange}
             placeholder='bio'

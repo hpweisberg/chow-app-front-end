@@ -10,7 +10,6 @@ import Loading from "../Loading/Loading";
 import Map from "../../components/Map/Map";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import NoFollowingScreen from "../../components/NoFollowingScreen/NoFollowingScreen";
 import NoPostsPage from "../../components/NoPostsPage/NoPostsPage";
 
 const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, darkEnabled }) => {

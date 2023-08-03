@@ -57,6 +57,7 @@ const LoginPage = ({ handleAuthEvt }) => {
             type="text"
             value={email}
             name="email"
+            id='email'
             onChange={handleChange}
             placeholder='Email'
           />
@@ -77,6 +78,7 @@ const LoginPage = ({ handleAuthEvt }) => {
             type="password"
             value={password}
             name="password"
+            id="password"
             onChange={handleChange}
             placeholder='Password'
 
