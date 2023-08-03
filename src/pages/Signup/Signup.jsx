@@ -91,6 +91,7 @@ const Signup = ({ handleAuthEvt }) => {
             type="text"
             value={name}
             name="name"
+            id="name"
             onChange={handleChange}
             placeholder='name'
             className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50'
@@ -112,6 +113,7 @@ const Signup = ({ handleAuthEvt }) => {
             type="text"
             value={email}
             name="email"
+            id="email"
             onChange={handleChange}
             placeholder='email'
             className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
@@ -130,6 +132,7 @@ const Signup = ({ handleAuthEvt }) => {
             type="text"
             value={handle}
             name="handle"
+            id="handle"
             onChange={handleChange}
             placeholder='handle'
             className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
@@ -147,6 +150,7 @@ const Signup = ({ handleAuthEvt }) => {
             type="password"
             value={password}
             name="password"
+            id="password"
             placeholder='password'
             onChange={handleChange}
             className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />
@@ -164,6 +168,7 @@ const Signup = ({ handleAuthEvt }) => {
             type="password"
             value={passwordConf}
             name="passwordConf"
+            id="passwordConf"
             placeholder='confirm password'
             onChange={handleChange}
             className='p-0 m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent dark:bg-dark-background-200/50' />

@@ -24,7 +24,7 @@ const SearchProfilesCard = ({ profile, handleShowProfile, user }) => {
   return (
     <Link to={`/${id}`}>
       <div onClick={() => handleShowProfile(profile)} className="friendListCard">
-        <div className="flex items-center justify-between gap-3 ml-2">
+        <div className="flex items-center justify-between gap-3 ml-2 ">
 
           <img className="w-16 h-16 rounded-full" src={profile.photo} alt={profile.name} />
           <div className="text-black dark:text-dark-primary-200">
@@ -34,7 +34,7 @@ const SearchProfilesCard = ({ profile, handleShowProfile, user }) => {
         </div>
         <div className="">
           {/* need to fix this to all be the same width */}
-        {follower || followingEachother || following ? <Button btnText={buttonText} /> : null}
+          {follower || followingEachother || following ? <Button btnText={buttonText} /> : null}
 
         </div>
       </div>

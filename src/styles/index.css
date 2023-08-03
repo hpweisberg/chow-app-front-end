@@ -189,7 +189,7 @@
 /* ! Friend Request Card */
 
 .friendListCard {
-  @apply flex justify-start items-center gap-4 shadow-lg
+  @apply flex justify-between items-center gap-4 shadow-lg
   w-full h-24 border-b-2 dark:border-dark-txt-200
 }
 
