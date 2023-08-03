@@ -1,6 +1,6 @@
 // npm modules
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 
 // pages
 import Signup from './pages/Signup/Signup'
@@ -50,6 +50,14 @@ function App() {
   const [theme, setTheme] = useState(null);
   const [darkEnabled, setDarkEnabled] = useState(false)
   const [followerList, setFollowers] = useState([])
+  
+  // ! hide nav bar on routes:
+  const location = useLocation()
+
+  const hiddenRoutes = ['/posts/new', `/${profile?.handle}/edit-profile`]
+
+  const isHiddenRoute = hiddenRoutes.includes(location.pathname);
+
 
   // const { id } = useParams();
   // console.log('app lvl logedInUser: ',logedInUser)
@@ -612,7 +620,7 @@ function App() {
 
         </Routes>
       </div>
-      {user &&
+      {user && !isHiddenRoute &&
         <BottomNavBar user={userProfile} handleShowProfile={handleShowProfile} handleSetFollowingPosts={handleSetFollowingPosts} userProfile={userProfile} 
         darkEnabled={darkEnabled}
         />
