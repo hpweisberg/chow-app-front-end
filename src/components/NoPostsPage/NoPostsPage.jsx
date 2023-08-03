@@ -13,7 +13,10 @@ const NoPostsPage = ({ isOwner }) => {
             button to get started.</h2>
         </>
       }
-      <h2>User has not posted a meal.</h2>
+
+      {!isOwner &&
+        <h2>User has not posted a meal.</h2>
+      }
 
     </div>
   );
