@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import * as postService from "../../services/postService";
-import { Back } from "../../components/Icons/Icons";
+import { Back, PlateRating } from "../../components/Icons/Icons";
+
+import PostDropDown from "../../components/PostDropDown/PostDropDown";
+
 
 const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
   const [post, setPost] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
-  // console.log('id:', id)
-  // console.log('post:', post.author.photo)
-  // console.log('post: ', post)
+
+  // const isOwner = user?.handle === post?.author?.handle;
+
+  // console.log(isOwner)
+  // console.log(user.handle)
+  // console.log(post.author?.handle)
 
 
   useEffect(() => {
@@ -20,19 +26,7 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
     fetchPost();
   }, [id]);
 
-  // console.log('post:', post)
-
-
-
-
-  // if (!post.author || !post.author.handle) {
-  //   return null; // Handle the case when post.author is not available yet
-  // }
-
   const isAuthor = user && post.author && user.handle === post.author.handle;
-  // console.log('isAuthor:', isAuthor)
-
-  // const handleLike = async () => {
 
   const handleDelete = async () => {
     handleDeletePost(id)
@@ -43,42 +37,57 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
   };
 
   return (
+    <main className="mt-20">
+      <article className="max-w-lg p-4 pt-1 mx-auto bg-light-background-100 dark:bg-dark-background-300 rounded-lg shadow-lg">
+        <div className={`flex items-center mb-0 justify-between  ${isAuthor ? '' : 'py-1'}`}>
+          <div className="flex items-center">
 
-    // <div>test</div>
-    <main>
-      <article className="max-w-lg p-4 pt-1 mx-auto bg-light-background-100 dark:bg-dark-background-100 rounded-lg shadow-lg mb-20">
-        <div className="flex items-center mb-2 mt-20">
-          <Back onClick={handleBack} className="w-4 h-4 ml-0 mr-2" />
+          <Back onClick={handleBack} className="w-4 h-4 ml-0 mr-2"/>
           {post.author && (
-
+            
             <Link to={`/${post.author.handle}`} onClick={() => handleShowProfile(post.author)} className="flex items-end">
-              <img src={post.author?.photo} alt={post?.title} className="w-12 h-12 rounded-full" />
-              <h3 className="ml-2 text-3xl font-bold text-center text-light-txt-100 dark:text-dark-txt-200 ">{post.author?.handle}</h3>
+              <img src={post.author?.photo} alt={post?.title} className="w-5 h-5 rounded-full" />
+              <h3 className="ml-2 text-1xl font-bold text-center text-light-txt-100 dark:text-dark-txt-100 ">{post.author?.handle}</h3>
             </Link>
           )}
-        </div>
-        <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
-        <h2 className="mb-1 text-2xl font-bold">{post.title}</h2>
-        <h4 className="mb-4 text-gray-600">Restaurant: {post.restaurant?.restaurantName}</h4>
+          </div>
 
-        <p className="mb-4 text-gray-700">{post.name}</p>
+          {isAuthor 
+          &&
+          <PostDropDown post={post} handleDelete={handleDelete} /> }
+        </div>
+
+        <img src={post.photo} alt={post.title} className="w-full mb-4 rounded-lg" />
+        <div className="flex justify-between">
+
+          <div className="dark:text-gray-200 flex flex-col gap-2">
+            {/* <h5 className="" >In-N-Out</h5> */}
+            {post.restaurant &&
+              <h5>{post.restaurant?.restaurantName}</h5>
+            }
+            <h5>{post.name}</h5>
+            <h5>{post.meal}</h5>
+          </div>
+
+          <div className='flex items-center justify-center dark:text-gray-200'>
+            <div className='relative'>
+              <PlateRating className='h-24 w-24' />
+              <p className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl'>
+                {post.rating}
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <h5 className="dark:text-gray-200 mt-2">{post.review}</h5>
+        {/* <h4 className="mb-4 dark:text-gray-200">Restaurant: {post.restaurant?.restaurantName}</h4>
+        <p className="mb-4 dark:text-gray-200">{post.name}</p>
+        <p className="mb-4 dark:text-gray-200">{post.review}</p>
+
         <div className="flex items-center mb-4">
           <span className="px-2 py-1 mr-2 text-white bg-yellow-500 rounded-md">{post.rating}</span>
           <h4 className="text-gray-600">{post.meal}</h4>
-        </div>
-        {isAuthor && (
-          <div className="flex items-center">
-            <Link
-              to={`/posts/${post._id}/edit`} state={post}
-              className="mr-4 text-blue-500"
-            >
-              Edit
-            </Link>
-            <button onClick={handleDelete} className="text-red-500">
-              Delete this post
-            </button>
-          </div>
-        )}
+        </div> */}
       </article>
     </main>
   );
