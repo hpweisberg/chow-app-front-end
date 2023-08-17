@@ -37,7 +37,7 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
   };
 
   return (
-    <main className="mt-20">
+    <main className="my-20">
       <article className="max-w-lg p-4 pt-1 mx-auto bg-light-background-100 dark:bg-dark-background-300 rounded-lg shadow-lg">
         <div className={`flex items-center mb-0 justify-between  ${isAuthor ? '' : 'py-1'}`}>
           <div className="flex items-center">
@@ -63,10 +63,10 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
           <div className="dark:text-gray-200 flex flex-col gap-2">
             {/* <h5 className="" >In-N-Out</h5> */}
             {post.restaurant &&
-              <h5>{post.restaurant?.restaurantName}</h5>
+              <h5 className="font-bold text-1xl text-light-txt-100 dark:text-dark-txt-100">{post.restaurant?.restaurantName}</h5>
             }
-            <h5>{post.name}</h5>
-            <h5>{post.meal}</h5>
+            <h5 className="font-bold text-3xl text-light-txt-100 dark:text-dark-txt-100">{post.name}</h5>
+            <h5 className="text-light-txt-100 dark:text-dark-txt-100">{post.meal}</h5>
           </div>
 
           <div className='flex items-center justify-center dark:text-gray-200'>

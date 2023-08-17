@@ -49,7 +49,6 @@ const LoginPage = ({ handleAuthEvt }) => {
   return (
     <main className={styles.container}>
       {/* <h1>Log In</h1> */}
-      <p className={styles.message}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.form} >
         <div className='relative w-[100%]'>
           <input className='p-0 w-full m-1 placeholder:text-sm peer border-b-2 border-gray-300 dark:border-gray-900 text-gray-900 dark:text-gray-200 focus:border-rose-600 focus:outline-none mx-auto placeholder-transparent
@@ -92,6 +91,9 @@ const LoginPage = ({ handleAuthEvt }) => {
           transition-all
           '>Password</label>
         </div>
+        {message && (
+          <p className='mb-4 text-red-400'>{message}</p>
+        )}
         <div className="container mx-auto">
           <button tabIndex='0' disabled={isFormInvalid()} className='bg-blue-400 border-2  border-blue-400 rounded-md w-[100%] text-white text-sm focus:outline-none focus:ring focus:ring-offset-2 focus:ring-rose-500 focus-ring-opacity-80 cursor-pointer'>Log in</button>
         </div>

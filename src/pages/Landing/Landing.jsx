@@ -19,7 +19,7 @@ import { useEffect } from "react";
 const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled, userProfile }) => {
   // console.log('second time:: ',logedInUser)
   // const mealCategories = ['Breakfast', 'Lunch', 'Dinner', 'Brunch', 'Snack', 'Drink', 'Dessert', 'Other'];
-  console.log('posts: ', posts)
+  // console.log('posts: ', posts)
 
   // const { isLoaded } = useLoadScript({
   //   googleMapsApiKey: '***REMOVED***',
