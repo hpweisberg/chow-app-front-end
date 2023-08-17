@@ -89,7 +89,7 @@ function App() {
       // const friendPosts = friendsPosts.filter(post => {
       //   return post.author.handle === user.handle
       // })
-      console.log('i have posts:', followingPosts )
+      // console.log('i have posts:', followingPosts )
       setPosts(followingPosts);
       setActiveSort('rows')
     } catch (err) {

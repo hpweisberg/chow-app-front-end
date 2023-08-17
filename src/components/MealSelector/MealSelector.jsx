@@ -23,14 +23,14 @@ const MealSelector = ({ selectedMeal, onSelectMeal }) => {
   };
 
   const mealOptions = [
-    { id: 'breakfast', label: 'Breakfast', icon: Breakfast },
-    { id: 'lunch', label: 'Lunch', icon: Lunch },
-    { id: 'dinner', label: 'Dinner', icon: Dinner },
-    { id: 'snack', label: 'Snack', icon: Snack },
-    { id: 'dessert', label: 'Dessert', icon: Dessert },
-    { id: 'drink', label: 'Drink', icon: Drink },
-    { id: 'brunch', label: 'Brunch', icon: Brunch },
-    { id: 'other', label: 'Other', icon: Other },
+    { id: 'Breakfast', label: 'Breakfast', icon: Breakfast },
+    { id: 'Lunch', label: 'Lunch', icon: Lunch },
+    { id: 'Dinner', label: 'Dinner', icon: Dinner },
+    { id: 'Snack', label: 'Snack', icon: Snack },
+    { id: 'Dessert', label: 'Dessert', icon: Dessert },
+    { id: 'Drink', label: 'Drink', icon: Drink },
+    { id: 'Brunch', label: 'Brunch', icon: Brunch },
+    { id: 'Other', label: 'Other', icon: Other },
   ];
 
   return (

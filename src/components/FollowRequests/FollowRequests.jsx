@@ -10,11 +10,17 @@ const FollowRequests = ({ user, profile }) => {
   // console.log(requests)
   useEffect(() => {
     const fetchRequests = async () => {
-      const requestData = await profileService.followRequests()
-      setRequests(requestData)
-    }
-    fetchRequests()
-  }, [])
+      try {
+        const requestData = await profileService.followRequests();
+        console.log('requestData:', requestData);
+        setRequests(requestData);
+      } catch (error) {
+        console.error('Error fetching follow requests:', error);
+      }
+    };
+    fetchRequests();
+  }, []);
+  
 
   return (
     <div>
