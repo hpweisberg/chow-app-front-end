@@ -89,8 +89,8 @@ const NewPost = ({ user, handleShowProfile }) => {
   };
 
   return (
-    <main>
-      <div className="flex items-center mb-4 mt-20">
+    <main className='w-full'>
+      <div className="flex items-center desktopMaxWidth container mb-4 mt-20 ">
         <Back onClick={handleBack} className="w-4 h-4 ml-4 mr-2" />
         <h1 className="text-2xl font-bold mb-0">New Post</h1>
       </div>
