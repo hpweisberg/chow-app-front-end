@@ -9,9 +9,9 @@ const PostCard = ({ post, isLast, handleShowProfile }) => {
     <div className={`${isLast ? 'mb-20' : ''} w-screen sm:w-auto border-x-0 desktopMaxWidth"`}>
       <PostCardAuthorInfo post={post} createdAt={createdAt} handleShowProfile={handleShowProfile} />
       <NavLink to={`/posts/${post._id}`}>
-        <div className={`postCardColor mb-4 overflow-hidden rounded-lg shadow-lg ${isLast ? 'mb-20' : ''}`}>
+        <div className={`postCardColor mb-4 overflow-hidden rounded-lg shadow-lg  ${isLast ? 'mb-20' : ''}`}>
           <div className="flex">
-            <div className="w-1/3 flex-shrink-0 h-32"> {/* Set a fixed width for the image container */}
+            <div className="w-1/3 flex-shrink-0 h-full"> {/* Set a fixed width for the image container */}
               <img src={post.photo} alt="Restaurant" className="object-cover h-[full]" />
             </div>
             <div className="w-2/3 px-3 py-2"> {/* Adjusted the width for the text container */}

@@ -23,6 +23,7 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
     return <NoFollowingScreen />
   }
 
+
   return (
     <div>
       {user ? (
@@ -36,12 +37,12 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
               {activeSort === 'meals' && (
                 <MealCard posts={posts} />
               )}
-              {activeSort === 'map' &&
+              {/* {activeSort === 'map' &&
 
                 <h1>Google Map Intergration Coming Soon!</h1>
-                }
-              {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />} */}
-              {/* {activeSort === 'map' && !isLoaded && <Loading />} */}
+                } */}
+              {activeSort === 'map' && isLoaded && <Map posts={posts} />}
+              {activeSort === 'map' && !isLoaded && <Loading />}
             </div>
           )}
         </main>
