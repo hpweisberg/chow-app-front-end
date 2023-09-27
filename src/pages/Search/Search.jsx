@@ -25,7 +25,7 @@ const Search = ({ search, handleSearch, searchResults, handleShowProfile, user }
         </div>
       </form>
       {searchResults.length > 0 && (
-        <div className='w-full '>
+        <div className=' '>
           {/* <ul> */}
           {searchResults.map((profile) => (
             // <li key={profile._id}>{profile.name}</li>
