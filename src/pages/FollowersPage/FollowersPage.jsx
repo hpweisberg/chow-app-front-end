@@ -27,7 +27,7 @@ const FollowersPage = ({handleShowProfile}) => {
 
 
   return (
-    <div>
+    <div className="flex flex-col [w-100vw] items-center">
       <h1 className="mt-20">Followers</h1>
       {followersList.length > 0 ? (
         followersList.map((follower) => (

@@ -17,8 +17,8 @@ const BottomNavBar = ({ user, handleShowProfile, handleSetFollowingPosts, userPr
 
   // If there is a user, display the BottomNavBar
   return (
-    <div className='flex justify-center'>
-      <nav className='container fixed flex w-8/12 h-16 text-white border-4 border-slate-100 rounded-full shadow-lg white border- bottom-1 bg-slate-300 dark:bg-dark-background-200
+    <div className='flex justify-center w-auto'>
+      <nav className='container fixed flex w-8/12 desktopMaxWidth h-16 text-white border-4 border-slate-100 rounded-full shadow-lg white border- bottom-1 bg-slate-300 dark:bg-dark-background-200
       dark:border-dark-background-100'>
         <ul className='flex items-center justify-around w-full'>
           <li className=''>

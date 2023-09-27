@@ -190,7 +190,7 @@
 
 .friendListCard {
   @apply flex justify-between items-center gap-4 shadow-lg
-  w-full h-24 border-b-2 dark:border-dark-txt-200
+  w-[350px] md:w-[400px] h-24 border-b-2 dark:border-dark-txt-200
 }
 
 .friendRequestBtn {
@@ -247,4 +247,16 @@ input[type="file"] {
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
+}
+
+
+.detailsLabel {
+  @apply text-xs text-light-txt-100/80 dark:text-dark-primary-200/80
+}
+
+
+/*! Desktopview */
+
+.desktopMaxWidth {
+  @apply max-w-lg;
 }

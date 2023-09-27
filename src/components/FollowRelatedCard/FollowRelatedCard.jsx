@@ -5,7 +5,7 @@ const FollowRelatedCard = ({ person, handleShowProfile }) => {
 
   return (
     <Link to={`/${id}`}>
-      <div onClick={() => handleShowProfile(id)} className="friendListCard">
+      <div onClick={() => handleShowProfile(id)} className=" friendListCard desktopMaxWidth">
       {/* <div onClick={() => handleShowProfile(id)} className="friendListCard"> */}
         <div className="flex items-center justify-between gap-3 ml-2">
 
