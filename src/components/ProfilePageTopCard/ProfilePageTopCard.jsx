@@ -14,7 +14,7 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
 
 
   return (
-    <div className="mt-20 w-auto desktopMaxWidth ">
+    <div className="mt-20 container desktopMaxWidth ">
 
       <div className="flex w-full mb-2 desktopMaxWidth">
         <div className="flex flex-col items-center justify-center ml-2 w-2/6 ">

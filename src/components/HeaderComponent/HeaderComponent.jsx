@@ -4,8 +4,8 @@ import DarkMode from "../DarkMode/DarkMode";
 
 const HeaderComponent = ({ handleSetFollowingPosts, handleThemeSwitch, darkEnabled }) => {
   return (
-    <div className="fixed w-full h-16 top-0 z-50 bg-white dark:bg-dark-background-200 shadow">
-      <div className="container mx-auto px-4">
+    <div className="fixed w-full h-16 top-0 z-50 bg-white dark:bg-dark-background-200 shadow ">
+      <div className="container mx-auto px-4 md:max-w-2xl">
         <div className="flex items-center justify-between my-2">
           <Link to="/">
             <h1
