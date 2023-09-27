@@ -127,7 +127,7 @@ const NewPost = ({ user, handleShowProfile }) => {
           </div>
           <div className='flex flex-col gap-4 items-center'>
 
-            <RestaurantSearch handleRestaurantData={handleRestaurantData} required />
+            <RestaurantSearch handleRestaurantData={handleRestaurantData}  />
 
             <div className='relative w-[100%]'>
               <input

@@ -14,10 +14,10 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
 
 
   return (
-    <div className="mt-20 w-full">
+    <div className="mt-20 w-auto desktopMaxWidth ">
 
-      <div className="flex w-full mb-2">
-        <div className="flex flex-col items-center justify-start ml-2 w-2/6">
+      <div className="flex w-full mb-2 desktopMaxWidth">
+        <div className="flex flex-col items-center justify-center ml-2 w-2/6 ">
           <img src={profile.photo} alt="" className="h-24 w-24 border-4 border-black rounded-full mx-4" />
           <ProfileBtns
             isOwner={isOwner}
@@ -37,7 +37,7 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
 
           <div className="flex justify-between items-center mr-1">
             <h1 className="m-0 mr-4 text-2xl font-bold">{profile.handle}</h1>
-            {isOwner && <ProfileDropDown handleLogout={handleLogout} profile={profile} darkEnabled={darkEnabled}/>}
+            {isOwner && <ProfileDropDown handleLogout={handleLogout} profile={profile} darkEnabled={darkEnabled} />}
             {/* <ProfileDropDown handleLogout={handleLogout} profile={profile} darkEnabled={darkEnabled}/> */}
           </div>
 
@@ -48,7 +48,10 @@ const ProfilePageTopCard = ({ profile, handleLogout, handleSort, friendRequestsC
           </div>
         </div>
       </div>
-      <FollowingTracker profile={profile} />
+      <div className="desktopMaxWidth">
+
+        <FollowingTracker profile={profile} />
+      </div>
 
     </div>
   );

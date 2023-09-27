@@ -23,7 +23,7 @@ const FollowRequests = ({ user, profile }) => {
   
 
   return (
-    <div>
+    <div className='flex flex-col items-center justify-center container desktopMaxWidth'>
       <h1>Follow Requests</h1>
       {requests.length !== 0 ? (
         <div id={requests.handle}>

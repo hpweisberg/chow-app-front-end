@@ -3,7 +3,7 @@ import FollowRequests from "../../components/FollowRequests/FollowRequests";
 
 const NotificationsPage = ({ user, profile }) => {
   return (
-    <main className="mt-20">
+    <main className="mt-20 desktopMaxWidth">
       {/* <h1>Notifications</h1> */}
       <div>
         {/* <FriendRequests user={user} profile={profile} /> */}

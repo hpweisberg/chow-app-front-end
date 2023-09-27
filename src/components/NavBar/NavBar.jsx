@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const NavBar = ({ user, handleLogout }) => {
   return (
-    <nav>
+    <nav className='max-w-md'>
       {user ?
         <ul>
           <li>Welcome, {user.name}</li>

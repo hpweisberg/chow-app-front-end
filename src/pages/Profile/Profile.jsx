@@ -48,7 +48,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   // console.log('user: ', user.handle)
 
   return (
-    <main className=" flex flex-col sm:container">
+    <main className=" flex flex-col sm:container items-center ">
       {/* {!isOwner && 
       <BackBtn />
       } */}
@@ -72,17 +72,27 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
       {posts.length === 0 ? <NoPostsPage isOwner={isOwner} />
         :
-        <div className='flex items-center justify-between w-full py-4'>
+        <div className='flex items-center justify-between w-full py-4 desktopMaxWidth'>
 
           <PostIconNav handleSort={handleSort} darkEnabled={darkEnabled} />
         </div>
       }
-      {activeSort === 'rows' && <PostList posts={posts} />}
-      {activeSort === 'meals' && (
+      {activeSort === 'rows' &&
+        <div className="desktopMaxWidth">
 
-        <MealCard posts={posts} />
+          <PostList posts={posts} />
+        </div>
+      }
+      {activeSort === 'meals' && (
+        <div className="desktopMaxWidth">
+          <MealCard posts={posts} />
+        </div>
 
       )}
+      {activeSort === 'map' &&
+
+<h1>Google Map Intergration Coming Soon!</h1>
+}
       {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />}
     {activeSort === 'map' && !isLoaded && <Loading />} */}
     </main>

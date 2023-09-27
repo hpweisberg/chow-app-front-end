@@ -107,7 +107,7 @@ const RestaurantSearch = ({ handleRestaurantData }) => {
           peer-placeholder-shown:top-3
           peer-focus:-top-3 peer-focus:text-sm peer-focus:text-gray-700
           peer-focus:dark:text-dark-txt-100  transition-all
-          '>Restaurant</label>
+          '>Google search - Restaurant (COMING SOON)</label>
       {status === 'OK' && <ul>{renderSuggestions()}</ul>}
     </div>
   )

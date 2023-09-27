@@ -6,7 +6,7 @@ import SearchProfilesCard from '../../components/SearchProfilesCard/SearchProfil
 const Search = ({ search, handleSearch, searchResults, handleShowProfile, user }) => {
 
   return (
-    <main className='mt-20 flex flex-col items-center justify-center container '>
+    <main className='mt-20 flex flex-col items-center justify-center container desktopMaxWidth'>
       {/* <h2>Search other users by handle or name:</h2> */}
       <form className='flex justify-center mt-1'>
         <div className='relative w-[100%] '>

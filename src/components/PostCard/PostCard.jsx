@@ -6,7 +6,7 @@ const PostCard = ({ post, isLast, handleShowProfile }) => {
   const createdAt = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
 
   return (
-    <div className={`${isLast ? 'mb-20' : ''} w-screen sm:w-auto border-x-0"`}>
+    <div className={`${isLast ? 'mb-20' : ''} w-screen sm:w-auto border-x-0 desktopMaxWidth"`}>
       <PostCardAuthorInfo post={post} createdAt={createdAt} handleShowProfile={handleShowProfile} />
       <NavLink to={`/posts/${post._id}`}>
         <div className={`postCardColor mb-4 overflow-hidden rounded-lg shadow-lg ${isLast ? 'mb-20' : ''}`}>

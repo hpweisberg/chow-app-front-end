@@ -7,7 +7,7 @@ const PostCardNew = ({ post, isLast }) => {
 
   return (
     <NavLink to={`/posts/${post._id}`}>
-      <div className={`mb-1 overflow-hidden bg-white border rounded-lg shadow-lg max-h-48 ${isLast ? 'mb-20' : ''}`}>
+      <div className={`mb-1 overflow-hidden bg-white border rounded-lg shadow-lg max-h-48 ${isLast ? 'mb-20' : ''}` }>
         <div className="flex">
           <div className="w-1/4">
             <img src={post.photo} alt="Restaurant" className="object-cover h-full " />

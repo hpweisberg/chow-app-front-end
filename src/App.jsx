@@ -454,7 +454,7 @@ function App() {
       {/* <NavBar user={user} handleLogout={handleLogout} /> */}
       {user &&
         <HeaderComponent handleSetFollowingPosts={handleSetFollowingPosts}handleThemeSwitch={handleThemeSwitch} darkEnabled={darkEnabled}/>}
-      <div className='flex-grow overflow-y-auto overflow-scroll-hidden'>
+      <div className='flex-grow overflow-y-auto overflow-scroll-hidden '>
         <Routes>
           <Route path="/" element=
             {<Landing

@@ -19,14 +19,14 @@ import { useEffect } from "react";
 const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled, userProfile }) => {
 
   console.log(userProfile)
-  if (userProfile?.following.length === 0){
+  if (userProfile?.following.length === 0) {
     return <NoFollowingScreen />
   }
 
   return (
     <div>
       {user ? (
-        <main className='container flex flex-col items-center justify-center '>
+        <main className='container flex flex-col items-center justify-center desktopMaxWidth '>
           {user && (
             <div className=' flex flex-col justify-center min-w-full'>
               <div className='container w-full mt-16 mb-2'>
@@ -36,6 +36,10 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
               {activeSort === 'meals' && (
                 <MealCard posts={posts} />
               )}
+              {activeSort === 'map' &&
+
+                <h1>Google Map Intergration Coming Soon!</h1>
+                }
               {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />} */}
               {/* {activeSort === 'map' && !isLoaded && <Loading />} */}
             </div>
