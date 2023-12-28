@@ -19,25 +19,25 @@ const libraries = ["places"];
 
 
 const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled, userProfile, }) => {
-  // restricted on google platform for testing
-  const [apiKey, setApiKey] = useState(null);
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: apiKey,
-    libraries: libraries,
-  });
+  // restricted on google platform for testing. Removed for testing ( map not loading on production)
+  // const [apiKey, setApiKey] = useState(null);
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: apiKey,
+  //   libraries: libraries,
+  // });
 
-  useEffect(() => {
-    const fetchApiKey = async () => {
-      try {
-          const key = await googleMap();
-          setApiKey(key);
-      } catch (error) {
-        console.error('Error fetching key:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchApiKey = async () => {
+  //     try {
+  //         const key = await googleMap();
+  //         setApiKey(key);
+  //     } catch (error) {
+  //       console.error('Error fetching key:', error);
+  //     }
+  //   };
 
-    fetchApiKey();
-  }, []);
+  //   fetchApiKey();
+  // }, []);
 
 
 
