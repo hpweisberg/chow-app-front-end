@@ -1,17 +1,11 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useState, useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BackBtn from '../../components/BackBtn/BackBtn';
 import Rating from '../../components/Rating/Rating';
 import MealSelector from '../../components/MealSelector/MealSelector';
 import RestaurantSearch from '../../components/RestaurantSearch/RestaurantSearch';
 import { ChoseImage } from '../../components/Icons/Icons';
-import Rating from '../../components/Rating/Rating';
-import MealSelector from '../../components/MealSelector/MealSelector';
-import RestaurantSearch from '../../components/RestaurantSearch/RestaurantSearch';
-import { ChoseImage } from '../../components/Icons/Icons';
 
-const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
 const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
   const { state } = useLocation();
   const [formData, setFormData] = useState(state);
@@ -192,6 +186,6 @@ peer-focus:dark:text-dark-txt-100  transition-all
       </form>
     </main>
   );
-}
+}}
 
 export default EditPost;

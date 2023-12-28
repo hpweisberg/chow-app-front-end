@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BackBtn from '../../components/BackBtn/BackBtn';
 // import * as profileService from '../../services/profileService';
 import { ChoseImage } from '../../components/Icons/Icons';
 import { Switch } from '@headlessui/react';
 // import * as profileService from '../../services/profileService';
-import { ChoseImage } from '../../components/Icons/Icons';
-import { Switch } from '@headlessui/react';
 
 
-const EditProfile = ({ user, profile, handleUpdateProfile, handleUpdateProfilePhoto, updateProfileAfterChange }) => {
 const EditProfile = ({ user, profile, handleUpdateProfile, handleUpdateProfilePhoto, updateProfileAfterChange }) => {
   const { state } = useLocation();
   const [formData, setFormData] = useState(state);
