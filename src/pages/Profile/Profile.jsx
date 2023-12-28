@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import NoPostsPage from "../../components/NoPostsPage/NoPostsPage";
 
-const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, darkEnabled }) => {
+const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, handleDirectProfileNavigationOrRefresh, userProfile, followThisProfile, unfollowThisProfile, acceptFollowRequest, rejectFollowRequest, darkEnabled, isLoaded }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,10 +42,6 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
   const awaitingFriendRequest = userProfile?.friendRequests?.includes(user.handle);
 
 
-  // console.log('awaitingFriendRequest: ', awaitingFriendRequest);
-  // console.log('isFriends: ', isFriends);
-  // console.log('profile: ', profile.friends)
-  // console.log('user: ', user.handle)
 
   return (
     <main className=" flex flex-col sm:container items-center ">
@@ -84,14 +80,13 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
         </div>
       }
       {activeSort === 'meals' && (
-        <div className="desktopMaxWidth">
+        <div className="desktopMaxWidth w-full">
           <MealCard posts={posts} />
         </div>
 
       )}
       {activeSort === 'map' &&
-
-<h1>Google Map Intergration Coming Soon!</h1>
+  <h1>Google Map Intergration Coming Soon!</h1> 
 }
       {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />}
     {activeSort === 'map' && !isLoaded && <Loading />} */}

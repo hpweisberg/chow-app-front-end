@@ -79,7 +79,7 @@ const MealCard = ({ posts }) => {
             return (
               <div
                 key={mealType}
-                className={`flex items-center justify-center w-full h-24 mb-1 postCard ${
+                className={`flex items-center justify-center h-24 mb-1 postCard w-[100%] ${
                   index === mealTypes.length - 1 ? 'mb-20' : ''
                 }`}
                 style={{
