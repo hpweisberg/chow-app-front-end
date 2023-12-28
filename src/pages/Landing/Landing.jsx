@@ -55,13 +55,12 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
               {activeSort === 'meals' && (
                 <MealCard posts={posts} />
               )}
-              {/* {activeSort === 'map' &&
-
-                <h1>Google Map Intergration Coming Soon!</h1>
-                } */}
+              {activeSort === 'map' &&
+                <h2 className='flex justify-center'>Temporarily unavailable</h2>
+                }
                 
-              {activeSort === 'map' && isLoaded && <Map posts={posts} />}
-              {activeSort === 'map' && !isLoaded && <Loading />}
+              {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />}
+              {activeSort === 'map' && !isLoaded && <Loading />} */}
             </div>
           )}
         </main>

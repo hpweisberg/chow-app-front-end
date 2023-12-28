@@ -86,8 +86,7 @@ const Profile = ({ user, activeSort, handleSort, profile, handleLogout, posts, h
 
       )}
       {activeSort === 'map' &&
-  <h1>Google Map Intergration Coming Soon!</h1> 
-}
+      <h2 className='flex justify-center'>Temporarily unavailable</h2>}
       {/* {activeSort === 'map' && isLoaded && <Map posts={posts} />}
     {activeSort === 'map' && !isLoaded && <Loading />} */}
     </main>
