@@ -11,7 +11,6 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import NewPost from './pages/NewPost/NewPost'
 import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
-import TailwindTest from './pages/TailwindTest/TailwindTest'
 import Profile from './pages/Profile/Profile'
 import FriendRequests from './pages/FriendRequests/FriendRequests'
 import Search from './pages/Search/Search'
@@ -58,14 +57,6 @@ function App() {
 
   const isHiddenRoute = hiddenRoutes.includes(location.pathname);
 
-
-  // const { id } = useParams();
-  // console.log('app lvl logedInUser: ',logedInUser)
-  // console.log('app lvl profile: ',profile)
-  // console.log('user: ',user)
-  // console.log('posts3: ', posts)
-  // console.log('profile: ', profile)
-  // console.log('userProfile: ', userProfile)
 
   // ! user profile
 
@@ -145,67 +136,6 @@ function App() {
     }
   };
 
-
-
-  // console.log('prof: ', profile)
-
-
-  // ! Not working properly
-  // const handleShowProfileRefresh = async (profile) => {
-  //   const isFollowing = userProfile.following.includes(profile.handle);
-
-  //   if (profile.handle === userProfile.handle) {
-  //     const profileData = await profileService.getProfile(profile.handle)
-  //     setProfile(profileData)
-  //     const reversedPosts = [...profileData.posts].reverse();
-  //     setPosts(reversedPosts);
-  //     console.log('allowed')
-  //     return
-  //   }
-
-  //   if (profile.followPublic === false) {
-  //     if (isFollowing) {
-  //       const profileData = await profileService.getProfile(profile.handle)
-  //       setProfile(profileData)
-  //       const reversedPosts = [...profileData.posts].reverse();
-  //       setPosts(reversedPosts);
-  //       console.log('allowed')
-  //     } else {
-  //       const profileData = await profileService.getProfile(profile.handle)
-  //       setProfile(profileData)
-  //       setPosts([])
-  //       console.log('not allowed')
-  //     }
-  //   }
-
-  //   if (profile.followPublic === true) {
-  //     const profileData = await profileService.getProfile(profile.handle)
-  //     setProfile(profileData)
-  //     const reversedPosts = [...profileData.posts].reverse();
-  //     setPosts(reversedPosts);
-  //     console.log('allowed')
-  //   }
-
-  //   // if (profile.followPublic) {
-  //   //   const profileData = await profileService.getProfile(profile.handle)
-  //   //   setProfile(profileData)
-  //   //   const reversedPosts = [...profileData.posts].reverse();
-  //   //   setPosts(reversedPosts);
-  //   //   console.log('allowed')
-  //   // }
-  //   // if (isFollowing) {
-  //   //   const profileData = await profileService.getProfile(profile.handle)
-  //   //   setProfile(profileData)
-  //   //   const reversedPosts = [...profileData.posts].reverse();
-  //   //   setPosts(reversedPosts);
-  //   //   console.log('allowed')
-  //   // } else {
-  //   //   const profileData = await profileService.getProfile(profile.handle)
-  //   //   setProfile(profileData)
-  //   //   setPosts([])
-  //   //   console.log('not allowed')
-  //   // }
-  // }
 
   //! THIS IS FOR PROFILE BTN PRESSES
 
@@ -430,24 +360,6 @@ function App() {
   }
 
 
-  // // ! Following and Followers functions
-//   const showProfileFollowing = async (profile) => {
-//     const profileFollowing = await profileService.followingList(profile.handle);
-//     console.log('following: ', profileFollowing)
-//     // handleShowProfileRefresh(updatedProfile); // Update the profile after follow
-//   };
-
-//   const showProfileFollowers = async (profile) => {
-//     try {
-//       const profileFollowers = await profileService.followersList(profile.handle);
-//       console.log('followers: ', profileFollowers);
-//       setFollowers(profileFollowers); // Update the state with the followers' data
-//     } catch (error) {
-//       console.error('Error fetching followers:', error);
-//     }
-//   };
-  
-// console.log(followerList)
 
   return (
     <div className='flex flex-col bg-slate-50 dark:bg-slate-800 overflow-scroll-x-hidden'>
@@ -522,14 +434,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/test"
-            element={
-              <ProtectedRoute user={user}>
-                <TailwindTest />
-              </ProtectedRoute>
-            }
-          />
+
           <Route
             path="/:id"
             element={

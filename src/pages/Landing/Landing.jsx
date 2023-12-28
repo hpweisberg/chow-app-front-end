@@ -1,5 +1,7 @@
-// import { useState } from 'react'
-import { useLoadScript } from "@react-google-maps/api";
+import { useState, useEffect } from 'react'
+import { useLoadScript, } from '@react-google-maps/api';
+import { googleMap } from '../../services/authService';
+
 
 // css
 import PostList from '../PostList/PostList'
@@ -7,21 +9,37 @@ import PostIconNav from '../../components/PostIconNav/PostIconNav'
 import MealCard from '../../components/MealCard/MealCard'
 import Map from '../../components/Map/Map'
 import Loading from "../Loading/Loading";
-import { NavLink } from 'react-router-dom'
 import Splash from "../Splash/Splash";
 import NoFollowingScreen from "../../components/NoFollowingScreen/NoFollowingScreen";
-import { useEffect } from "react";
 
 // import { GoogleMap, useLoadScript, Marker, } from "@react-google-maps/api"
 
+const libraries = ["places"]; 
 
 
-const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled, userProfile }) => {
 
-  console.log(userProfile)
-  if (userProfile?.following.length === 0) {
-    return <NoFollowingScreen />
-  }
+const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfile, handleAuthEvt, darkEnabled, userProfile, }) => {
+  // restricted on google platform for testing
+  const [apiKey, setApiKey] = useState(null);
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: apiKey,
+    libraries: libraries,
+  });
+
+  useEffect(() => {
+    const fetchApiKey = async () => {
+      try {
+          const key = await googleMap();
+          setApiKey(key);
+      } catch (error) {
+        console.error('Error fetching key:', error);
+      }
+    };
+
+    fetchApiKey();
+  }, []);
+
+
 
 
   return (
@@ -41,6 +59,7 @@ const Landing = ({ user, posts, handleSort, activeSort, profile, handleShowProfi
 
                 <h1>Google Map Intergration Coming Soon!</h1>
                 } */}
+                
               {activeSort === 'map' && isLoaded && <Map posts={posts} />}
               {activeSort === 'map' && !isLoaded && <Loading />}
             </div>

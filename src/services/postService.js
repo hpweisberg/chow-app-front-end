@@ -1,6 +1,6 @@
 // services
 import * as tokenService from './tokenService'
-import { addPhoto as addProfilePhoto } from './profileService'
+// import { addPhoto as addProfilePhoto } from './profileService'
 
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`
@@ -206,5 +206,5 @@ export {
   getFriendPosts,
   addRestaurant,
   getFollowingPosts,
-  updatePhoto
+  updatePhoto,
 }

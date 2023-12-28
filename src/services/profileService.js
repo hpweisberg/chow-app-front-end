@@ -1,6 +1,5 @@
 // services
 import * as tokenService from './tokenService'
-// import { addPhoto as addProfilePhoto } from './postService';
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -63,29 +62,7 @@ async function updateProfile(profileData) {
     throw new Error(err);
   }
 }
-// async function updateProfile(profileData, photoData) {
-//   try {
-//     console.log('profileData:', profileData);
-//     const res = await fetch(`${BASE_URL}/${profileData.handle}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Authorization': `Bearer ${tokenService.getToken()}`,
-//         // this was the fix
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(profileData),
-//     });
-//     const responseData = await res.text(); // Parse the response manually as text
-//     console.log('Response from Backend:', responseData); // Log the response data
-//     const updatedProfile = JSON.parse(responseData); // Manually parse the JSON data
-//     if (photoData) {
-//       await addPhoto(photoData)
-//     }
-//     return updatedProfile;
-//   } catch (err) {
-//     throw new Error(err);
-//   }
-// }
+
 // ! not working
 async function updateProfilePhoto(profileId, photoData) {
   try {

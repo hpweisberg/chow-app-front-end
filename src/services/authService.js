@@ -75,6 +75,25 @@ async function changePassword(changePasswordFormData) {
   }
 }
 
-// async function update
+async function googleMap() {
+  try {
+    const token = tokenService.getToken();
+    const res = await fetch(`${BASE_URL}/api-key`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-export { signup, getUser, logout, login, changePassword }
+    if (!res.ok) {
+      throw new Error(`Error fetching API key: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching API key:', error);
+    throw error;
+  }
+}
+
+export { signup, getUser, logout, login, changePassword, googleMap }
