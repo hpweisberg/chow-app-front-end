@@ -6,6 +6,7 @@ import FriendListCard from '../../components/FriendListCard/FriendListCard'
 const FriendRequests = ({ user, profile }) => {
   const [requests, setRequests] = useState([])
 
+  // console.log(requests)
   useEffect(() => {
     const fetchRequests = async () => {
       const requestData = await profileService.friendRequests()
