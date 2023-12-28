@@ -14,7 +14,6 @@ const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
   const [photoPreview, setPhotoPreview] = useState(formData.photo);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  // console.log('formData: ', formData) 
 
 
   const handleChange = ({ target }) => {
@@ -31,7 +30,6 @@ const EditPost = ({ handleUpdatePost, userProfile, handleUpdatePostPhoto }) => {
       if (selectedPhoto instanceof File) {        
         await handleUpdatePostPhoto(updatedPost._id, selectedPhoto);
       }
-      // console.log('test1: ', updatedPost._id);
       navigate(`/posts/${formData._id}`);
     } catch (error) {
       console.log('Error:', error);

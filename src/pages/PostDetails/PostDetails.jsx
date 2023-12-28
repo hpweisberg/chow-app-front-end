@@ -35,12 +35,6 @@ const PostDetails = ({ user, handleShowProfile, handleDeletePost }) => {
 
   // const isOwner = user?.handle === post?.author?.handle;
 
-  // console.log(isOwner)
-  // console.log(user.handle)
-  // console.log(post.author?.handle)
-
-  // console.log('PD, RN: ', post.restaurant)
-
 
   useEffect(() => {
     const fetchPost = async () => {

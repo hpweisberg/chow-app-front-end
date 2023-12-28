@@ -7,7 +7,6 @@ const FriendListCard = ({ requests }) => {
     // Handle the case when requests is not an array (e.g., when there are no friend requests)
     return <div>No follow requests</div>;
   }
-  // console.log(requests)
 
   return (
     <div>

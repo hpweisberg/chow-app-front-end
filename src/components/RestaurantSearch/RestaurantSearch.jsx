@@ -11,7 +11,6 @@ const RestaurantSearch = ({ handleRestaurantData }) => {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [restaurantName, setRestaurantName] = useState('');
-  // console.log('placeid: ', placeId, 'name: ', name, 'lat: ', lat, 'lng: ', lng)
 
   // selectedRestaurant({placeId, lat, lng, name})
 

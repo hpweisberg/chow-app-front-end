@@ -14,8 +14,6 @@ const EditProfile = ({ user, profile, handleUpdateProfile, handleUpdateProfilePh
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [publicProfile, setPublicProfile] = useState(formData.followPublic);
 
-  // console.log(formData.photo)
-  // console.log(profile.followPublic)
   console.log(publicProfile)
   console.log('fd:', formData)
 

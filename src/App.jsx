@@ -69,18 +69,11 @@ function App() {
         })
     }
   }, [user])
-  // console.log('useEffect Profile: ', userProfile)
 
   // ! User Feed aka follow posts
   const handleSetFollowingPosts = async () => {
     try {
       const followingPosts = await postService.getFollowingPosts();
-      // console.log('friendsPosts: ', friendsPosts)
-
-      // const friendPosts = friendsPosts.filter(post => {
-      //   return post.author.handle === user.handle
-      // })
-      // console.log('i have posts:', followingPosts )
       setPosts(followingPosts);
       setActiveSort('rows')
     } catch (err) {

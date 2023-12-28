@@ -7,7 +7,6 @@ import FriendListCard from '../FriendListCard/FriendListCard'
 const FollowRequests = ({ user, profile }) => {
   const [requests, setRequests] = useState([])
 
-  // console.log(requests)
   useEffect(() => {
     const fetchRequests = async () => {
       try {

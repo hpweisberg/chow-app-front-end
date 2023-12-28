@@ -5,17 +5,14 @@ import { NavLink } from "react-router-dom";
 const PostCardAuthorInfo = ({ post, createdAt, handleShowProfile }) => {
   const landingPage = window.location.pathname === "/";
 
-  // console.log(landingPage)
   const authorProfile = post.author;
 
 
   const handleUserProfileClick = (authorProfile) => {
     handleShowProfile(authorProfile);
-    // console.log('clicked', authorProfile);
   }
 
   const mustTry = post?.mustTry;
-  // console.log(mustTry);
 
   return (
     landingPage ?
